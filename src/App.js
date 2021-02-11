@@ -1,14 +1,17 @@
-import React from 'react'
+import React from 'react';
+import Navegacion from './components/Navegacion';
 import { Recuperar } from './components/auth/Recuperar'
-import Navegacion from './components/Navegacion'
+import LoginUsuario from './components/LoginUsuario/LoginUsuario';
 
 const App = () => {
-    return (
-        <div>
-            <Navegacion/>
-            <Recuperar/>
-        </div>
-    )
-}
+   return (
+      <div>
+         <Navegacion />
+         <LoginUsuario />
+         <Recuperar />
+      </div>
+   );
+};
 
-export default App
+export default App;
+
