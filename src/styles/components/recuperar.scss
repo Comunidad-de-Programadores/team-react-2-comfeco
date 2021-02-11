@@ -1,0 +1,50 @@
+.container {
+    background-color: rgb(172, 172, 172);
+    width: 500px;
+    height: 250px;
+    margin: 0 auto;
+    text-align: left;   
+}
+.sub-container {
+    width: 90%;
+    height: 75%;
+    padding-top: 10%;
+    padding-left: 10%;
+}
+.title {
+    color: blue;
+}
+.paragraph{
+    color:  white;
+    font-size: 12px;
+}
+.input-container{
+    width: 100%;
+    padding: 10px;
+    height: 25%;
+    border-radius: 10px;
+    border: solid 0px;
+    color: rgb(79, 79, 79);
+
+}
+.colum {
+    width: 100%;
+}
+.btn-send{
+    width: 50%;
+    padding: 2.5%;
+    background-color:  grey;
+    border-radius: 10px;
+    color: white;
+    border: solid 0px;
+    
+}
+.btn-login{
+    width: 50%;
+    text-align: right;
+    padding: 2.5%;
+    border: solid 0px;
+    background-color:   rgb(172, 172, 172);
+    color: white;
+    outline:none
+}
