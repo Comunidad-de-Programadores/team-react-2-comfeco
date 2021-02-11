@@ -1,13 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 const Navegacion = () => {
-    return (
-        <>
-            <nav>
-                Componente Navegacion
-            </nav>
-        </>
-    )
-}
+   return (
+      <>
+         <nav>Componente Navegacion</nav>
+      </>
+   );
+};
 
-export default Navegacion
+export default Navegacion;
