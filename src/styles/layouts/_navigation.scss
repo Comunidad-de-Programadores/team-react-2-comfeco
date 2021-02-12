@@ -1,0 +1,30 @@
+
+header{
+    margin: 0 auto;
+}
+.navegacion {
+
+    max-width:calc(100vw - 5rem);
+    padding: 1rem 0 ;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    
+    &__img{
+        width: calc(8rem + 1vw);
+
+        img{
+            width: 100%;
+        }
+       
+    }
+
+    &__btn{
+        border: solid 2px red;
+        align-self: center;
+        
+    }
+
+  
+}
+    
