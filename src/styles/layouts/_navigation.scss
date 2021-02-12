@@ -4,26 +4,25 @@ header{
 }
 .navegacion {
 
-    max-width:calc(100vw - 5rem);
-    padding: 1rem 0 ;
 
+    background: $color-gradiente-header;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: repeat(1, minmax(100px, min-content));
     
+    align-items: center;
+    justify-items: center;
+    
+    padding: 1rem 0 ;
+    column-gap:25rem;
+    row-gap: 3rem;
+    
+    width: 100%;
+   
     &__img{
-        width: calc(8rem + 1vw);
-
-        img{
-            width: 100%;
-        }
-       
+        width: calc(6.85rem + 1vw);
     }
 
-    &__btn{
-        border: solid 2px red;
-        align-self: center;
-        
-    }
 
   
 }

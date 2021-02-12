@@ -1,15 +1,47 @@
 
 
 .btn{
+    position: relative;
+    overflow: hidden;
+    transition: 800ms ease all;
     border: none;
-    padding: calc(0.5rem + 0.5vw);
+    padding: 0.8rem 1rem;
     border-radius: 0.8rem;
-    font-size: calc(0.5rem + 1.5vw);
+    font-size: calc(1rem + 0.66667vw);
+
+    &::before {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        // background: $backColor-btn6;
+        // @include gradiente(315deg, 30b945);
+        // background: #30b945;
+        background: linear-gradient(315deg, #6f39a7 0%, #6615bd 100%);
+        transition: all 0.4s ease;
+
+    }
+
+    &:hover {
+        cursor: pointer;
+        background-color: transparent;
+        color: white;
+
+    }
+
+    &:hover::before {
+        transform: scale(2) rotate(180deg);
+    }
+    
 
     
 }
 
 .btn-purple{
-    background: #6f39a7;
+    background: #68438f;
     color: white;
+    z-index: 3;
 }

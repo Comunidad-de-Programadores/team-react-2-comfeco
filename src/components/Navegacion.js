@@ -1,4 +1,5 @@
 import React from 'react';
+
 import logo from '../assets/logo3.png';
 
 const Navegacion = () => {
@@ -9,7 +10,7 @@ const Navegacion = () => {
             <img src = {logo}/>
             </div>
 
-            <div className= "navegacion__btn">
+            <div className= "navegacion__btn ">
                 <button className="btn btn-purple">Iniciar Sesion</button>
             </div>
         </header>
@@ -19,4 +20,6 @@ const Navegacion = () => {
     )
 }
 
-export default Navegacion
+
+
+export default Navegacion;

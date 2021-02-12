@@ -1,0 +1,30 @@
+
+.login-form{
+
+    border: 2px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    &__content{
+        margin: 2rem 0;
+        display: flex;
+        height: 80%;
+        flex-direction: column;
+
+
+        padding: 2rem;
+
+        border: 2px solid blue;
+        border-radius: 2rem;
+        input{
+            margin: 1rem 0;
+        }
+    
+        
+    }
+
+
+
+}
