@@ -10,21 +10,27 @@ const LoginUsuario = () => {
    }
 
    return (
-      <div>
-         <form onSubmit={manejarSubmit}>
+      <div className="container">
+         <form className="sub-container" onSubmit={manejarSubmit}>
             <input
                value={email}
                name="email"
                type="text"
                onChange={(e) => setEmail(e.target.value)}
+               placeholder="Ingrese su email"
+               className="input-container"
+               style={{ marginBottom: '20px' }}
             />
             <input
                value={password}
                name="password"
                type="password"
                onChange={(e) => setPassword(e.target.value)}
+               placeholder="Ingrese su password"
+               className="input-container"
+               style={{ marginBottom: '20px' }}
             />
-            <input type="submit" value="Ingresar" />
+            <input className="btn btn-send" type="submit" value="Ingresar" />
          </form>
       </div>
    );
