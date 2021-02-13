@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import AnimationLogin from './AnimationLogin';
 
 const LoginUsuario = () => {
    const [email, setEmail] = useState('');
@@ -30,12 +31,13 @@ const LoginUsuario = () => {
                   onChange={(e) => setPassword(e.target.value)}
                />
                {/* <input type="submit" value="Ingresar" /> */}
-             
-               <button type="submit" value= "Ingresar" className= "btn btn-purple">
+
+               <button type="submit" value="Ingresar" className="btn btn-purple">
                   Ingresar
 
                </button>
             </form>
+         <AnimationLogin/>
          </section>
 
       </>
