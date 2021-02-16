@@ -12,6 +12,7 @@ const AnimationLogin = () => {
 
         p5.setup = () => {
             let size = document.querySelector('.login-form');
+            // let size = document.querySelector('.container');
             const canva = p5.createCanvas(size.offsetWidth - 10, size.offsetHeight);
             canva.parent('fluid');
             for (let i = 0; i < 50; i++) {
