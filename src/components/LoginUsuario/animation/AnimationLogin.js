@@ -11,7 +11,7 @@ const AnimationLogin = () => {
         const flock = [];
 
         p5.setup = () => {
-            let size = document.querySelector('.login-form');
+            let size = document.querySelector('.container-login');
             // let size = document.querySelector('.container');
             const canva = p5.createCanvas(size.offsetWidth - 10, size.offsetHeight);
             canva.parent('fluid');
@@ -47,7 +47,7 @@ const AnimationLogin = () => {
 
     return (
         <>
-            <div id="fluid" className="login-form__animation">
+            <div id="fluid" className="container-login__animation">
 
             </div>
         </>

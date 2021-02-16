@@ -1,7 +1,4 @@
-
-
-
-.btn{
+.btn {
     position: relative;
     overflow: hidden;
     transition: 800ms ease all;
@@ -36,12 +33,12 @@
     &:hover::before {
         transform: scale(2) rotate(180deg);
     }
-    
 
-    
+
+
 }
 
-.btn-purple{
+.btn-purple {
     background: #68438f;
     color: white;
     z-index: 3;
@@ -72,3 +69,60 @@
 //    }
 // }
 
+
+.btn-login {
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    position: relative;
+    
+    perspective: 230px;
+    width: 130px;
+    height: 40px;
+    background: transparent;
+    color: white;
+    font-size: 1.2rem;
+
+
+    span {
+        display: flex;
+        margin:0;
+        align-items: center;
+        border-radius: 5px;
+        
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+
+        background: linear-gradient(160deg, $gradientBtn-login);
+        justify-content: center;
+        
+        &:first-child{
+            transform: rotateX(90deg);
+            transform-origin: 50% 50% -20px;
+        }
+        &:last-child{
+            transform: rotateX(0deg);
+            transform-origin: 50% 50% -20px;
+        }
+        
+        transition: all .3s;
+
+    }
+
+
+    &:hover{
+        
+        span{
+            &:first-child{
+                transform: rotateX(0deg);
+            }
+
+            &:last-child{
+                transform: rotateX(-90deg);
+                color: transparent;
+            }
+        }
+    }
+}
