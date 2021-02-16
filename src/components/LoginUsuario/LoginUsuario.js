@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import AnimationLogin from './animation/AnimationLogin';
+
 
 const LoginUsuario = () => {
    const [email, setEmail] = useState('');
@@ -10,11 +10,14 @@ const LoginUsuario = () => {
       alert(`Mostar datos enviados ${email} ${password}`);
    }
 
+  
+
    return (
-      
-      <div className="login-form"> {/* className = container  */} 
-         
+
+      <div className="login-form"> {/* className = container  */}
          <form className="login-form__content" onSubmit={manejarSubmit}> {/* className = sub-container */}
+            
+
             <input
                value={email}
                name="email"
@@ -22,9 +25,9 @@ const LoginUsuario = () => {
                onChange={(e) => setEmail(e.target.value)}
                placeholder="Ingrese su email"
                className="input-container"
-               autoComplete= 'off'
-               
-              
+               autoComplete='off'
+
+
             />
             <input
                value={password}
@@ -40,7 +43,7 @@ const LoginUsuario = () => {
                Ingresar
             </button>
          </form>
-         <AnimationLogin />
+         
       </div>
    );
 };

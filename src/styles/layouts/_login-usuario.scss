@@ -1,52 +1,21 @@
+
+
 .login-form {
+   
 
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    // background: rgb(148, 79, 219);
-    // background: linear-gradient(163deg, rgba(148, 79, 219, 0.3939775739397321) 39%, rgba(148, 182, 238, 0.7553221117548582) 91%);
+    @extend %forms;
 
-    background: rgb(148,79,219);
-    background: linear-gradient(163deg, #944fdb28 57%, rgba(148,182,238,0.5284313554523372) 91%); 
-    // background: #954fdb1f;
-
-    &__content {
-        margin: 2rem 0;
-        background: white;
-        display: flex;
-        height: 80%;
-        flex-direction: column;
-        -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-        -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-        box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-
-
-        padding: 2rem;
-
-        // border: 2px solid blue;
-        border-radius: 2rem;
-
-        input {
-            margin: 1rem 0;
-        }
-
-
-    }
-
-    &__animation{
-        display: flex;
-        justify-content: center;
-        position: absolute;
-        z-index: -1;
-        top: 0;
-        right: 0;
-        left: 0;
-        bottom: 0;
-        // z-index: 7;
     
-    }
 
+    &__content{
+        
+
+        @extend %__content;
+        input{
+            padding: 1.2rem;
+        }
+        // padding: 3rem;
+    }
 
 
 }

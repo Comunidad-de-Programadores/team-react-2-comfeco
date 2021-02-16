@@ -13,7 +13,7 @@ const RegistrarUsuario = () => {
    }
 
    return (
-      <section className="registro-form">
+      <div className="registro-form">
          <form onSubmit={registroSubmit} className="registro-form__content">
             <input
                value={nick}
@@ -49,16 +49,15 @@ const RegistrarUsuario = () => {
             <button type="submit" value="Ingresar" className="btn btn-purple">
                Crear una cuenta
             </button>
+            <div className="registro-form__terms">
+               <p>
+                  Al registrarte, estas aceptando los{' '}
+                  <a href="">terminos y condiciones</a> y la{' '}
+                  <a href="">Politica de privacidad y proteccion de datos</a> de COMFECO
+               </p>
+            </div>
          </form>
-         <div className="terms">
-            <p>
-               Al registrarte, estas aceptando los{' '}
-               <a href="">terminos y condiciones</a> y la{' '}
-               <a href="">Politica de privacidad y proteccion de datos</a> de
-               COMFECO
-            </p>
-         </div>
-      </section>
+      </div>
    );
 };
 
