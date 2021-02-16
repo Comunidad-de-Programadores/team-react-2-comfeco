@@ -1,9 +1,13 @@
 import React from 'react';
+import validator from 'validator';
 import { useForm } from "react-hook-form";
 
 export const Recuperar = () => {
     const { register, handleSubmit, watch, errors } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+        console.log( data );
+        console.log( validator.isEmail( data.email ));
+    };
     console.log(watch("example")); // watch input value by passing the name of it
 
 
