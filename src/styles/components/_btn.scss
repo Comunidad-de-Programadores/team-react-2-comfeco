@@ -1,5 +1,6 @@
 
 
+
 .btn{
     position: relative;
     overflow: hidden;
@@ -45,3 +46,29 @@
     color: white;
     z-index: 3;
 }
+
+// .btn {
+//    width: 50%;
+//    padding: 2.5%;
+//    color: white;
+//    transition: all 0.2s;
+//    &-send {
+//       background-color: grey;
+//       border-radius: 10px;
+//       border: solid 0px;
+//       &:hover {
+//          background-color: rgb(255, 255, 255);
+//          color: rgb(0, 0, 0);
+//       }
+//    }
+//    &-login {
+//       text-align: right;
+//       border: solid 0px;
+//       background-color: rgb(172, 172, 172);
+//       outline: none;
+//       &:hover {
+//          color: rgb(0, 86, 245);
+//       }
+//    }
+// }
+
