@@ -3,6 +3,7 @@ import validator from 'validator';
 import { useForm } from "react-hook-form";
 
 export const Recuperar = () => {
+
     const { register, handleSubmit, watch, errors } = useForm();
     const onSubmit = data => {
         console.log( data );
@@ -40,7 +41,9 @@ export const Recuperar = () => {
                         <button className="btn-login" >Iniciar Sessión</button>
                     </div>
                 </form>
+
             </div>
-        </div>
-    )
-}
+         </div>
+      </div>
+   );
+};

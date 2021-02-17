@@ -1,0 +1,34 @@
+.registro-form{
+    
+    
+    @extend %forms;
+
+    margin-top: 4rem;
+
+   
+    &__content{
+        // top: 0;
+        @extend %__content ;
+        max-width: 400px;
+        // max-height: 500px;
+    }
+
+    &__terms{
+        margin-top: .8rem;
+        line-height: 1.5rem;
+        text-align: justify;
+        font-size: 0.8rem;
+
+        p{
+
+        }
+        a{
+            list-style: none;
+            text-decoration: none;
+            
+        }
+    }
+
+
+
+}
