@@ -1,16 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 
 const LoginUsuario = () => {
-   const [email, setEmail] = useState('');
-   const [password, setPassword] = useState('');
-
-   const { register, errors, handleSubmit } = useForm();
+   const { register, errors, clearErrors, handleSubmit } = useForm();
 
    function manejarSubmit(data) {
-      //e.preventDefault();
       console.log(data);
-      // alert(`Mostar datos enviados ${email} ${password}`);
+      clearErrors();
    }
 
    return (
@@ -20,27 +16,33 @@ const LoginUsuario = () => {
             onSubmit={handleSubmit(manejarSubmit)}
          >
             <input
-               value={email}
                name="email"
                type="text"
-               onChange={(e) => setEmail(e.target.value)}
                placeholder="Ingrese su email"
                className="input-container"
                autoComplete="off"
-               ref={register({ required: true })}
+               ref={register({
+                  required: true,
+                  pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+               })}
             />
-            {errors.email && 'Email is required'}
+            {errors.email?.type === 'required' && (
+               <span className="errors-msg"> Email es requerido </span>
+            )}
+            {errors.email?.type === 'pattern' && (
+               <span className="errors-msg"> Email no es válido </span>
+            )}
             <input
-               value={password}
                name="password"
                type="password"
-               onChange={(e) => setPassword(e.target.value)}
                placeholder="Ingrese su password"
                className="input-container"
                style={{ marginBottom: '20px' }}
                ref={register({ required: true })}
             />
-            {errors.password && 'Password is required'}
+            {errors.password && (
+               <span className="errors-msg"> Password es requerido </span>
+            )}
 
             <button type="submit" value="Ingresar" className="btn btn-purple">
                Iniciar Sesión
