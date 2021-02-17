@@ -1,49 +1,53 @@
-import React, { useState } from 'react';
-
+import React from 'react';
+import { useForm } from 'react-hook-form';
 
 const LoginUsuario = () => {
-   const [email, setEmail] = useState('');
-   const [password, setPassword] = useState('');
+   const { register, errors, clearErrors, handleSubmit } = useForm();
 
-   function manejarSubmit(e) {
-      e.preventDefault();
-      alert(`Mostar datos enviados ${email} ${password}`);
+   function manejarSubmit(data) {
+      console.log(data);
+      clearErrors();
    }
 
-  
-
    return (
-
-      <div className="login-form"> {/* className = container  */}
-         <form className="login-form__content" onSubmit={manejarSubmit}> {/* className = sub-container */}
-            
-
+      <div className="login-form">
+         <form
+            className="login-form__content"
+            onSubmit={handleSubmit(manejarSubmit)}
+         >
             <input
-               value={email}
                name="email"
                type="text"
-               onChange={(e) => setEmail(e.target.value)}
                placeholder="Ingrese su email"
                className="input-container"
-               autoComplete='off'
-
-
+               autoComplete="off"
+               ref={register({
+                  required: true,
+                  pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+               })}
             />
+            {errors.email?.type === 'required' && (
+               <span className="errors-msg"> Email es requerido </span>
+            )}
+            {errors.email?.type === 'pattern' && (
+               <span className="errors-msg"> Email no es válido </span>
+            )}
             <input
-               value={password}
                name="password"
                type="password"
-               onChange={(e) => setPassword(e.target.value)}
                placeholder="Ingrese su password"
                className="input-container"
                style={{ marginBottom: '20px' }}
+               ref={register({ required: true })}
             />
-            {/* <input className="btn btn-send" type="submit" value="Ingresar" /> */}
+            {errors.password && (
+               <span className="errors-msg"> Password es requerido </span>
+            )}
+
             <button type="submit" value="Ingresar" className="btn btn-purple">
-               Ingresar
+               Iniciar Sesión
             </button>
          </form>
-         
       </div>
    );
 };
