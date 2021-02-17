@@ -1,23 +1,24 @@
 import React, { useState } from 'react';
-
+import { useForm } from 'react-hook-form';
 
 const LoginUsuario = () => {
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
 
-   function manejarSubmit(e) {
-      e.preventDefault();
-      alert(`Mostar datos enviados ${email} ${password}`);
+   const { register, errors, handleSubmit } = useForm();
+
+   function manejarSubmit(data) {
+      //e.preventDefault();
+      console.log(data);
+      // alert(`Mostar datos enviados ${email} ${password}`);
    }
 
-  
-
    return (
-
-      <div className="login-form"> {/* className = container  */}
-         <form className="login-form__content" onSubmit={manejarSubmit}> {/* className = sub-container */}
-            
-
+      <div className="login-form">
+         <form
+            className="login-form__content"
+            onSubmit={handleSubmit(manejarSubmit)}
+         >
             <input
                value={email}
                name="email"
@@ -25,10 +26,10 @@ const LoginUsuario = () => {
                onChange={(e) => setEmail(e.target.value)}
                placeholder="Ingrese su email"
                className="input-container"
-               autoComplete='off'
-
-
+               autoComplete="off"
+               ref={register({ required: true })}
             />
+            {errors.email && 'Email is required'}
             <input
                value={password}
                name="password"
@@ -37,13 +38,14 @@ const LoginUsuario = () => {
                placeholder="Ingrese su password"
                className="input-container"
                style={{ marginBottom: '20px' }}
+               ref={register({ required: true })}
             />
-            {/* <input className="btn btn-send" type="submit" value="Ingresar" /> */}
+            {errors.password && 'Password is required'}
+
             <button type="submit" value="Ingresar" className="btn btn-purple">
-               Ingresar
+               Iniciar Sesión
             </button>
          </form>
-         
       </div>
    );
 };
