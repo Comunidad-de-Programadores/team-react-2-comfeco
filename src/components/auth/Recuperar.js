@@ -44,6 +44,5 @@ export const Recuperar = () => {
 
             </div>
          </div>
-      </div>
    );
 };
