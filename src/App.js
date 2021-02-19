@@ -3,6 +3,7 @@ import React from 'react'
 import Navegacion from './components/Navegacion';
 import { Recuperar } from './components/auth/Recuperar'
 import LoginApp from './components/LoginUsuario/LoginApp';
+import HomePage from './components/HomePage/HomePage';
 
 
 const App = () => {
@@ -11,6 +12,7 @@ const App = () => {
          <Navegacion />
         {/* <Recuperar /> */}
          <LoginApp/>
+         <HomePage/>
 
       </div>
    );
