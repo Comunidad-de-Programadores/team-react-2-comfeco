@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
 
 const RegistrarUsuario = () => {
+   const { register, handleSubmit, watch, errors } = useForm();
+
    const [nick, setNick] = useState('');
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
@@ -19,6 +22,7 @@ const RegistrarUsuario = () => {
                value={nick}
                name="nick"
                type="text"
+               className="input-container"
                autoComplete="off"
                placeholder="Nick"
                onChange={(e) => setNick(e.target.value)}
@@ -27,6 +31,7 @@ const RegistrarUsuario = () => {
                value={email}
                name="email"
                type="text"
+               className="input-container"
                autoComplete="off"
                placeholder="Email"
                onChange={(e) => setEmail(e.target.value)}
@@ -34,6 +39,7 @@ const RegistrarUsuario = () => {
             <input
                value={password}
                name="password"
+               className="input-container"
                type="password"
                placeholder="Password"
                onChange={(e) => setPassword(e.target.value)}
@@ -42,6 +48,7 @@ const RegistrarUsuario = () => {
                value={confirmPassword}
                name="confirmPassword"
                type="password"
+               className="input-container"
                placeholder="Confirm Password"
                onChange={(e) => setConfirmPassword(e.target.value)}
             />
