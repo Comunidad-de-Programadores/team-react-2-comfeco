@@ -1,11 +1,17 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 
-const LoginUsuario = () => {
+const LoginUsuario = (props) => {
    const { register, errors, clearErrors, handleSubmit } = useForm();
 
    function manejarSubmit(data) {
       console.log(data);
+      const senddata = {
+         email: data.email,
+         isLogin: true,
+      };
+      props.LoginAppfunction(senddata);
       clearErrors();
    }
 
@@ -37,12 +43,15 @@ const LoginUsuario = () => {
                type="password"
                placeholder="Ingrese su password"
                className="input-container"
-               style={{ marginBottom: '20px' }}
                ref={register({ required: true })}
             />
             {errors.password && (
                <span className="errors-msg"> Password es requerido </span>
             )}
+
+            <Link style={{ marginBottom: '20px' }} to="/auth/recuperar">
+               ¿Olvidaste tu contraseña?
+            </Link>
 
             <button type="submit" value="Ingresar" className="btn btn-purple">
                Iniciar Sesión
