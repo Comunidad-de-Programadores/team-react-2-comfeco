@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 import { startGoogleLogin } from '../../actions/auth';
 import { AuthContext } from '../../context/AuthContext';
 
-const LoginUsuario = () => {
+const LoginUsuario = (props) => {
 
    const { register, errors, clearErrors, handleSubmit } = useForm();
    
@@ -12,6 +13,11 @@ const LoginUsuario = () => {
 
    function manejarSubmit(data) {
       console.log(data);
+      const senddata = {
+         email: data.email,
+         isLogin: true,
+      };
+      props.LoginAppfunction(senddata);
       clearErrors();
    }
 
@@ -49,15 +55,23 @@ const LoginUsuario = () => {
                type="password"
                placeholder="Ingrese su password"
                className="input-container"
-               style={{ marginBottom: '20px' }}
                ref={register({ required: true })}
             />
             {errors.password && (
                <span className="errors-msg"> Password es requerido </span>
             )}
 
-            <button type="submit" value="Ingresar" className="btn btn-purple" onClick={ handleGoogleLogin } >
+            <Link style={{ marginBottom: '20px' }} to="/auth/recuperar">
+               ¿Olvidaste tu contraseña?
+            </Link>
+
+            <button type="submit" value="Ingresar" className="btn btn-purple" >
                Iniciar Sesión
+            </button>
+
+            <br/>
+            <button type="submit" value="Ingresar" className="btn btn-purple"  onClick={ handleGoogleLogin } >
+               Iniciar Sesión con google
             </button>
 
             <br/>
