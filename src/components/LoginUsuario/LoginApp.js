@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navegacion from '../Navegacion';
 import AnimationLogin from './animation/AnimationLogin';
@@ -6,7 +6,9 @@ import LoginUsuario from './LoginUsuario';
 import RegistrarUsuario from './RegistrarUsuario';
 
 const LoginApp = () => {
-   const [registro, setRegistro] = useState('Registrarse');
+   
+   const [registro, setRegistro] = useState('Ingresar');
+
 
    const handleToggle = (e) => {
       setRegistro('Ingresar');

@@ -1,18 +1,30 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import {
     BrowserRouter as Router,
     Switch,
     Redirect,
 } from "react-router-dom";
+import { AuthContext } from '../context/AuthContext';
+
 import { PrivateRoute } from './PrivateRouter';
 import { AuthRouter } from './public/AuthRouter';
 import { PublicRoute } from './PublicRouter';
 
 
-
 export const AppRouter = () => {
 
     const uid = false;
+    
+    // TODO realizar la validación de usuario
+    // const { user, setUser } = useContext( AuthContext );
+    // console.log( user );
+    // useEffect(() => {
+        
+    //     setUser( user );
+    //     console.log( user )
+
+    // }, [ user ]);
+
     
     return (
         <Router>
