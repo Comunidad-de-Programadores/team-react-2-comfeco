@@ -5,7 +5,7 @@ header{
 .navegacion {
 
 
-    background: $color-gradiente-header;
+    background: $color-header;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-template-rows: repeat(1, minmax(100px, min-content));

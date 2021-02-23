@@ -35,7 +35,7 @@ const Navegacion = ({ children, Userdata }) => {
                {/* ME GUSTARIA PONER TODO ESTO LOGICA EN UN FUNCIONAL COMPONENT PERO
              ME DA ERROR CON TIEMPO LO VOY VER */}
                {!isLogin && (
-                  <button className="btn btn-purple" onClick={handleLogin}>
+                  <button className="btn btn-white" onClick={handleLogin}>
                      Iniciar Sesion
                   </button>
                )}
