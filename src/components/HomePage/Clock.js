@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 const Contador = () => {
 
-    const endTime = new Date("October 10, 2021 16:25:00");
+    const endTime = new Date("June 03, 2021 12:25:40");
 
     const [time, setTime] = useState({
         dias: 0,
@@ -47,7 +47,7 @@ const Contador = () => {
         <>
     
             <div className="clock">
-                    <h3>Nos en el proximo evento en : </h3>
+                    <h3>Nos vemos en el proximo evento: </h3>
                 <div className="clock__content">
                 
                     <div className="clock__days">

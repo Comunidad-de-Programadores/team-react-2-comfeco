@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { getLideres } from './dataCarousel/getLideres';
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const Carousel = () => {
 
 
 
     const lideres = getLideres();
-    const [animation, setAnimation] = useState({
-        'ant': true,
+    const [active, setActive] = useState({
+        comienzo: true,
+        sentido: 'derecha'
     });
-
-
 
     const [slide, setSlide] = useState([
         lideres[0],
@@ -18,64 +19,110 @@ export const Carousel = () => {
         lideres[2],
     ]);
 
-    useEffect(() => {
-       
 
-        console.log(`en el efecto ${animation.ant}`)
+    useEffect(() => {
         let timer = setTimeout(() => {
-            setAnimation({
-                ant: true
+            setActive({
+                comienzo: !active.comienzo, 
+                sentido:'derecha'
             });
-        }, 500)
+        }, 500);
+        return () => {
+            clearTimeout(timer);
+        }
+    }, [slide])
+
+
+    useEffect(() => {
+
+        let timer = setTimeout(() => {
+
+            if (active.comienzo) {
+
+
+
+                //* Sentido de Derecha a Izquierda 
+                if (active.sentido === 'derecha') {
+                    setSlide(prev => {
+
+                        const ultimo = lideres.map(lider => {
+                            return lider.id;
+                        }).lastIndexOf(`${prev[prev.length - 1].id}`);
+
+                        prev.shift();
+
+                        if (ultimo >= lideres.length - 1) {
+                            return [
+                                ...prev,
+                                lideres[0]
+                            ]
+                        }
+                        return [
+                            ...prev,
+                            lideres[ultimo + 1]
+                        ]
+                    });
+                }
+
+
+                if (active.sentido === 'izquierda') {
+                    //* Sentido de Izq a Derecha 
+                    setSlide(prev => {
+                        const primero = lideres.map(lider => {
+                            return lider.id;
+                        }).indexOf(`${prev[0].id}`);
+
+                        prev.pop();
+
+                        if (primero == 0) {
+                            return [
+                                lideres[lideres.length - 1],
+                                ...prev
+                            ]
+                        }
+
+                        return [
+                            lideres[primero - 1],
+                            ...prev,
+
+                        ];
+                    });
+                }
+            }
+
+
+        }, 1500);
+
         return () => {
             clearTimeout(timer);
         }
 
-    }, [slide])
+    }, [active])
 
 
-    const handleChangeColor = () => {
-        setAnimation({
-            ant: false
+
+    const handleChangeColor = (sentido) => {
+
+        setActive({
+            comienzo: true,
+            sentido: sentido
         });
-        setSlide(prev => {
-            
-            const last = lideres.map(lider => {
-                return lider.id;
-            }).lastIndexOf(`${prev[prev.length - 1].id}`);
-            
-            prev.shift();
-            
-            if (last >= 19) {
-                return [
-                    ...prev,
-                    lideres[0]
-                ]
-            }
-            return [
-                ...prev,
-                lideres[last + 1]
-            ]
-        });
-
     }
 
 
     return (
+
         <>
-            <section className="fs-container">
-                <div className="fs-wrapper">
-                    <div className="fs-slider">
+            <section className="carousel">
+               
+                <div className="carousel__container">
+                    <div className="carousel__slider">
                         {
-                            slide.map((lider, i) => (
-                                <div className={`fs-block transition-${i}`} key={lider.id}>
-                                    <figure className={ 
-                                            animation.ant ? 'fs-transition': 'fs-remove'
-                                    }>
-                                        <img src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F744f9499-dbb7-4a55-92b2-1f0781448bb9%2F1_prCweEqN9wGLx19kngaW2A.jpeg?table=block&id=31a42319-8352-4cba-935e-f323bf41c7a5&width=2720&userId=&cache=v2" alt="image01" />
-                                        <figcaption className={ 
-                                            animation.ant ? 'fs-transition': 'fs-remove'
-                                        }>
+                            slide.map((lider) => (
+                                <div className={`carousel__block ${!active.comienzo ? 'carousel--transition' : 'carousel--remove'}`} key={lider.id}>
+                                    <img src={lider.img} />
+                                    <figure>
+                                        <figcaption>
                                             <h3>{lider.name}</h3>
                                             <p>{lider.team}</p>
                                         </figcaption>
@@ -86,9 +133,14 @@ export const Carousel = () => {
 
                     </div>
 
-                    <nav className="fs-navigation">
-                        <span onClick={handleChangeColor} >Previo</span>
-                        <span>Siguiente</span>
+                    <nav className="carousel__navegacion">
+                        <span onClick={() => handleChangeColor('derecha')} >
+                            {<FontAwesomeIcon icon={faArrowLeft} />}
+                        </span>
+                        <span onClick={() => handleChangeColor('izquierda')}>
+                            {<FontAwesomeIcon icon={faArrowRight} />}
+
+                        </span>
                     </nav>
                 </div>
             </section>
