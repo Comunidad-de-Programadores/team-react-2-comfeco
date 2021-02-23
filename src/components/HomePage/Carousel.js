@@ -148,16 +148,3 @@ export const Carousel = () => {
         </>
     )
 }
-
-
-{/* <div className="fs-block">
-</div>
-<div className="fs-block">
-    
-</div>
-<div className="fs-block">
-    
-</div>
-<div className="fs-temp">
-    
-</div> */}
