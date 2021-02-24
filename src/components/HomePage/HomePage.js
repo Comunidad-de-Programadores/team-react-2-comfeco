@@ -2,14 +2,17 @@ import React from 'react';
 import { Carousel } from './Carousel';
 import Clock from './Clock';
 
-const HomePage = () => {
-    return (
-        <>
+import Navegacion from '../Navegacion';
 
-            <Clock/>
-            <Carousel/>
-        </>
-    )
-}
+const HomePage = () => {
+   return (
+      <>
+         <Navegacion>
+            <Clock />
+            <Carousel />
+         </Navegacion>
+      </>
+   );
+};
 
 export default HomePage;

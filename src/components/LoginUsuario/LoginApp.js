@@ -8,7 +8,7 @@ import RegistrarUsuario from './RegistrarUsuario';
 const LoginApp = () => {
    const [registro, setRegistro] = useState('Ingresar');
 
-   const [dataLogin, setDataLogin] = useState({});
+   const [dataLogin, setDataLogin] = useState(false);
 
    const handleToggle = (e) => {
       setRegistro('Ingresar');
@@ -17,14 +17,15 @@ const LoginApp = () => {
       setRegistro('Registrarse');
    };
 
-   function datafromLogin(datachild) {
-      console.log('Datos recibidos de LoginUsuario: ' + datachild.email);
-      setDataLogin(datachild);
-   }
+   // function datafromLogin(datachild) {
+   //    console.log('Datos recibidos de LoginUsuario: ' + datachild.isLogin);
+   //    setDataLogin(datachild.isLogin);
+   //    console.log('Datos recibidos de LoginUsuario: ' + dataLogin);
+   // }
 
    return (
       <>
-         <Navegacion Userdata={dataLogin}>
+         <Navegacion>
             {
                <div className="container-login">
                   <div className="container-login__opt">
@@ -40,7 +41,7 @@ const LoginApp = () => {
                   {registro == 'Ingresar' ? (
                      <LoginUsuario
                         registro={setRegistro}
-                        LoginAppfunction={datafromLogin}
+                        // LoginAppfunction={datafromLogin}
                      />
                   ) : (
                      <RegistrarUsuario />

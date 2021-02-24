@@ -1,32 +1,29 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { startGoogleLogin } from '../../actions/auth';
 import { AuthContext } from '../../context/AuthContext';
+import { login } from '../../shared/login';
 
 const LoginUsuario = (props) => {
-
    const { register, errors, clearErrors, handleSubmit } = useForm();
-   
-   const { user, setUser } = useContext( AuthContext );
-   
+
+   const { user, setUser } = useContext(AuthContext);
+
+   const history = useHistory();
 
    function manejarSubmit(data) {
       console.log(data);
-      const senddata = {
-         email: data.email,
-         isLogin: true,
-      };
-      props.LoginAppfunction(senddata);
+      login(data.email);
+      history.push('/home');
       clearErrors();
    }
 
-   const handleGoogleLogin = ( e ) => {
+   const handleGoogleLogin = (e) => {
       e.preventDefault();
 
-      startGoogleLogin( setUser );
-
-   }
+      startGoogleLogin(setUser);
+   };
    return (
       <div className="login-form">
          <form
@@ -65,22 +62,22 @@ const LoginUsuario = (props) => {
                ¿Olvidaste tu contraseña?
             </Link>
 
-            <button type="submit" value="Ingresar" className="btn btn-purple" >
+            <button type="submit" value="Ingresar" className="btn btn-purple">
                Iniciar Sesión
             </button>
 
-            <br/>
-            <button type="submit" value="Ingresar" className="btn btn-purple"  onClick={ handleGoogleLogin } >
+            <br />
+            <button
+               type="submit"
+               value="Ingresar"
+               className="btn btn-purple"
+               onClick={handleGoogleLogin}
+            >
                Iniciar Sesión con google
             </button>
 
-            <br/>
-            <pre>
-
-               {
-                  JSON.stringify( user )
-               }
-            </pre>
+            <br />
+            <pre>{JSON.stringify(user)}</pre>
          </form>
       </div>
    );
