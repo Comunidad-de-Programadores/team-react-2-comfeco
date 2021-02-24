@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import Popup from 'reactjs-popup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import Terminos, { Politica } from './Modal';
+import Popup from 'reactjs-popup';
 
 const schema = yup.object().shape({
    nick: yup.string().required(),
    email: yup.string().email().required(),
-   password: yup.string().required(),//min(int).max(int)
-   confirmPassword: yup.string().oneOf([yup.ref('password'), null])
-})
+   password: yup.string().required(), //min(int).max(int)
+   confirmPassword: yup.string().oneOf([yup.ref('password'), null]),
+});
 
 const RegistrarUsuario = () => {
    const { register, handleSubmit, watch, errors } = useForm({
@@ -22,7 +23,10 @@ const RegistrarUsuario = () => {
 
    return (
       <div className="registro-form">
-         <form onSubmit={handleSubmit(registroSubmit)} className="registro-form__content">
+         <form
+            onSubmit={handleSubmit(registroSubmit)}
+            className="registro-form__content"
+         >
             <input
                name="nick"
                type="text"
@@ -72,8 +76,46 @@ const RegistrarUsuario = () => {
             <div className="registro-form__terms">
                <p>
                   Al registrarte, estas aceptando los{' '}
-                  <a href="#" target='popup' onclick="window.open('#','name','width=600,height=400')">terminos y condiciones</a> y la{' '}
-                  <a href="#" target='popup' onclick="window.open('#','name','width=600,height=400')">Politica de privacidad y proteccion de datos</a> de COMFECO
+                  <Popup
+                     trigger={
+                        <a href="javascript:void(0)">
+                           {' '}
+                           terminos y condiciones{' '}
+                        </a>
+                     }
+                     modal
+                     lockScroll
+                  >
+                     {(close) => (
+                        <div className="modal">
+                           <span className="close" onClick={close}>
+                              &times;
+                           </span>
+                           <Terminos />
+                        </div>
+                     )}
+                  </Popup>
+                  terminos y condiciones y la{' '}
+                  <Popup
+                     trigger={
+                        <a href="javascript:void(0)">
+                           {' '}
+                           politicas de privacidad{' '}
+                        </a>
+                     }
+                     modal
+                     lockScroll
+                  >
+                     {(close) => (
+                        <div className="modal">
+                           <span className="close" onClick={close}>
+                              &times;
+                           </span>
+                           <Politica />
+                        </div>
+                     )}
+                  </Popup>{' '}
+                  de COMFECO
                </p>
             </div>
          </form>
