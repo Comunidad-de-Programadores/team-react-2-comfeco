@@ -1,5 +1,6 @@
 .modal {
    font-size: 12px;
+   padding: 2em;
    &-header {
       width: 100%;
       border-bottom: 1px solid gray;
@@ -21,13 +22,6 @@
       font-size: 28px;
       font-weight: bold;
    }
-   .actions {
-      width: 100%;
-      padding: 10px 5px;
-      margin: auto;
-      text-align: center;
-   }
-
    .close {
       cursor: pointer;
       position: absolute;
@@ -49,6 +43,7 @@
    width: 50%;
    padding: 5px;
    border: 1px solid #d7d7d7;
+   border-radius: 8px;
 }
 
 [role='tooltip'].popup-content {
