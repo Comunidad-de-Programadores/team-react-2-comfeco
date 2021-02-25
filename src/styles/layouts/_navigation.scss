@@ -46,3 +46,27 @@ header {
       }
    }
 }
+
+.user {
+   display: inline-block;
+   color: whitesmoke;
+}
+
+.user img {
+   width: 2.5rem;
+   height: 2.5rem;
+   border-radius: 50%;
+}
+
+.user button {
+   width: 2.5rem;
+   height: 2.5rem;
+   border: none;
+   border-radius: 50%;
+   transition: 0.2s all;
+   cursor: pointer;
+   &:hover {
+      color: white;
+      background-color: black;
+   }
+}
