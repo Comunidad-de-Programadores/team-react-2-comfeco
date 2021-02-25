@@ -1,18 +1,28 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
+
 import { isLogin, logout } from '../shared/login';
+import apiUser from '../shared/api/userRamdom';
+import { faBell } from '@fortawesome/free-regular-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import logo from '../assets/logo3.png';
 
 const Navegacion = ({ children }) => {
    const [isLoginState, setisLogin] = useState(false);
-   const [user, setUser] = useState('');
+   const [user, setUser] = useState([]);
 
    const history = useHistory();
 
    useEffect(() => {
       const Login = isLogin();
-      if (Login) setUser(localStorage.getItem('email'));
+      if (Login) {
+         apiUser.getUser().then((data) => {
+            setUser(data);
+            console.log(data);
+         });
+      }
 
       setisLogin(Login);
    }, []);
@@ -28,11 +38,6 @@ const Navegacion = ({ children }) => {
       logout();
       setisLogin(false);
       history.push('/');
-   };
-
-   const clickHome = (e) => {
-      e.preventDefault();
-      history.push('/home');
    };
 
    return (
@@ -51,30 +56,59 @@ const Navegacion = ({ children }) => {
                   </button>
                )}
 
-               {isLoginState && (
-                  <span
-                     style={{
-                        fontSize: '36px',
-                        color: 'blue',
-                        backgroundColor: 'yellow',
-                     }}
-                  >
-                     {user}
-                  </span>
-               )}
-               {isLoginState && (
-                  <button className="btn btn-purple" onClick={handleLogout}>
-                     Logout
-                  </button>
-               )}
                {/*------------------------------------------------------- */}
             </div>
-            <div>
-               <button className="btn btn-white" onClick={clickHome}>
-                  Home
-               </button>
-            </div>
          </header>
+
+         {isLoginState && (
+            <div className="navegacion__nav">
+               <ul className="navegacion__nav-bar">
+                  <li className="navegacion__nav-bar--item">
+                     <Link className="navegacion__nav-bar--link" to="/home">
+                        Inicio
+                     </Link>
+                  </li>
+                  <li className="navegacion__nav-bar--item">
+                     <Link className="navegacion__nav-bar--link" to="/home">
+                        Contenidos
+                     </Link>
+                  </li>
+                  <li className="navegacion__nav-bar--item">
+                     <Link className="navegacion__nav-bar--link" to="/home">
+                        Talleres
+                     </Link>
+                  </li>
+                  <li className="navegacion__nav-bar--item">
+                     <Link className="navegacion__nav-bar--link" to="/home">
+                        Creadores de Contenidos
+                     </Link>
+                  </li>
+                  <li className="navegacion__nav-bar--item user">
+                     <span>{<FontAwesomeIcon icon={faBell} />}</span>
+
+                     {user?.map((item) => {
+                        return (
+                           <span>
+                              {' '}
+                              <img
+                                 src={item.picture.thumbnail}
+                                 alt="photo"
+                              />{' '}
+                              {item.email}
+                           </span>
+                        );
+                        // <img src={item.picture.medium} alt="photo"/>
+                     })}
+                     {/* <span>{user}</span> */}
+                     <button onClick={handleLogout}>
+                        {<FontAwesomeIcon icon={faTimes} />}
+                        {/* <i class="far fa-window-close"></i> */}
+                     </button>
+                  </li>
+                  <li className="navegacion__nav-bar--item"></li>
+               </ul>
+            </div>
+         )}
 
          {children}
       </>
