@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { isLogin, logout } from '../shared/login';
 
 import logo from '../assets/logo3.png';
@@ -51,30 +51,44 @@ const Navegacion = ({ children }) => {
                   </button>
                )}
 
-               {isLoginState && (
-                  <span
-                     style={{
-                        fontSize: '36px',
-                        color: 'blue',
-                        backgroundColor: 'yellow',
-                     }}
-                  >
-                     {user}
-                  </span>
-               )}
-               {isLoginState && (
-                  <button className="btn btn-purple" onClick={handleLogout}>
-                     Logout
-                  </button>
-               )}
                {/*------------------------------------------------------- */}
             </div>
-            <div>
-               <button className="btn btn-white" onClick={clickHome}>
-                  Home
-               </button>
-            </div>
          </header>
+
+         {isLoginState && (
+            <div className="navegacion__nav">
+               <ul className="navegacion__nav-bar">
+                  <li className="navegacion__nav-bar--item">
+                     <Link className="navegacion__nav-bar--link" to="/home">
+                        Inicio
+                     </Link>
+                  </li>
+                  <li className="navegacion__nav-bar--item">
+                     <Link className="navegacion__nav-bar--link" to="/home">
+                        Contenidos
+                     </Link>
+                  </li>
+                  <li className="navegacion__nav-bar--item">
+                     <Link className="navegacion__nav-bar--link" to="/home">
+                        Talleres
+                     </Link>
+                  </li>
+                  <li className="navegacion__nav-bar--item">
+                     <Link className="navegacion__nav-bar--link" to="/home">
+                        Creadores de Contenidos
+                     </Link>
+                  </li>
+                  <li className="navegacion__nav-bar--item">
+                     <span>{user}</span>
+                  </li>
+                  <li className="navegacion__nav-bar--item">
+                     <button className="btn btn-purple" onClick={handleLogout}>
+                        Logout
+                     </button>
+                  </li>
+               </ul>
+            </div>
+         )}
 
          {children}
       </>
