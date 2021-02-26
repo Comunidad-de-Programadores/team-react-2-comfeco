@@ -22,3 +22,15 @@ export const login = (uid, email, displayName, photo, setData) => {
    console.log(data);
    setData(data);
 };
+
+export const recoverPass =  (  email  ) => {
+   const auth = firebase.auth();
+
+   auth.sendPasswordResetEmail( email ).
+         then(()=>{
+            alert("Se envio un correo a su cuenta.");
+         }).
+         catch(( error )=>{
+            console.log( error );
+         })
+}

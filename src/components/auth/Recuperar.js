@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import Navegacion from '../Navegacion';
 import Content from '../Content';
 import { useState } from 'react';
+import { recoverPass } from '../../actions/auth';
 
 export const Recuperar = () => {
    const [alerta, setAlerta] = useState({
@@ -22,6 +23,8 @@ export const Recuperar = () => {
             alert: true,
             msg: 'Ingresar un correo valido',
          });
+      }else{
+         recoverPass( data.email );
       }
    };
 
