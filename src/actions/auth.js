@@ -20,21 +20,20 @@ export const login = ( uid, email, displayName, photo, setData ) => {
             name: displayName,
             picture: { thumbnail: photo }
          }
-      }
+   }
    setData(data);
 };
 
 export const startLogout = async ( setUser )=>{
 
    await firebase.auth().signOut();
-   await setUser({
-      user:{}
-   });
+   await setUser(null);
 }
 
 
 
 export const recoverPass =  (  email  ) => {
+   
    const auth = firebase.auth();
 
    auth.sendPasswordResetEmail( email ).

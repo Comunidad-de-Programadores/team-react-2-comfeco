@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useHistory } from 'react-router-dom';
 import { startGoogleLogin } from '../../actions/auth';
 import { AuthContext } from '../../context/AuthContext';
-import { login } from '../../shared/login';
+import { login } from '../../actions/auth';
 import apiUser from '../../shared/api/userRamdom';
 
 const LoginUsuario = (props) => {
@@ -16,9 +16,9 @@ const LoginUsuario = (props) => {
    function manejarSubmit(data) {
       // console.log(data);
       apiUser.getUser().then((data) => {
-         setUser(data);
-         console.log(data);
-         history.push('/home');
+
+         login( data[0].id.value, data[0].email, data[0].name.first, data[0].picture.thumbnail, setUser );
+
       });
 
       clearErrors();

@@ -17,27 +17,7 @@ const Navegacion = ( props ) => {
 
    const { user, setUser } = useContext(AuthContext);
 
-   const [ data, setData ] = useState([]);
-
    const history = useHistory();
-
-   useEffect(() => {
-      
-      if ( user ) {
-         
-         setData([ user ]);
-         
-      }
-      else{
-         setData([]);
-      }
-      return(()=>{
-         setData([])
-      })
-      
-   }, [ user ]);
-
-   console.log( user )
 
    // useEffect(() => {
    //    if (user) {
@@ -50,7 +30,7 @@ const Navegacion = ( props ) => {
    //    console.log(isLoginState);
    // }, []);
 
-   //  console.log(user);
+    console.log(user);
 
    const handleLogin = (e) => {
       e.preventDefault();
@@ -81,7 +61,7 @@ const Navegacion = ( props ) => {
          <div className="navegacion__btn ">
             {/* ME GUSTARIA PONER TODO ESTO LOGICA EN UN FUNCIONAL COMPONENT PERO
              ME DA ERROR CON TIEMPO LO VOY VER */}
-            { user && (
+            { ( user ) && (
                <>
                   <div className="navegacion__nav">
                      <ul className="navegacion__nav-bar">
@@ -119,15 +99,10 @@ const Navegacion = ( props ) => {
                         </li>
                         <li className="navegacion__nav-bar--item user">
                            <span>{<FontAwesomeIcon icon={faBell} />}</span>
-                              {  
-                                  ( data ) ? console.log("hello") : console.log("no existe")
-                              }  
-
-
-                           {/* {
-                              data[0]?.map((item) => {
+                           {
+                              [ user.user ]?.map(( item, key ) => {
                                  return (
-                                    <span key={ item.id } >
+                                    <span key={ key } >
                                        {' '}
                                        <img
                                           src={item.picture.thumbnail}
@@ -137,8 +112,7 @@ const Navegacion = ( props ) => {
                                     </span>
                                  );
                               })
-                           } */}
-
+                           }
                            <button onClick={handleLogout}>
                               {<FontAwesomeIcon icon={faTimes} />}
                            </button>
