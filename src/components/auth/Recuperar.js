@@ -2,6 +2,7 @@ import React from 'react';
 import validator from 'validator';
 import { useForm } from 'react-hook-form';
 import Navegacion from '../Navegacion';
+import Content from '../Content';
 import { useState } from 'react';
 
 export const Recuperar = () => {
@@ -34,7 +35,7 @@ export const Recuperar = () => {
    };
 
    return (
-      <Navegacion>
+      <Content>
          {
             <div className="recuperar">
                <div className="recuperar__container">
@@ -74,6 +75,6 @@ export const Recuperar = () => {
                </div>
             </div>
          }
-      </Navegacion>
+      </Content>
    );
 };

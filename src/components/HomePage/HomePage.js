@@ -3,14 +3,15 @@ import { Carousel } from './Carousel';
 import Clock from './Clock';
 
 import Navegacion from '../Navegacion';
+import Content from '../Content';
 
 const HomePage = () => {
    return (
       <>
-         <Navegacion>
+         <Content>
             <Clock />
             <Carousel />
-         </Navegacion>
+         </Content>
       </>
    );
 };

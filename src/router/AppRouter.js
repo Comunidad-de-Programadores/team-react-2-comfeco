@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 import HomePage from '../components/HomePage/HomePage';
+import Navegacion from '../components/Navegacion';
 import { AuthContext } from '../context/AuthContext';
 
 import { PrivateRoute } from './PrivateRouter';
@@ -22,6 +23,7 @@ export const AppRouter = () => {
 
    return (
       <Router>
+         <Navegacion />
          <div>
             <Switch>
                <PublicRoute
