@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navegacion from '../Navegacion';
+import Content from '../Content';
 import AnimationLogin from './animation/AnimationLogin';
 import LoginUsuario from './LoginUsuario';
 import RegistrarUsuario from './RegistrarUsuario';
@@ -25,7 +26,7 @@ const LoginApp = () => {
 
    return (
       <>
-         <Navegacion>
+         <Content>
             {
                <div className="container-login">
                   <div className="container-login__opt">
@@ -48,7 +49,7 @@ const LoginApp = () => {
                   )}
                </div>
             }
-         </Navegacion>
+         </Content>
       </>
    );
 };

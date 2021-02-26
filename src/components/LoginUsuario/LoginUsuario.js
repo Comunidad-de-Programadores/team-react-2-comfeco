@@ -4,6 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { startGoogleLogin } from '../../actions/auth';
 import { AuthContext } from '../../context/AuthContext';
 import { login } from '../../shared/login';
+import apiUser from '../../shared/api/userRamdom';
 
 const LoginUsuario = (props) => {
    const { register, errors, clearErrors, handleSubmit } = useForm();
@@ -13,16 +14,22 @@ const LoginUsuario = (props) => {
    const history = useHistory();
 
    function manejarSubmit(data) {
-      console.log(data);
-      login(data.email);
-      history.push('/home');
+      // console.log(data);
+      apiUser.getUser().then((data) => {
+         setUser(data);
+         console.log(data);
+         history.push('/home');
+      });
+
       clearErrors();
    }
 
    const handleGoogleLogin = (e) => {
       e.preventDefault();
-
       startGoogleLogin(setUser);
+      history.push('/home');
+      // console.log(user);
+      // login('gonzalo@examplecom');
    };
    return (
       <div className="login-form">
@@ -77,7 +84,7 @@ const LoginUsuario = (props) => {
             </button>
 
             <br />
-            <pre>{JSON.stringify(user)}</pre>
+            {/* <pre>{JSON.stringify(user)}</pre> */}
          </form>
       </div>
    );
