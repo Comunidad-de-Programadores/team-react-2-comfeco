@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useHistory } from 'react-router-dom';
 import { startGoogleLogin } from '../../actions/auth';
@@ -26,11 +26,12 @@ const LoginUsuario = (props) => {
 
    const handleGoogleLogin = (e) => {
       e.preventDefault();
-      startGoogleLogin(setUser);
-      history.push('/home');
+      startGoogleLogin( setUser );      
       // console.log(user);
       // login('gonzalo@examplecom');
    };
+
+
    return (
       <div className="login-form">
          <form

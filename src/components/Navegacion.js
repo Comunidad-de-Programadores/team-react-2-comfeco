@@ -9,23 +9,46 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AuthContext } from '../context/AuthContext';
 
 import logo from '../assets/logo3.png';
+import { startLogout } from '../actions/auth';
 
-const Navegacion = (props) => {
-   const [isLoginState, setisLogin] = useState(false);
+const Navegacion = ( props ) => {
+
+   const [ isLoginState, setisLogin ] = useState(false);
+
    const { user, setUser } = useContext(AuthContext);
+
+   const [ data, setData ] = useState([]);
 
    const history = useHistory();
 
    useEffect(() => {
-      if (user) {
-         apiUser.getUser().then((data) => {
-            setUser(data);
-            setisLogin(true);
-         });
+      
+      if ( user ) {
+         
+         setData([ user ]);
+         
       }
+      else{
+         setData([]);
+      }
+      return(()=>{
+         setData([])
+      })
+      
+   }, [ user ]);
 
-      console.log(isLoginState);
-   }, []);
+   console.log( user )
+
+   // useEffect(() => {
+   //    if (user) {
+   //       apiUser.getUser().then((data) => {
+   //          setUser(data);
+   //          setisLogin(true);
+   //       });
+   //    }
+
+   //    console.log(isLoginState);
+   // }, []);
 
    //  console.log(user);
 
@@ -37,10 +60,9 @@ const Navegacion = (props) => {
 
    const handleLogout = (e) => {
       e.preventDefault();
-      //logout();
+      logout();
       setisLogin(false);
-      setUser(null);
-      history.push('/');
+      startLogout( setUser );
    };
 
    return (
@@ -59,7 +81,7 @@ const Navegacion = (props) => {
          <div className="navegacion__btn ">
             {/* ME GUSTARIA PONER TODO ESTO LOGICA EN UN FUNCIONAL COMPONENT PERO
              ME DA ERROR CON TIEMPO LO VOY VER */}
-            {user && (
+            { user && (
                <>
                   <div className="navegacion__nav">
                      <ul className="navegacion__nav-bar">
@@ -97,19 +119,25 @@ const Navegacion = (props) => {
                         </li>
                         <li className="navegacion__nav-bar--item user">
                            <span>{<FontAwesomeIcon icon={faBell} />}</span>
+                              {  
+                                  ( data ) ? console.log("hello") : console.log("no existe")
+                              }  
 
-                           {user?.map((item) => {
-                              return (
-                                 <span>
-                                    {' '}
-                                    <img
-                                       src={item.picture.thumbnail}
-                                       alt="photo"
-                                    />{' '}
-                                    {item.email}
-                                 </span>
-                              );
-                           })}
+
+                           {/* {
+                              data[0]?.map((item) => {
+                                 return (
+                                    <span key={ item.id } >
+                                       {' '}
+                                       <img
+                                          src={item.picture.thumbnail}
+                                          alt="photo"
+                                       />{' '}
+                                       {item.email}
+                                    </span>
+                                 );
+                              })
+                           } */}
 
                            <button onClick={handleLogout}>
                               {<FontAwesomeIcon icon={faTimes} />}

@@ -8,22 +8,31 @@ export const startGoogleLogin = (setData) => {
       .signInWithPopup(googleAuthProvider)
       .then(({ user }) => {
          // console.log(user.photoURL);
-         login(user.uid, user.email, user.displayName, user.photoURL, setData);
+         login( user.uid, user.email, user.displayName, user.photoURL, setData );
       });
 };
 
-export const login = (uid, email, displayName, photo, setData) => {
-   const data = [
-      {
-         uid: uid,
-         email: email,
-         name: displayName,
-         picture: { thumbnail: photo },
-      },
-   ];
-   console.log(data);
+export const login = ( uid, email, displayName, photo, setData ) => {
+   const data = {
+         user:{
+            uid: uid,
+            email: email,
+            name: displayName,
+            picture: { thumbnail: photo }
+         }
+      }
    setData(data);
 };
+
+export const startLogout = async ( setUser )=>{
+
+   await firebase.auth().signOut();
+   await setUser({
+      user:{}
+   });
+}
+
+
 
 export const recoverPass =  (  email  ) => {
    const auth = firebase.auth();

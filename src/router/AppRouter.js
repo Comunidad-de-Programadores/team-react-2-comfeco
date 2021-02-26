@@ -1,25 +1,47 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 import HomePage from '../components/HomePage/HomePage';
 import Navegacion from '../components/Navegacion';
 import { AuthContext } from '../context/AuthContext';
+import { HomeRouter } from './private/HomeRouter';
+import { firebase } from '../firebase/firebase-config';
 
 import { PrivateRoute } from './PrivateRouter';
 import { AuthRouter } from './public/AuthRouter';
 import { PublicRoute } from './PublicRouter';
+import { login } from '../actions/auth';
 
 export const AppRouter = () => {
-   const uid = false;
 
-   // TODO realizar la validación de usuario
-   // const { user, setUser } = useContext( AuthContext );
-   // console.log( user );
-   // useEffect(() => {
+   const { setUser } = useContext( AuthContext );
+   const [ uid, setUid ] = useState( false );
+   const [ checking, setChecking ] = useState(true);
 
-   //     setUser( user );
-   //     console.log( user )
+   useEffect(() => {
 
-   // }, [ user ]);
+		firebase.auth().onAuthStateChanged( async ( userFirebase )=>{
+
+         if ( userFirebase?.uid ) {
+
+            login( userFirebase.uid, userFirebase.email, userFirebase.displayName, userFirebase.photoURL, setUser )
+            setUid( true );   
+
+			}else{
+            setUid( false )
+         }
+         setChecking(false);
+         
+		});
+      
+	}, [ setChecking, setUid ]);
+
+
+   if ( checking ) {
+		return(
+			<h1>Espere...</h1>
+		)
+	}
+
 
    return (
       <Router>
@@ -31,22 +53,15 @@ export const AppRouter = () => {
                   component={AuthRouter}
                   isAuthenticated={!!uid}
                />
+               {/* 
+                  Rutas privadas  
+               */}
 
-               <PublicRoute
+               <PrivateRoute 
                   path="/home"
-                  component={HomePage}
+                  component={ HomeRouter }
                   isAuthenticated={!!uid}
                />
-
-               {/* 
-                        Rutas privadas 
-                    */}
-
-               {/* <PrivateRoute 
-                        path="/"      
-                        component={  }
-                        isAuthenticated={ !!uid }
-                    /> */}
                <Redirect to="/auth/login" />
             </Switch>
          </div>
