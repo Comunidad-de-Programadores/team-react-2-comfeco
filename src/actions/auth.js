@@ -1,4 +1,6 @@
 import { firebase, googleAuthProvider } from '../firebase/firebase-config';
+import Swal from "sweetalert2";
+
 
 export const startGoogleLogin = (setData) => {
    firebase
@@ -28,9 +30,9 @@ export const recoverPass =  (  email  ) => {
 
    auth.sendPasswordResetEmail( email ).
          then(()=>{
-            alert("Se envio un correo a su cuenta.");
+            Swal.fire(":)", "Se le envio un mensaje a su correo.", "success");
          }).
          catch(( error )=>{
-            console.log( error );
+            Swal.fire(":(",`${ error.message }`,"error");
          })
 }
