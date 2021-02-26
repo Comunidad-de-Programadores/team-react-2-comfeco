@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navegacion from '../Navegacion';
+import Content from '../Content';
 import AnimationLogin from './animation/AnimationLogin';
 import LoginUsuario from './LoginUsuario';
 import RegistrarUsuario from './RegistrarUsuario';
@@ -8,7 +9,7 @@ import RegistrarUsuario from './RegistrarUsuario';
 const LoginApp = () => {
    const [registro, setRegistro] = useState('Ingresar');
 
-   const [dataLogin, setDataLogin] = useState({});
+   const [dataLogin, setDataLogin] = useState(false);
 
    const handleToggle = (e) => {
       setRegistro('Ingresar');
@@ -17,14 +18,15 @@ const LoginApp = () => {
       setRegistro('Registrarse');
    };
 
-   function datafromLogin(datachild) {
-      console.log('Datos recibidos de LoginUsuario: ' + datachild.email);
-      setDataLogin(datachild);
-   }
+   // function datafromLogin(datachild) {
+   //    console.log('Datos recibidos de LoginUsuario: ' + datachild.isLogin);
+   //    setDataLogin(datachild.isLogin);
+   //    console.log('Datos recibidos de LoginUsuario: ' + dataLogin);
+   // }
 
    return (
       <>
-         <Navegacion Userdata={dataLogin}>
+         <Content>
             {
                <div className="container-login">
                   <div className="container-login__opt">
@@ -40,14 +42,14 @@ const LoginApp = () => {
                   {registro == 'Ingresar' ? (
                      <LoginUsuario
                         registro={setRegistro}
-                        LoginAppfunction={datafromLogin}
+                        // LoginAppfunction={datafromLogin}
                      />
                   ) : (
                      <RegistrarUsuario />
                   )}
                </div>
             }
-         </Navegacion>
+         </Content>
       </>
    );
 };

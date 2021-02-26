@@ -2,46 +2,40 @@ import React from 'react';
 import validator from 'validator';
 import { useForm } from 'react-hook-form';
 import Navegacion from '../Navegacion';
+import Content from '../Content';
 import { useState } from 'react';
 
 export const Recuperar = () => {
-
    const [alerta, setAlerta] = useState({
-      alert: false, 
-      msg: 'Este campo es requerido'
+      alert: false,
+      msg: 'Este campo es requerido',
    });
-
-
 
    const { register, handleSubmit, watch, errors } = useForm();
    const onSubmit = (data) => {
-      console.log(register.length)
+      console.log(register.length);
       console.log(data);
       console.log(validator.isEmail(data.email));
-      if(!validator.isEmail(data.email)){
-         console.log("alerta activada")
+      if (!validator.isEmail(data.email)) {
+         console.log('alerta activada');
          setAlerta({
-            alert: true, 
-            msg: 'Ingresar un correo valido'
+            alert: true,
+            msg: 'Ingresar un correo valido',
          });
       }
-
    };
 
    const handleCorreo = (e) => {
-
-      if(e.target.value.length > 0 ){
+      if (e.target.value.length > 0) {
          setAlerta({
             alert: false,
             msg: 'Este campo es requerido',
          });
-     
       }
-      
-   }
+   };
 
    return (
-      <Navegacion Userdata={{ email: '', isLogin: false }}>
+      <Content>
          {
             <div className="recuperar">
                <div className="recuperar__container">
@@ -60,10 +54,16 @@ export const Recuperar = () => {
                            onChange={handleCorreo}
                            ref={register({ required: true })}
                         />
-                        <span className={alerta.alert ? '--active': ''}>Correo Electronico</span>
+                        <span className={alerta.alert ? '--active' : ''}>
+                           Correo Electronico
+                        </span>
                      </label>
-                    
-                     <div className= {`recuperar__alerta${alerta.alert ? '--active': ''}`}>
+
+                     <div
+                        className={`recuperar__alerta${
+                           alerta.alert ? '--active' : ''
+                        }`}
+                     >
                         <span>{alerta.msg}</span>
                      </div>
                      <div className="recuperar__enlace">
@@ -75,6 +75,6 @@ export const Recuperar = () => {
                </div>
             </div>
          }
-      </Navegacion>
+      </Content>
    );
 };
