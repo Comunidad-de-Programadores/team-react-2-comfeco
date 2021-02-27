@@ -10,38 +10,41 @@ import { PrivateRoute } from './PrivateRouter';
 import { AuthRouter } from './public/AuthRouter';
 import { PublicRoute } from './PublicRouter';
 import { login } from '../actions/auth';
+import { isLocalStorage, sendLocalStorage } from '../shared/login';
 
 export const AppRouter = () => {
-
-   const { setUser } = useContext( AuthContext );
-   const [ uid, setUid ] = useState( false );
-   const [ checking, setChecking ] = useState(true);
+   const { setUser } = useContext(AuthContext);
+   // const [uid, setUid] = useState(false);
+   const [checking, setChecking] = useState(true);
 
    useEffect(() => {
+      // firebase.auth().onAuthStateChanged(async (userFirebase) => {
+      //    if (userFirebase?.uid) {
+      //       login(
+      //          userFirebase.uid,
+      //          userFirebase.email,
+      //          userFirebase.displayName,
+      //          userFirebase.photoURL,
+      //          setUser,
+      //       );
+      //       setUid(true);
+      //    } else {
+      //       setUid(false);
+      //    }
+      //    setChecking(false);
+      // });
 
-		firebase.auth().onAuthStateChanged( async ( userFirebase )=>{
-
-         if ( userFirebase?.uid ) {
-
-            login( userFirebase.uid, userFirebase.email, userFirebase.displayName, userFirebase.photoURL, setUser )
-            setUid( true );   
-
-			}else{
-            setUid( false )
-         }
+      if (isLocalStorage) {
+         setUser(sendLocalStorage());
+         console.log(sendLocalStorage());
          setChecking(false);
-         
-		});
-      
-	}, [ setChecking, setUid ]);
+         // setUid(true);
+      }
+   }, [setChecking]);
 
-
-   if ( checking ) {
-		return(
-			<h1>Espere...</h1>
-		)
-	}
-
+   if (checking) {
+      return <h1>Espere...</h1>;
+   }
 
    return (
       <Router>
@@ -51,16 +54,16 @@ export const AppRouter = () => {
                <PublicRoute
                   path="/auth"
                   component={AuthRouter}
-                  isAuthenticated={!!uid}
+                  // isAuthenticated={uid}
                />
                {/* 
                   Rutas privadas  
                */}
 
-               <PrivateRoute 
+               <PrivateRoute
                   path="/home"
-                  component={ HomeRouter }
-                  isAuthenticated={!!uid}
+                  component={HomeRouter}
+                  // isAuthenticated={!!uid}
                />
                <Redirect to="/auth/login" />
             </Switch>

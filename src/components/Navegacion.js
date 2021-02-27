@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 
-import { isLogin, logout } from '../shared/login';
 import apiUser from '../shared/api/userRamdom';
 import { faBell } from '@fortawesome/free-regular-svg-icons';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -11,38 +10,19 @@ import { AuthContext } from '../context/AuthContext';
 import logo from '../assets/logo3.png';
 import { startLogout } from '../actions/auth';
 
-const Navegacion = ( props ) => {
-
-   const [ isLoginState, setisLogin ] = useState(false);
-
+const Navegacion = () => {
    const { user, setUser } = useContext(AuthContext);
 
    const history = useHistory();
 
-   // useEffect(() => {
-   //    if (user) {
-   //       apiUser.getUser().then((data) => {
-   //          setUser(data);
-   //          setisLogin(true);
-   //       });
-   //    }
-
-   //    console.log(isLoginState);
-   // }, []);
-
-    console.log(user);
-
    const handleLogin = (e) => {
       e.preventDefault();
       history.push('/');
-      //setisLogin(true);
    };
 
    const handleLogout = (e) => {
       e.preventDefault();
-      logout();
-      setisLogin(false);
-      startLogout( setUser );
+      startLogout(setUser).then(() => history.push('/auth/login'));
    };
 
    return (
@@ -61,7 +41,7 @@ const Navegacion = ( props ) => {
          <div className="navegacion__btn ">
             {/* ME GUSTARIA PONER TODO ESTO LOGICA EN UN FUNCIONAL COMPONENT PERO
              ME DA ERROR CON TIEMPO LO VOY VER */}
-            { ( user ) && (
+            {user && (
                <>
                   <div className="navegacion__nav">
                      <ul className="navegacion__nav-bar">
@@ -99,20 +79,18 @@ const Navegacion = ( props ) => {
                         </li>
                         <li className="navegacion__nav-bar--item user">
                            <span>{<FontAwesomeIcon icon={faBell} />}</span>
-                           {
-                              [ user.user ]?.map(( item, key ) => {
-                                 return (
-                                    <span key={ key } >
-                                       {' '}
-                                       <img
-                                          src={item.picture.thumbnail}
-                                          alt="photo"
-                                       />{' '}
-                                       {item.email}
-                                    </span>
-                                 );
-                              })
-                           }
+                           {[user.user]?.map((item, key) => {
+                              return (
+                                 <span key={key}>
+                                    {' '}
+                                    <img
+                                       src={item.picture.thumbnail}
+                                       alt="photo"
+                                    />{' '}
+                                    {item.email}
+                                 </span>
+                              );
+                           })}
                            <button onClick={handleLogout}>
                               {<FontAwesomeIcon icon={faTimes} />}
                            </button>
