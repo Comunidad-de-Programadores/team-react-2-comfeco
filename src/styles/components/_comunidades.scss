@@ -1,0 +1,16 @@
+.comunidades {
+   width: 20rem;
+   margin: 5rem;
+   border-radius: 5px;
+   border: solid 2px #000000;
+   box-shadow: 0 1rem 2rem rgba($color: #000000, $alpha: 0.3);
+   &-lista {
+      margin: 2rem 1rem;
+      list-style: none;
+      &--item {
+         margin: 1rem 0;
+         text-decoration: none;
+         border-bottom: solid 1px #000000;
+      }
+   }
+}
