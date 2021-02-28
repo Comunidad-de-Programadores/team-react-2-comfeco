@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import { Carousel } from './Carousel';
 import Clock from './Clock';
+import Comunidades from './Comunidades/Comunidades';
 
 import Content from '../Content';
 
@@ -15,17 +16,23 @@ const HomePage = () => {
 
          {
             (user?.logged && !user?.perfil) ? (
-               <Content>
+               <div className="home-page">
+                  <Content>
+                     <Comunidades />
 
-                  <Clock />
-                  <Carousel />
+                     <div className="home-page__content">
+                        <Clock />
+                        <Carousel />
+                     </div>
 
-               </Content>
+                  </Content>
+               </div>
+
 
             )
-            : (
+               : (
                   <h3>Componente Perfil</h3>
-             )
+               )
          }
 
       </>
