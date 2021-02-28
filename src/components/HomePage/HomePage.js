@@ -21,8 +21,8 @@ const HomePage = () => {
                      <Comunidades />
 
                      <div className="home-page__content">
-                        <Clock />
                         <Carousel />
+                        <Clock />
                      </div>
 
                   </Content>

@@ -23,8 +23,8 @@ export const Carousel = () => {
     useEffect(() => {
         let timer = setTimeout(() => {
             setActive({
-                comienzo: !active.comienzo, 
-                sentido:'derecha'
+                comienzo: !active.comienzo,
+                sentido: 'derecha'
             });
         }, 500);
         return () => {
@@ -114,7 +114,7 @@ export const Carousel = () => {
 
         <>
             <section className="carousel">
-               
+
                 <div className="carousel__container">
                     <div className="carousel__slider">
                         {
@@ -130,6 +130,9 @@ export const Carousel = () => {
                                 </div>
                             ))
                         }
+
+                        
+                        
 
                     </div>
 

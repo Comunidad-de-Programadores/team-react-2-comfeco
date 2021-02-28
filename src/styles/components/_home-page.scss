@@ -1,11 +1,14 @@
-.home-page{
-    display: grid;
-    grid-template-columns: 1fr 5fr;
-    grid-template-rows: 1fr ;
+.home-page {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    
 
-    border: 2px solid black;
-    &__content{
-        width: 100%;
-        border: 2px solid blue;
+    &__content {
+
+        flex: 1;
+     
+
     }
 }
