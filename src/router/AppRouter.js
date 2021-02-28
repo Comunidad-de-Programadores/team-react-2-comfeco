@@ -13,38 +13,31 @@ import { login } from '../actions/auth';
 import { isLocalStorage, sendLocalStorage } from '../shared/login';
 
 export const AppRouter = () => {
-   const { setUser } = useContext(AuthContext);
-   // const [uid, setUid] = useState(false);
-   const [checking, setChecking] = useState(true);
+
+
+
+   // + CONTEXT 
+   const { user, setUser } = useContext(AuthContext);
+   
+   const [checking, setChecking] = useState(false);
+   
 
    useEffect(() => {
-      // firebase.auth().onAuthStateChanged(async (userFirebase) => {
-      //    if (userFirebase?.uid) {
-      //       login(
-      //          userFirebase.uid,
-      //          userFirebase.email,
-      //          userFirebase.displayName,
-      //          userFirebase.photoURL,
-      //          setUser,
-      //       );
-      //       setUid(true);
-      //    } else {
-      //       setUid(false);
-      //    }
-      //    setChecking(false);
-      // });
 
-      if (isLocalStorage) {
-         setUser(sendLocalStorage());
-         console.log(sendLocalStorage());
+      if (user) {
+
+         setChecking(user?.logged)
+         
+      } else {
          setChecking(false);
-         // setUid(true);
       }
-   }, [setChecking]);
 
-   if (checking) {
-      return <h1>Espere...</h1>;
-   }
+
+   }, [user])
+
+
+
+
 
    return (
       <Router>
@@ -54,7 +47,7 @@ export const AppRouter = () => {
                <PublicRoute
                   path="/auth"
                   component={AuthRouter}
-                  // isAuthenticated={uid}
+                  isAuthenticated={checking}
                />
                {/* 
                   Rutas privadas  
@@ -63,7 +56,7 @@ export const AppRouter = () => {
                <PrivateRoute
                   path="/home"
                   component={HomeRouter}
-                  // isAuthenticated={!!uid}
+                  isAuthenticated={checking}
                />
                <Redirect to="/auth/login" />
             </Switch>

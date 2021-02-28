@@ -14,14 +14,18 @@ export const startGoogleLogin = (setData) => {
 
 export const login = (uid, email, displayName, photo, setData) => {
    const data = {
-      user: {
+    
          uid: uid,
          email: email,
          name: displayName,
          picture: { thumbnail: photo },
-      },
+         logged: true, 
+         perfil: false
+   
    };
+
    saveLocalStorage(data);
+
    setData(data);
 };
 

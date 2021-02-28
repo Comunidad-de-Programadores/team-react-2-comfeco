@@ -1,72 +1,153 @@
-header {
-   margin: 0 auto;
-}
 .navegacion {
    background: $color-header;
-   display: grid;
-   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-   grid-template-rows: repeat(1, minmax(100px, min-content));
 
-   align-items: center;
-   justify-items: center;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-around;
 
-   padding: 1rem 0;
-   column-gap: 25rem;
-   row-gap: 3rem;
-
-   width: 100%;
+   font-size: calc(1rem + 0.2vw);
 
    &__img {
-      width: calc(6.85rem + 1vw);
+      align-self: center;
+      flex: 0 1 calc(5rem + 2.5vw);
    }
 
-   &__nav {
-      width: 100%;
-      background: $color-header;
-      text-align: center;
-      //   padding: 100px;
-      //   margin: auto 100px;
-      &-bar {
-         margin: 0px;
-         display: block;
-         &--item {
-            list-style: none;
-            display: inline-block;
-            padding: 1rem;
-         }
-         &--link {
-            color: peachpuff;
-            text-decoration: none;
-            transition: 0.2 all;
-            padding-bottom: 10px;
-            &:hover {
-               border-bottom: solid 1px oldlace;
-            }
-         }
+   &__logged {
+      display: flex;
+      color: white;
+
+   }
+
+   &__items {
+
+      align-self: center;
+
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      list-style: none;
+
+      li {
+         flex-shrink: 0;
+         padding: 1.1rem;
+         cursor: pointer;
+
       }
    }
+
+   &__profile {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-self: center;
+      
+     
+
+
+
+   }
+
+   &__profile-img {
+      justify-self: center;
+      align-self: center;
+      position: relative;
+      width: calc(3.5rem + 2vw);
+      height: calc(3.5rem + 2vw);
+      border-radius: 50%;
+      overflow: hidden;
+      cursor: pointer;
+   }
+
+   &__profile-menu {
+      border: 2px solid blue;
+      position: absolute;
+      top: 80%;
+      left: -20%;
+      // padding: 5px 20px;
+      background: white;
+      width: calc(100% + 3vw);
+      box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);
+      border-radius: 15px;
+      transition: 0.5s;
+
+      visibility: hidden;
+      opacity: 0;
+
+      h3 {
+
+         width: 100%;
+         text-align: center;
+         font-size: calc(0.5rem + 0.66vw);
+         padding: 20px 0;
+         font-weight: 500;
+         color: #555;
+         line-height: 1.2em;
+      }
+
+      ul {
+         padding: 0 3px;
+         list-style-type: none;
+      }
+
+      & ul li {
+         list-style: none;
+         padding: 10px 0;
+         border-top: 1px solid rgba(0, 0, 0, 0.05);
+         display: flex;
+         justify-content: flex-start;
+         align-items: center;
+
+         i {
+            display: inline-block;
+            text-decoration: none;
+            color: #555;
+            transition: 0.5s;
+            font-size: calc(0.5rem + 0.66vw);
+         }
+
+         svg {
+            color: black;
+            font-size: calc(0.5rem + 0.66vw);
+            margin-right: calc(0.5rem + 0.3vw);
+            opacity: 0.5;
+            transition: 0.5s;
+         }
+
+         &:hover i {
+            color: #ff5d94;
+            cursor: pointer;
+         }
+
+         &:hover svg {
+            opacity: 1;
+         }
+
+      }
+
+
+      &::before {
+         content: '';
+         position: absolute;
+         top: -5px;
+         left: 42%;
+         width: calc(0.5rem + 0.8vw);
+         height: calc(0.5rem + 0.8vw);
+         background: rgb(155, 108, 108);
+         transform: rotate(45deg);
+      }
+   }
+
 }
 
-.user {
-   display: inline-block;
-   color: whitesmoke;
-}
+.navegacion {
 
-.user img {
-   width: 2.5rem;
-   height: 2.5rem;
-   border-radius: 50%;
-}
+   &__profile-menu.active {
 
-.user button {
-   width: 2.5rem;
-   height: 2.5rem;
-   border: none;
-   border-radius: 50%;
-   transition: 0.2s all;
-   cursor: pointer;
-   &:hover {
-      color: white;
-      background-color: black;
+      top: calc(100% + 0.5rem);
+      right: -30px;
+      visibility: visible;
+      opacity: 1;
+
+
    }
 }

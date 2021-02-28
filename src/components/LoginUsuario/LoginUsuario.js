@@ -10,25 +10,24 @@ const LoginUsuario = (props) => {
    const { register, errors, clearErrors, handleSubmit } = useForm();
 
    const { user, setUser } = useContext(AuthContext);
+   
 
-   const history = useHistory();
+   // *EVENTOS : 
+   const handleCorreoLogin = (data) => {
 
-   function manejarSubmit(data) {
-      // console.log(data);
+      //? Iniciar un usuario " FICTICIO "
       apiUser.getUser().then((data) => {
 
-         login( data[0].id.value, data[0].email, data[0].name.first, data[0].picture.thumbnail, setUser );
+         login(data[0].id.value, data[0].email, data[0].name.first, data[0].picture.thumbnail, setUser);
 
       });
-
       clearErrors();
    }
 
    const handleGoogleLogin = (e) => {
       e.preventDefault();
-      startGoogleLogin( setUser );      
-      // console.log(user);
-      // login('gonzalo@examplecom');
+      startGoogleLogin(setUser);
+
    };
 
 
@@ -36,7 +35,7 @@ const LoginUsuario = (props) => {
       <div className="login-form">
          <form
             className="login-form__content"
-            onSubmit={handleSubmit(manejarSubmit)}
+            onSubmit={handleSubmit(handleCorreoLogin)}
          >
             <input
                name="email"
@@ -70,7 +69,7 @@ const LoginUsuario = (props) => {
                ¿Olvidaste tu contraseña?
             </Link>
 
-            <button type="submit" value="Ingresar" className="btn btn-purple">
+            <button type="submit" value="Ingresar" className="btn btn-blue">
                Iniciar Sesión
             </button>
 
@@ -78,7 +77,7 @@ const LoginUsuario = (props) => {
             <button
                type="submit"
                value="Ingresar"
-               className="btn btn-purple"
+               className="btn btn-blue"
                onClick={handleGoogleLogin}
             >
                Iniciar Sesión con google

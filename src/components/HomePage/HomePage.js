@@ -1,17 +1,33 @@
-import React from 'react';
+import React, { useContext } from 'react';
+
+import { AuthContext } from '../../context/AuthContext';
 import { Carousel } from './Carousel';
 import Clock from './Clock';
 
-import Navegacion from '../Navegacion';
 import Content from '../Content';
 
 const HomePage = () => {
+
+   const { user, setUser } = useContext(AuthContext);
+
    return (
       <>
-         <Content>
-            <Clock />
-            <Carousel />
-         </Content>
+
+         {
+            (user?.logged && !user?.perfil) ? (
+               <Content>
+
+                  <Clock />
+                  <Carousel />
+
+               </Content>
+
+            )
+            : (
+                  <h3>Componente Perfil</h3>
+             )
+         }
+
       </>
    );
 };
