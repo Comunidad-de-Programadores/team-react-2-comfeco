@@ -1,5 +1,6 @@
 import React from 'react';
 import { Carousel } from './Carousel';
+import { CarouselSponsor } from './CarouselSponsor';
 import Clock from './Clock';
 
 import Navegacion from '../Navegacion';
@@ -11,6 +12,7 @@ const HomePage = () => {
          <Content>
             <Clock />
             <Carousel />
+            <CarouselSponsor />
          </Content>
       </>
    );
