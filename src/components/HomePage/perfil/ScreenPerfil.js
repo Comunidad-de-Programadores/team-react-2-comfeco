@@ -77,8 +77,8 @@ export const ScreenPerfil = () => {
                         </div>
                         <div className="grid-container" >
                             <div className="grid-item" >
-                                <label>Linkendin</label>
-                                <input type="textare" ></input>
+                                <label>Biografia</label>
+                                <textarea type="text" ></textarea>
                             </div>
                         </div>
                         <div className="grid-container" >
