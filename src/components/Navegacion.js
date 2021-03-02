@@ -6,7 +6,7 @@ import { faUserCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 
 import { AuthContext } from '../context/AuthContext';
 
-import logo from '../assets/logo3.png';
+import logo from '../assets/logo-comfeco.png';
 import { startLogout } from '../actions/auth';
 
 const Navegacion = () => {
