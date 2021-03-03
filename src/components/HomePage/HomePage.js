@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 
 import { AuthContext } from '../../context/AuthContext';
 import { Carousel } from './Carousel';
+import { CarouselSponsor } from './CarouselSponsor';
 import Clock from './Clock';
 import Comunidades from './Comunidades/Comunidades';
 
@@ -13,7 +14,6 @@ const HomePage = () => {
 
    return (
       <>
-
          {
             (user?.logged && !user?.perfil) ? (
                <div className="home-page">
@@ -23,6 +23,7 @@ const HomePage = () => {
                      <div className="home-page__content">
                         <Clock />
                         <Carousel />
+                        <CarouselSponsor />
                      </div>
 
                   </Content>

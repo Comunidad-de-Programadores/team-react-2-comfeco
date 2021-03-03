@@ -14,7 +14,6 @@ export const startGoogleLogin = (setData) => {
 
 export const login = (uid, email, displayName, photo, setData) => {
    const data = {
-    
          uid: uid,
          email: email,
          name: displayName,
@@ -25,7 +24,6 @@ export const login = (uid, email, displayName, photo, setData) => {
    };
 
    saveLocalStorage(data);
-
    setData(data);
 };
 
@@ -36,14 +34,35 @@ export const startLogout = async (setUser) => {
 };
 
 export const recoverPass = (email) => {
+
    const auth = firebase.auth();
 
-   auth
-      .sendPasswordResetEmail(email)
-      .then(() => {
-         Swal.fire(':)', 'Se le envio un mensaje a su correo.', 'success');
+   auth.sendPasswordResetEmail(email).
+      then(() => {
+         Swal.fire(":)", "Se le envio un mensaje a su correo.", "success");
+      }).
+      catch((error) => {
+         Swal.fire(":(", `${error.message}`, "error");
+      })
+}
+
+export const registro = (data) => {
+   firebase.auth().createUserWithEmailAndPassword(data.email, data.password)
+      .then((user) => {
+         user = firebase.auth().currentUser;
+         user.updateProfile({
+            displayName: data.username
+         }).then(function () {
+            console.log('done');
+         }, function (error) {
+            Swal(error);
+         });
       })
       .catch((error) => {
-         Swal.fire(':(', `${error.message}`, 'error');
+         var errorCode = error.code;
+         var errorMessage = error.message;
+         console.log(errorCode);
+         console.log(errorMessage);
       });
-};
+}
+
