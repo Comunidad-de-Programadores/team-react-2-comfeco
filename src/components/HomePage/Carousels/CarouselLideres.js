@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { getLideres } from './selectors/getLideres';
+import { getLideres } from '../../../selectors/getLideres';
 
-export const Carousel = () => {
+export const CarouselLideres = () => {
 
 
 
@@ -115,21 +115,21 @@ export const Carousel = () => {
     return (
 
         <>
-            <section className="carousel">
+            <section className="carousel-lideres">
 
-                <div className="carousel__container">
-                    <div className="carousel__slider">
+                <div className="carousel-lideres__container">
+                    <div className="carousel-lideres__slider">
                         {
                             slide.map((lider) => (
-                                <div className={`carousel__block ${!active.comienzo ? 'carousel--transition' : 'carousel--remove'}`} key={lider.id}>
+                                <div className={`carousel-lideres__block ${!active.comienzo ? 'carousel-lideres--transition' : 'carousel-lideres--remove'}`} key={lider.id}>
                                     
-                                    <div className="carousel__img">
+                                    <div className="carousel-lideres__img">
                                         <img src={lider.img} />
                                     </div>
 
-                                    <div className="carousel__desc">
+                                    <div className="carousel-lideres__desc">
                                         <h3>{lider.name}</h3>
-                                        <div className={`carousel__team carousel--${lider.team}`}>
+                                        <div className={`carousel-lideres__team carousel-lideres--${lider.team}`}>
                                            
                                         </div>
                                     </div>
@@ -137,13 +137,9 @@ export const Carousel = () => {
                                 </div>
                             ))
                         }
-
-
-
-
                     </div>
 
-                    <nav className="carousel__navegacion">
+                    <nav className="carousel-lideres__navegacion">
                         <span onClick={() => handleChangeColor('derecha')} >
                             {<FontAwesomeIcon icon={faArrowLeft} />}
                         </span>

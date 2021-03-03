@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-const Contador = () => {
+export const Clock = () => {
 
     const endTime = new Date("February 05, 2022 18:25:40");
 
@@ -76,4 +76,3 @@ const Contador = () => {
     )
 }
 
-export default Contador

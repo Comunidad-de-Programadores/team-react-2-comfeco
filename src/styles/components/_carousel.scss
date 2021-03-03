@@ -1,15 +1,13 @@
-.carousel {
+.carousel-lideres {
     margin-top: 2rem;
 
     &__container {
         position: relative;
         width: 100%;
         height: 100%;
-      
+
         padding: 0 0 2px 0;
     }
-
-
 
     &__slider {
 
@@ -23,8 +21,6 @@
         padding: 0 2.5rem;
 
     }
-
-
 
     &__block {
 
@@ -120,11 +116,11 @@
 
 }
 
-.carousel {
+.carousel-lideres {
 
     &--transition {
 
-        & .carousel__img {
+        & .carousel-lideres__img {
 
             width: 100%;
             height: 100%;
@@ -135,7 +131,7 @@
             }
         }
 
-        & .carousel__desc {
+        & .carousel-lideres__desc {
             // overflow: hidden;
             width: 100%;
 
@@ -150,7 +146,7 @@
 
     &--remove {
 
-        & .carousel__img {
+        & .carousel-lideres__img {
 
             width: 0%;
             height: 100%;
@@ -160,7 +156,7 @@
             }
         }
 
-        & .carousel__desc {
+        & .carousel-lideres__desc {
 
             width: 0%;
 
@@ -170,13 +166,13 @@
 
         }
 
-        & .carousel__team {
+        & .carousel-lideres__team {
             opacity: 0;
         }
     }
 }
 
-.carousel {
+.carousel-lideres {
 
 
     &__navegacion {
@@ -214,8 +210,6 @@
             }
         }
 
-
-
         & span:first-child {
             position: absolute;
             top: 45%;
@@ -228,5 +222,74 @@
             right: 0;
         }
 
+    }
+}
+
+
+.carousel-sponsor {
+    position: relative;
+    padding: 0 30%;
+
+    &__container {
+        
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        position: relative;
+        height: 4.6rem;
+
+        //   height: 30px;
+        .sponsor-image {
+            margin: 0 0.5em;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            box-shadow: 0px 3px 6px #00000029;
+            img {
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+            }
+        }
+
+
+        span{
+            position: absolute;
+            
+            top: 30%;
+            &:first-child{
+                left: -5%;
+            }
+
+            &:last-child{
+                right: -5%;
+            }
+            
+        }
+        span svg {
+            background-size: cover;
+            font-size: 2rem;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .carousel-sponsor {
+        padding: 0;
+
+        &__container {
+            .sponsor-image {
+                margin: 0 2px;
+                padding-top: 0.6em;
+            }
+
+            span svg {
+                margin: 0 1em;
+            }
+        }
     }
 }

@@ -1,5 +1,8 @@
 .modal {
    font-size: 12px;
+   font-family: 'Lato Regular';
+   letter-spacing: 0.3px;
+   font-weight: 250;
    padding: 2em;
    &-header {
       width: 100%;
@@ -15,6 +18,22 @@
       background: rgb(255, 255, 255);
       max-height: calc(80vh);
       overflow-y: auto;
+      text-align: justify;
+   }
+   &-content-scrollbar::-webkit-scrollbar {
+      width: 12px;
+      background-color: #eff1f5;
+   }
+
+   &-content-scrollbar::-webkit-scrollbar-track {
+      border-radius: 3px;
+      background-color: transparent;
+   }
+
+   &-content-scrollbar::-webkit-scrollbar-thumb {
+      border-radius: 5px;
+      background-color: rgba($color-blue, 0.7);
+      border: 2px solid #eff1f5;
    }
    .close {
       color: #aaa;
@@ -44,6 +63,12 @@
    padding: 5px;
    border: 1px solid #d7d7d7;
    border-radius: 8px;
+}
+
+@media only screen and (max-width: 600px) {
+   .popup-content {
+      width: 90%;
+   }
 }
 
 [role='tooltip'].popup-content {

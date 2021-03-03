@@ -27,7 +27,7 @@
     &__title{
         margin-top: 2rem;
         text-align: center;
-        font-size: calc(1.5rem + 0.666vw);
+        font-size: calc(1.6rem + 0.666vw);
     }
     &__title:first-child, &__title:nth-child(2){
         color: $color-blue;
@@ -47,14 +47,13 @@
         margin-bottom: 2.5rem;
 
     }
-    
-    button{
-        align-self: center;
-        padding: 0.75rem 3.3rem;
-        font-size: calc(0.3rem + 0.666vw);
-        font-weight: 400;
+    &__carousel-sponsors {
         
+        margin: 2rem 0;
+
     }
+    
+    
 
     &__comunidades-talleres{
         display: flex;
@@ -62,8 +61,16 @@
         
     
     }
-    &__contador{
+    &__clock{
         
+        
+    }
+
+    button{
+        align-self: center;
+        padding: 0.75rem 3.3rem;
+        font-size: calc(0.3rem + 0.666vw);
+        font-weight: 400;
         
     }
 

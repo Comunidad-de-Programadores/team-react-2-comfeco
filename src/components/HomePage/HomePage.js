@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
 
 import { AuthContext } from '../../context/AuthContext';
-import { Carousel } from './Carousel';
-import Clock from './Clock';
-import Comunidades from './Comunidades/Comunidades';
+import { CarouselLideres } from './Carousels/CarouselLideres';
+import { CarouselSponsor } from './Carousels/CarouselSponsor';
+import { Clock } from './Clock';
 
+import Comunidades from './Comunidades/Comunidades';
 import Content from '../Content';
 
 const HomePage = () => {
@@ -13,7 +14,6 @@ const HomePage = () => {
 
    return (
       <>
-
          {
             (user?.logged && !user?.perfil) ? (
                <div className="home-page">
@@ -31,7 +31,7 @@ const HomePage = () => {
                      </div>
 
                      <div className="home-page__carousel-lideres">
-                        <Carousel />
+                        <CarouselLideres />
                      </div>
 
                      <button className="btn btn-blue">
@@ -45,15 +45,17 @@ const HomePage = () => {
                      <div className="home-page__comunidades-talleres">
                         <Comunidades />
                      </div>
-
+                     <div className="home-page__title">
+                        <h3>Sponsors</h3>
+                     </div>
                      <div className="home-page__carousel-sponsors">
-                        <h1>Componente--Carousel-Sponsors</h1>
+                        <CarouselSponsor />
                      </div>
                      <div className="home-page__title">
                         <h3>Prepárate, lo bueno está por venir</h3>
                      </div>
 
-                     <div className="home-page__contador">
+                     <div className="home-page__clock">
                         <Clock />
                      </div>
 

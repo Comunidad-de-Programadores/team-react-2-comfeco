@@ -4,8 +4,8 @@ import { faUsers, faBook, faCodeBranch } from '@fortawesome/free-solid-svg-icons
 import Popup from 'reactjs-popup';
 
 import MasConunidades from './MasComunidades';
-import { getComunidades } from '../selectors/getComunidades';
-import { getTallerByFrameWork } from '../selectors/getTallerByFramework';
+import { getComunidades } from '../../../selectors/getComunidades';
+import { getTallerByFrameWork } from '../../../selectors/getTallerByFramework';
 
 
 const Comunidades = () => {
