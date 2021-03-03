@@ -54,3 +54,48 @@
     display: grid;
     text-align: right;
 }
+.label-title {
+
+    color: #0652DD;
+    font-size: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Lato', sans-serif;
+}
+
+.label {
+
+    color: #0652DD;
+    font-size: 12px;
+    text-align: left;
+    text-transform: uppercase;
+    font-family: 'Lato', sans-serif;
+}
+
+.gg-bound-control-input{
+    color: black;
+    font-size: 13px;
+    text-align: left;
+    // text-transform: capitalize;
+    font-family: 'Lato', sans-serif;
+}
+// ::-webkit-input-placeholder { color: #0652DD; } 
+
+// :-moz-placeholder  { color: #0652DD; } 
+
+// ::-moz-placeholder  { color: #0652DD; } 
+
+// :-ms-input-placeholder  { color: #0652DD; } 
+input {
+    width: 100%;
+    padding: 5px 0;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+ }
+
+ input:focus+span, .--active{
+    top: -18px;
+    left: 0;
+    font-size: 0.7rem;
+ }
