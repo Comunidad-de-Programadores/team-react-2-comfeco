@@ -10,37 +10,33 @@ import { PrivateRoute } from './PrivateRouter';
 import { AuthRouter } from './public/AuthRouter';
 import { PublicRoute } from './PublicRouter';
 import { login } from '../actions/auth';
+import { isLocalStorage, sendLocalStorage } from '../shared/login';
 
 export const AppRouter = () => {
 
-   const { setUser } = useContext( AuthContext );
-   const [ uid, setUid ] = useState( false );
-   const [ checking, setChecking ] = useState(true);
+
+
+   // + CONTEXT 
+   const { user, setUser } = useContext(AuthContext);
+   
+   const [checking, setChecking] = useState(false);
+   
 
    useEffect(() => {
 
-		firebase.auth().onAuthStateChanged( async ( userFirebase )=>{
+      if (user) {
 
-         if ( userFirebase?.uid ) {
-
-            login( userFirebase.uid, userFirebase.email, userFirebase.displayName, userFirebase.photoURL, setUser )
-            setUid( true );   
-
-			}else{
-            setUid( false )
-         }
-         setChecking(false);
+         setChecking(user?.logged)
          
-		});
-      
-	}, [ setChecking, setUid ]);
+      } else {
+         setChecking(false);
+      }
 
 
-   if ( checking ) {
-		return(
-			<h1>Espere...</h1>
-		)
-	}
+   }, [user])
+
+
+
 
 
    return (
@@ -51,16 +47,16 @@ export const AppRouter = () => {
                <PublicRoute
                   path="/auth"
                   component={AuthRouter}
-                  isAuthenticated={!!uid}
+                  isAuthenticated={checking}
                />
                {/* 
                   Rutas privadas  
                */}
 
-               <PrivateRoute 
+               <PrivateRoute
                   path="/home"
-                  component={ HomeRouter }
-                  isAuthenticated={!!uid}
+                  component={HomeRouter}
+                  isAuthenticated={checking}
                />
                <Redirect to="/auth/login" />
             </Switch>

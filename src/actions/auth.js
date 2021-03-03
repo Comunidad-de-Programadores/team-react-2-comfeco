@@ -1,6 +1,6 @@
 import { firebase, googleAuthProvider } from '../firebase/firebase-config';
-import Swal from "sweetalert2";
-
+import Swal from 'sweetalert2';
+import { saveLocalStorage, deleteLocalStorage } from '../shared/login';
 
 export const startGoogleLogin = (setData) => {
    firebase
@@ -14,23 +14,24 @@ export const startGoogleLogin = (setData) => {
 
 export const login = (uid, email, displayName, photo, setData) => {
    const data = {
-      user: {
          uid: uid,
          email: email,
          name: displayName,
-         picture: { thumbnail: photo }
-      }
-   }
+         picture: { thumbnail: photo },
+         logged: true, 
+         perfil: false
+   
+   };
+
+   saveLocalStorage(data);
    setData(data);
 };
 
 export const startLogout = async (setUser) => {
-
    await firebase.auth().signOut();
    await setUser(null);
-}
-
-
+   deleteLocalStorage();
+};
 
 export const recoverPass = (email) => {
 
@@ -64,3 +65,4 @@ export const registro = (data) => {
          console.log(errorMessage);
       });
 }
+
