@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
+import { faUserCircle, faTimesCircle, faChevronDown, faBell} from '@fortawesome/free-solid-svg-icons'
 
 
 import { AuthContext } from '../context/AuthContext';
@@ -50,9 +50,9 @@ const Navegacion = () => {
 
    const handleInicio = (e) => {
       e.preventDefault();
-      if(user?.perfil){
+      if (user?.perfil) {
          setUser(prevUser => ({
-            ...prevUser, 
+            ...prevUser,
             perfil: false
          }));
       }
@@ -87,11 +87,18 @@ const Navegacion = () => {
                      </div>
 
                      <div className="navegacion__profile">
-                        <div className="navegacion__profile-img" onClick={handleShowMenu}>
-                           <img src={user.picture.thumbnail} />
+                           <FontAwesomeIcon icon={faBell} onClick={handleShowMenu}/>
+                        <div className="navegacion__profile-content" >
+                          
+                           <div className="navegacion__profile-img">
+                              <img src={user.picture.thumbnail} />
+                           </div>
+                           <div className="navegacion__profile-name">
+                              <p>{user.name}</p>
+                           </div>
+                           <FontAwesomeIcon icon={faChevronDown} onClick={handleShowMenu}/>
                         </div>
                         <div className={`navegacion__profile-menu ${active ? 'active' : ''}`}>
-                           <h3>{user.name}</h3>
                            <ul>
                               <li>
                                  <FontAwesomeIcon icon={faUserCircle} />

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { getLideres } from './dataCarousel/getLideres';
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { getLideres } from './selectors/getLideres';
 
 export const Carousel = () => {
 
@@ -17,6 +18,7 @@ export const Carousel = () => {
         lideres[0],
         lideres[1],
         lideres[2],
+        lideres[3],
     ]);
 
 
@@ -91,7 +93,7 @@ export const Carousel = () => {
             }
 
 
-        }, 1500);
+        }, 1200);
 
         return () => {
             clearTimeout(timer);
@@ -120,19 +122,24 @@ export const Carousel = () => {
                         {
                             slide.map((lider) => (
                                 <div className={`carousel__block ${!active.comienzo ? 'carousel--transition' : 'carousel--remove'}`} key={lider.id}>
-                                    <img src={lider.img} />
-                                    <figure>
-                                        <figcaption>
-                                            <h3>{lider.name}</h3>
-                                            <p>{lider.team}</p>
-                                        </figcaption>
-                                    </figure>
+                                    
+                                    <div className="carousel__img">
+                                        <img src={lider.img} />
+                                    </div>
+
+                                    <div className="carousel__desc">
+                                        <h3>{lider.name}</h3>
+                                        <div className={`carousel__team carousel--${lider.team}`}>
+                                           
+                                        </div>
+                                    </div>
+
                                 </div>
                             ))
                         }
 
-                        
-                        
+
+
 
                     </div>
 

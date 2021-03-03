@@ -1,31 +1,49 @@
 .navegacion {
    background: $color-header;
 
+
    display: flex;
-   flex-wrap: wrap;
    justify-content: space-around;
+   flex-wrap: wrap;
 
    font-size: calc(1rem + 0.2vw);
+   font-family: 'Lato', sans-serif;
+   border: 2px solid $color-blue;
+
 
    &__img {
+      margin-left: 2rem;
+
       align-self: center;
+      width: 100%;
       flex: 0 1 calc(5rem + 2.5vw);
+
+      img {
+         width: 100%;
+         height: 100%;
+      }
    }
 
    &__logged {
+
       display: flex;
+
+      justify-content: space-around;
       color: white;
+      flex: 1;
 
    }
 
    &__items {
 
-      align-self: center;
-
       display: flex;
       flex-wrap: wrap;
+
+      align-self: center;
       justify-content: space-around;
+
       list-style: none;
+
 
       li {
          flex-shrink: 0;
@@ -36,45 +54,88 @@
    }
 
    &__profile {
-      position: relative;
-      z-index: 1;
       display: flex;
+
       align-self: center;
-      
-     
+
+      position: relative;
+      & svg:first-child{
+         font-size: 1.4rem;
+         
+         opacity: 1;
+      }
+
+      svg {
+         font-size: 1rem;
+         align-self: center;
+         margin-right: 0.7rem;
+         opacity: 0.7;
+
+         &:hover {
+            cursor: pointer;
+            opacity: 1;
 
 
+         }
+      }
+
+      padding: 1rem 0;
+
+
+   }
+
+   &__profile-content {
+      display: flex;
+      justify-content: space-between;
+      border-radius: 25px;
+      height: 3rem;
+      width: 15rem;
+      padding: 0.15rem 0.2rem;
+      background: white;
+      color: black;
 
    }
 
    &__profile-img {
-      justify-self: center;
-      align-self: center;
-      position: relative;
-      width: calc(3.5rem + 2vw);
-      height: calc(3.5rem + 2vw);
+
       border-radius: 50%;
       overflow: hidden;
-      cursor: pointer;
+      width: 20%;
+
+      // padding: 0.2rem;
+      img {
+         height: 100%;
+         width: 100%;
+      }
+
    }
 
+   &__profile-name {
+      align-self: center;
+   }
+
+}
+
+.navegacion {
+
    &__profile-menu {
-      border: 2px solid blue;
+
       position: absolute;
-      top: 80%;
-      left: -20%;
-      // padding: 5px 20px;
+      top: 70%;
+      right: 0;
+
       background: white;
-      width: calc(100% + 3vw);
-      box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);
+      width: calc(80% - 2rem);
+      height: 100%;
+
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
       border-radius: 15px;
-      transition: 0.5s;
+      transition: 0.35s;
 
       visibility: hidden;
       opacity: 0;
 
       h3 {
-
          width: 100%;
          text-align: center;
          font-size: calc(0.5rem + 0.66vw);
@@ -111,10 +172,12 @@
             margin-right: calc(0.5rem + 0.3vw);
             opacity: 0.5;
             transition: 0.5s;
+
          }
 
          &:hover i {
             color: #ff5d94;
+            
             cursor: pointer;
          }
 
@@ -123,31 +186,13 @@
          }
 
       }
-
-
-      &::before {
-         content: '';
-         position: absolute;
-         top: -5px;
-         left: 42%;
-         width: calc(0.5rem + 0.8vw);
-         height: calc(0.5rem + 0.8vw);
-         background: rgb(155, 108, 108);
-         transform: rotate(45deg);
-      }
    }
-
-}
-
-.navegacion {
 
    &__profile-menu.active {
 
-      top: calc(100% + 0.5rem);
-      right: -30px;
+      bottom: -75%;
+      right: 0;
       visibility: visible;
       opacity: 1;
-
-
    }
 }

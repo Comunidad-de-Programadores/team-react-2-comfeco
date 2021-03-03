@@ -1,14 +1,70 @@
 .home-page {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     align-content: center;
+  
     
+    font-family: 'Lato', sans-serif;
 
-    &__content {
-
-        flex: 1;
-     
+    &__header{
+        align-self: center;
+        margin: 2rem 0 1rem;
+        width: calc(100vw - 38vw );
+        text-align: center;
+        h1{
+            font-size: calc(2.3rem + 0.666vw);
+        }
+        p{
+            margin-top: 1.5rem;
+            line-height: 1.5rem;
+            font-weight: 400;
+        }
 
     }
+
+    &__title{
+        margin-top: 2rem;
+        text-align: center;
+        font-size: calc(1.5rem + 0.666vw);
+    }
+    &__title:first-child, &__title:nth-child(2){
+        color: $color-blue;
+        font-size: calc(1.2rem + 0.666vw);
+        
+    }
+
+
+    &__carousel-lideres {
+        
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        margin-bottom: 2.5rem;
+
+    }
+    
+    button{
+        align-self: center;
+        padding: 0.75rem 3.3rem;
+        font-size: calc(0.3rem + 0.666vw);
+        font-weight: 400;
+        
+    }
+
+    &__comunidades-talleres{
+        display: flex;
+        justify-content: center;
+        
+    
+    }
+    &__contador{
+        
+        
+    }
+
 }
