@@ -9,14 +9,33 @@
     &__content{
         // top: 0;
         @extend %__content ;
-        max-width: 400px;
+        max-width: 342px;
         // max-height: 500px;
+        button {
+            background-color: $color-blue;
+        }
     }
-
+    .input-container{
+        margin: .2em 1em;
+        span {
+            text-align: left;
+            font-family: 'Lato', sans-serif;
+            font-size: 12px;
+            display: block;
+            color: #222f2e;
+            opacity: 1;
+        }
+        input {
+            width: 100%;
+            padding: 0 1em;
+            border-style: none;  
+            border-bottom: 1px solid black;
+        }
+    }
     &__terms{
         margin-top: .8rem;
         line-height: 1.5rem;
-        text-align: justify;
+        text-align: center;
         font-size: 0.8rem;
 
         p{
