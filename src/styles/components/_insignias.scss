@@ -1,0 +1,23 @@
+
+.insignias{
+    
+    margin-top: 3rem;
+    &__content{
+      
+        display: flex;
+        justify-content: space-around;
+    }
+
+
+    &__item{
+        border-radius: 50%;
+        list-style: none;
+        padding: 0.5rem 1.4rem;
+        font-size: calc(2rem + 1vw);
+        border: 2px solid $color-blue;
+    }
+}
+
+
+
+

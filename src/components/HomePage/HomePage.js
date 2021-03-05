@@ -7,6 +7,7 @@ import { Clock } from './Clock';
 
 import Comunidades from './Comunidades/Comunidades';
 import Content from '../Content';
+import { Profile } from '../Profile/Profile';
 
 const HomePage = () => {
 
@@ -65,7 +66,11 @@ const HomePage = () => {
 
             )
                : (
-                  <h3>Componente Perfil</h3>
+                  <Content>
+
+                     <Profile />
+
+                  </Content>
                )
          }
 

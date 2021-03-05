@@ -1,0 +1,34 @@
+
+
+.actividades{
+    flex: 1;
+    
+    margin: 0 1rem;
+    position: relative;
+    &__content{
+        
+        padding: 1rem 2rem;
+
+
+        h2{
+            color: $color-blue;
+            font-size: calc(1rem + 0.666vw);
+        }
+
+    }
+
+    &__item{
+        margin-left: 1rem;
+        list-style: none;
+        margin-top: 1rem;
+    }
+
+    svg{
+
+        position: absolute;
+        right: 2%;
+        bottom: 5%;
+        font-size: calc(1.5rem + 0.666vw);
+    }
+
+}
