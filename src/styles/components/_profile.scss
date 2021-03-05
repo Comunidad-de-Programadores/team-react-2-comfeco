@@ -99,3 +99,148 @@ input {
     left: 0;
     font-size: 0.7rem;
  }
+
+ $white: #fff;
+ $google-blue: #4285f4;
+ $button-active-blue: #1669F2;
+ 
+ .profile-btn {
+   width: 100%;
+   height: 42px;
+   background-color: $google-blue;
+   border-radius: 2px;
+   box-shadow: 0 3px 4px 0 rgba(0,0,0,.25);
+   .profile-btn-text {
+    text-align: center;
+     margin: 11px 11px 0 0;
+     color: $white;
+     font-size: 14px;
+     letter-spacing: 0.2px;
+     font-family: "Roboto";
+     
+   }
+   &:hover {
+     box-shadow: 0 0 6px $google-blue;
+     
+   }
+   &:active {
+     background: $button-active-blue;
+   }
+ }
+ 
+ @import url(https://fonts.googleapis.com/css?family=Roboto:500);
+
+// ----------------------------------------------------------------------------
+// Sass declarations
+// ----------------------------------------------------------------------------
+$background-color: #fff;
+$foreground-color: #808080;
+
+// ----------------------------------------------------------------------------
+// Widget-image styles
+// ----------------------------------------------------------------------------
+.widget-user {
+
+  background-color: $background-color;
+  color: $foreground-color;
+  font-family: "Cabin", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  .avatar {
+    float: left;
+    margin-left: 30px;
+
+    img {
+      -webkit-border-radius: 50em;
+      -moz-border-radius: 50em;
+      border-radius: 50em;
+    }
+  }
+
+  .profile {
+    float: right;
+    width: 310px;
+
+    h1 {
+      font-weight: 500;
+    }
+
+    .reputation {
+      font-size: 3.2em;
+      font-weight: 500;
+      padding-top: 30px;
+      padding-bottom: 34px;
+    }
+
+    ul {
+      font-weight: 700;
+
+      li:not(:last-child) {
+        margin-right: 26px;
+      }
+
+      li {
+        display: inline-block;
+
+        .rank div {
+          display: inline-block;
+          margin-top: 1px;
+          margin-right: 6px;
+          width: 20px;
+          height: 20px;
+
+          -webkit-border-radius: 50em;
+          -moz-border-radius: 50em;
+          border-radius: 50em;
+        }
+
+        .label {
+          vertical-align: top;
+        }
+
+        .gold {
+          background-color: #FEC337;
+        }
+
+        .silver {
+          background-color: #B8B8B8;
+        }
+
+        .bronze {
+          background-color: #BF8753;
+        }
+      }
+    }
+
+  }
+
+  .updated-at {
+    color: $foreground-color;
+    opacity: 0.8;
+  }
+
+}
+
+.container-center {
+
+    margin-left: 42%;
+}
+.form-avatar {
+    height: 120px;
+    width: 120px;
+    border: 0px solid rgba(0, 0, 0, 0.1);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #fff;
+    // overflow: hidden; 
+  
+    img {
+      height: 100%;
+      display: block;
+      margin: 0 auto;
+    }
+}
+.label-subtitle{
+    font-size: 18px;
+    color: green;
+}
