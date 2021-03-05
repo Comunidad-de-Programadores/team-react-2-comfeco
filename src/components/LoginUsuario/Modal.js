@@ -6,7 +6,7 @@ const Terminos = () => {
          <div className="modal-header">
             <strong>Términos y Condiciones de Uso</strong>
          </div>
-         <div className="modal-content">
+         <div className="modal-content modal-content-scrollbar">
             <p>&nbsp;</p>
             <p>
                <strong>INFORMACIÓN RELEVANTE</strong>
@@ -146,7 +146,7 @@ export const Politica = () => {
          <div className="modal-header">
             <strong>POLÍTICA DE PRIVACIDAD</strong>
          </div>
-         <div className="modal-content">
+         <div className="modal-content modal-content-scrollbar">
             <p>&nbsp;</p>
             <p>
                El presente Política de Privacidad establece los términos en que

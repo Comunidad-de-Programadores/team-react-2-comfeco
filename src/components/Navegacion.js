@@ -1,49 +1,65 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import React, { useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUserCircle, faTimesCircle, faChevronDown, faBell} from '@fortawesome/free-solid-svg-icons'
 
-import { isLogin, logout } from '../shared/login';
-import apiUser from '../shared/api/userRamdom';
-import { faBell } from '@fortawesome/free-regular-svg-icons';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import { AuthContext } from '../context/AuthContext';
 
-import logo from '../assets/logo3.png';
+import logo from '../assets/logo-comfeco.png';
 import { startLogout } from '../actions/auth';
 
-const Navegacion = ( props ) => {
+const Navegacion = () => {
 
-   const [ isLoginState, setisLogin ] = useState(false);
+   const itemsNav = ['Inicio', 'Comunidades', 'Talleres', 'Creadores de Contenido'];
 
    const { user, setUser } = useContext(AuthContext);
 
+   const [active, setActive] = useState(false);
    const history = useHistory();
 
-   // useEffect(() => {
-   //    if (user) {
-   //       apiUser.getUser().then((data) => {
-   //          setUser(data);
-   //          setisLogin(true);
-   //       });
-   //    }
 
-   //    console.log(isLoginState);
-   // }, []);
 
-    console.log(user);
 
    const handleLogin = (e) => {
       e.preventDefault();
       history.push('/');
-      //setisLogin(true);
    };
 
    const handleLogout = (e) => {
       e.preventDefault();
-      logout();
-      setisLogin(false);
-      startLogout( setUser );
+      startLogout(setUser).then(() => history.push('/auth/login'));
+      setActive(false);
    };
+
+
+   const handleShowMenu = () => {
+
+      setActive(!active);
+
+   }
+
+   const handleShowPerfil = () => {
+      setUser(prevUser => ({
+         ...prevUser,
+         perfil: true,
+      }));
+
+      setActive(!active);
+      history.push('/home/profile')
+   }
+
+   const handleInicio = (e) => {
+      e.preventDefault();
+      if (user?.perfil) {
+         setUser(prevUser => ({
+            ...prevUser,
+            perfil: false
+         }));
+      }
+      setActive(false);
+
+   }
 
    return (
       <>
@@ -56,74 +72,51 @@ const Navegacion = ( props ) => {
                   Iniciar Sesion
                </button>
             )}
-         </header>
 
-         <div className="navegacion__btn ">
-            {/* ME GUSTARIA PONER TODO ESTO LOGICA EN UN FUNCIONAL COMPONENT PERO
-             ME DA ERROR CON TIEMPO LO VOY VER */}
-            { ( user ) && (
-               <>
-                  <div className="navegacion__nav">
-                     <ul className="navegacion__nav-bar">
-                        <li className="navegacion__nav-bar--item">
-                           <Link
-                              className="navegacion__nav-bar--link"
-                              to="/home"
-                           >
-                              Inicio
-                           </Link>
-                        </li>
-                        <li className="navegacion__nav-bar--item">
-                           <Link
-                              className="navegacion__nav-bar--link"
-                              to="/home"
-                           >
-                              Contenidos
-                           </Link>
-                        </li>
-                        <li className="navegacion__nav-bar--item">
-                           <Link
-                              className="navegacion__nav-bar--link"
-                              to="/home"
-                           >
-                              Talleres
-                           </Link>
-                        </li>
-                        <li className="navegacion__nav-bar--item">
-                           <Link
-                              className="navegacion__nav-bar--link"
-                              to="/home"
-                           >
-                              Creadores de Contenidos
-                           </Link>
-                        </li>
-                        <li className="navegacion__nav-bar--item user">
-                           <span>{<FontAwesomeIcon icon={faBell} />}</span>
-                           {
-                              [ user.user ]?.map(( item, key ) => {
-                                 return (
-                                    <span key={ key } >
-                                       {' '}
-                                       <img
-                                          src={item.picture.thumbnail}
-                                          alt="photo"
-                                       />{' '}
-                                       {item.email}
-                                    </span>
-                                 );
-                              })
-                           }
-                           <button onClick={handleLogout}>
-                              {<FontAwesomeIcon icon={faTimes} />}
-                           </button>
-                        </li>
-                        <li className="navegacion__nav-bar--item"></li>
-                     </ul>
+            {
+               (user?.logged) && (
+
+                  <div className="navegacion__logged">
+                     <div className="navegacion__items">
+                        {
+                           itemsNav.map(item => (
+                              <li key={item} onClick={handleInicio}>
+                                 {item}
+                              </li>
+                           ))
+                        }
+                     </div>
+
+                     <div className="navegacion__profile">
+                           <FontAwesomeIcon icon={faBell} onClick={handleShowMenu}/>
+                        <div className="navegacion__profile-content" >
+                          
+                           <div className="navegacion__profile-img">
+                              <img src={user.picture.thumbnail} />
+                           </div>
+                           <div className="navegacion__profile-name">
+                              <p>{user.name}</p>
+                           </div>
+                           <FontAwesomeIcon icon={faChevronDown} onClick={handleShowMenu}/>
+                        </div>
+                        <div className={`navegacion__profile-menu ${active ? 'active' : ''}`}>
+                           <ul>
+                              <li>
+                                 <FontAwesomeIcon icon={faUserCircle} />
+                                 <i onClick={handleShowPerfil}>Perfil</i>
+                              </li>
+                              <li>
+                                 <FontAwesomeIcon icon={faTimesCircle} />
+                                 <i onClick={handleLogout}>Logout</i>
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+
                   </div>
-               </>
-            )}
-            {/* <pre>{JSON.stringify(user)}</pre> */}
-         </div>
+               )
+            }
+         </header>
       </>
    );
 };

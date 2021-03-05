@@ -4,11 +4,12 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import Terminos, { Politica } from './Modal';
 import Popup from 'reactjs-popup';
+import { registro } from '../../actions/auth';
 
 const schema = yup.object().shape({
-   nick: yup.string().required(),
+   username: yup.string().required(),
    email: yup.string().email().required(),
-   password: yup.string().required(), //min(int).max(int)
+   password: yup.string().min(6).required(), //min(int).max(int)
    confirmPassword: yup.string().oneOf([yup.ref('password'), null]),
 });
 
@@ -18,7 +19,7 @@ const RegistrarUsuario = () => {
    });
 
    function registroSubmit(data) {
-      console.log(data);
+      registro(data);
    }
 
    return (
@@ -28,14 +29,14 @@ const RegistrarUsuario = () => {
             className="registro-form__content"
          >
             <input
-               name="nick"
+               name="username"
                type="text"
                className="input-container"
                autoComplete="off"
                placeholder="Nick"
                ref={register}
             />
-            {errors.nick?.message && (
+            {errors.username?.message && (
                <span className="errors-msg"> Nick es requerido </span>
             )}
             <input
@@ -57,8 +58,11 @@ const RegistrarUsuario = () => {
                placeholder="Password"
                ref={register}
             />
-            {errors.password?.message && (
+            {errors.password?.type === 'required' && (
                <span className="errors-msg"> Password es requerido </span>
+            )}
+            {errors.password?.type === 'min' && (
+               <span className="errors-msg"> Password min 6 caracteres</span>
             )}
             <input
                name="confirmPassword"

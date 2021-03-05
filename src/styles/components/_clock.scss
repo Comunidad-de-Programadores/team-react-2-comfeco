@@ -1,60 +1,81 @@
 .clock {
+
 	display: flex;
 	flex-direction: column;
-	
+
 	align-items: center;
-	justify-content: center;
+	// justify-content: center;
+	
 
 	position: relative;
 	text-align: center;
-	margin: 1rem 0;
-	h3{
-		font-family:'Arial Narrow',  Arial, sans-serif;
-	}
 
+	background-image: url('../../assets/back-contador.jpeg');
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	
+	height: 60vh;
+	
+	h3 {
+		font-family: 'Arial Narrow', Arial, sans-serif;
+	}
+	
 	&__content {
+		margin-top: 2rem;
+		border-radius: 20px;
+		overflow: hidden;
 
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
 		justify-content: space-around;
-		
+
 		position: relative;
-		color: #525658;
+		// color: #525658;
+		color: black;
 		padding: 2rem;
 		width: 65vw;
-		
-		//+  CARTAS DE CADA ITEM 
-		& > div:last-child{
+		background: #0652DD;
+		box-shadow: 0 10px 20px #10245D48;
+
+		&>div:last-child {
 			margin: 0;
 		}
-		&>div {
 
+		&>div {
 			
+			width: calc(2rem + 0.6666vw);
 			display: flex;
 			flex: 0 1 100px;
 			flex-direction: column;
 			align-items: center;
+			
 			justify-content: center;
-			
-			margin-right: calc(2rem + 2vw);
+			width: calc(5rem + 1.5vw);
 			font-size: calc(0.8rem + 0.666vw);
-			
-			transform: perspective(600px) rotate(-30deg) skew(20deg) translate(0, 0);
-			
-			
+
+
+
 			&>span {
-			
-				font-family: 'Lexend Mega', sans-serif;
-				box-shadow:  -14px 14px 28px #a8a3a3;
 
+				
+				// box-shadow: -14px 14px 28px #a8a3a3;
+				
 				position: relative;
-				padding: 2rem;
+				padding: 2rem 0;
 				width: 100%;
+				
 				height: calc(4.8rem + 1.6vh);
-				border-radius: 8px 5px 8px 0;
+				border-radius: 6px 6px 3.5px 3.5px;
+				font-weight: 700;
+				font-size: calc(1.2rem + 0.666vw);
 				z-index: 1;
-
+				color: white;
+				background: #222f3e;
+				// background: #C4C4C4;
+				border: 2px solid #222f3e;
+				box-shadow: 0 10px 20px #10245D48;
 				&::before {
 					content: '';
 					position: absolute;
@@ -66,92 +87,59 @@
 					z-index: -1;
 				}
 
-				a {
-					&::before {
-						content: '';
-						position: absolute;
-						top: 10px;
-						left: -20px;
-						height: 100%;
-						width: 20px;
-
-						transition: 0.5s;
-						transform: rotate(0deg) skewY(-45deg);
-
-					}
-
-					&::after {
-						content: '';
-						position: absolute;
-						bottom: -20px;
-						left: -10px;
-
-						height: 20px;
-						width: 100%;
-
-
-						transition: 0.5s;
-						transform: rotate(0deg) skewX(-45deg);
-
-					}
-
-				}
+				
 			}
 		}
 	}
 
 	&__seconds {
-
+		
 		span {
+			
+			
 
 			border: 2px solid #82c99d48;
-			background: #96f0b891;
+			
+			
+			// background: #96f0b891;
+			
 
 			&::before {
 
 				height: var(--size-seg);
-				background: #53e087;
+				// background: #53e087;
+				background: #21c8ff;
+				background: #0cc2ff;
+				
 
 			}
 
-			a {
-				&::before {
-					background: #4bc779;
-				}
-
-				&::after {
-					background: #2FDF72;
-				}
-			}
+			
 		}
 	}
 
 	&__minutes {
-
+		
 		span {
 
 			border: 2px solid #87d3ec94;
+			
 			background: #87d3ec94;
 
 			&::before {
 				height: var(--size-min);
 				background: #36c8f8;
+				background: #0cc2ff;
+				// background: #b71c1c;
+				// background: #53e087;
 			}
 
-			a {
-				&::before {
-					background: #2db9e7;
-				}
-
-				&::after {
-					background: #38c3f1;
-				}
-			}
+			
 		}
 	}
 
 	&__hours {
-
+		
 		span {
 
 			border: 2px solid #f5bfd496;
@@ -159,51 +147,39 @@
 
 			&::before {
 				height: var(--size-hrs);
-				background: #fc96bd;
+				background: #36c8f8;
+				background: #0cc2ff;
 			}
 
-			a {
-				&::before {
-					background: #eb85ac;
-				}
-
-				&::after {
-					background: #f0a2c0;
-				}
-			}
+			
 		}
 
 	}
 
 	&__days {
-
+		
 		span {
 
+			// background: #f1bea58a;
 			border: 2px solid #f1bea58a;
-			background: #f1bea58a;
+		
 
 			&::before {
 				height: var(--size-dias);
-				background: #f58852;
+				background: #36c8f8;
+				background: #0cc2ff;
 			}
 
-			a {
-				&::before {
-					background: #f09669;
-				}
-
-				&::after {
-					background: #e27e4c;
-				}
-			}
+			
 		}
 
 	}
 
 	&__smalltext {
 
-		margin-top: 2rem;
-		color: #494e50;
+		margin-top: 1.5rem;
+		color: white;
+		font-weight: 700;
 	}
 
 }

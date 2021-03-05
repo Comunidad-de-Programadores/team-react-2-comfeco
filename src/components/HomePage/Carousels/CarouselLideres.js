@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { getLideres } from './dataCarousel/getLideres';
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export const Carousel = () => {
+import { getLideres } from '../../../selectors/getLideres';
+
+export const CarouselLideres = () => {
 
 
 
@@ -17,14 +18,15 @@ export const Carousel = () => {
         lideres[0],
         lideres[1],
         lideres[2],
+        lideres[3],
     ]);
 
 
     useEffect(() => {
         let timer = setTimeout(() => {
             setActive({
-                comienzo: !active.comienzo, 
-                sentido:'derecha'
+                comienzo: !active.comienzo,
+                sentido: 'derecha'
             });
         }, 500);
         return () => {
@@ -91,7 +93,7 @@ export const Carousel = () => {
             }
 
 
-        }, 1500);
+        }, 1200);
 
         return () => {
             clearTimeout(timer);
@@ -113,27 +115,31 @@ export const Carousel = () => {
     return (
 
         <>
-            <section className="carousel">
-               
-                <div className="carousel__container">
-                    <div className="carousel__slider">
+            <section className="carousel-lideres">
+
+                <div className="carousel-lideres__container">
+                    <div className="carousel-lideres__slider">
                         {
                             slide.map((lider) => (
-                                <div className={`carousel__block ${!active.comienzo ? 'carousel--transition' : 'carousel--remove'}`} key={lider.id}>
-                                    <img src={lider.img} />
-                                    <figure>
-                                        <figcaption>
-                                            <h3>{lider.name}</h3>
-                                            <p>{lider.team}</p>
-                                        </figcaption>
-                                    </figure>
+                                <div className={`carousel-lideres__block ${!active.comienzo ? 'carousel-lideres--transition' : 'carousel-lideres--remove'}`} key={lider.id}>
+                                    
+                                    <div className="carousel-lideres__img">
+                                        <img src={lider.img} />
+                                    </div>
+
+                                    <div className="carousel-lideres__desc">
+                                        <h3>{lider.name}</h3>
+                                        <div className={`carousel-lideres__team carousel-lideres--${lider.team}`}>
+                                           
+                                        </div>
+                                    </div>
+
                                 </div>
                             ))
                         }
-
                     </div>
 
-                    <nav className="carousel__navegacion">
+                    <nav className="carousel-lideres__navegacion">
                         <span onClick={() => handleChangeColor('derecha')} >
                             {<FontAwesomeIcon icon={faArrowLeft} />}
                         </span>

@@ -1,8 +1,8 @@
-import React from 'react';
-import { lideres } from './data';
+
+import { comunidades } from '../data/dataComunidades';
 
 
-export const getLideres = () => {
+export const getComunidades = () => {
     
     // const validTeams = ['angular', 'react', 'vue', 'svelte'];
 
@@ -10,7 +10,7 @@ export const getLideres = () => {
     //     throw new Error(`Publisher "${ team }" no es correcto`);
     // }
 
-    return lideres;
+    return comunidades;
 
 
 
