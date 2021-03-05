@@ -1,18 +1,18 @@
 .card-comunidad {
 
 
-    border-radius: 10px 10px 0px 0px;
+    border-radius: 10px;
+    flex: 0 0 calc(9rem + 21vw);
     margin-top: 2rem;
+
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    width: calc(8rem + 23vw);
     position: relative;
-    height: 55vh;
-    box-shadow: 0 10px 20px #10245D48;
-    
 
-    & > div:first-of-type {
+    box-shadow: 0 10px 20px #10245D48;
+
+    &>div:first-of-type {
         padding: 0.8rem 1.5rem;
         background: #1c53d5;
         color: white;
@@ -20,32 +20,39 @@
         display: flex;
         justify-content: center;
         font-size: calc(0.8rem + 0.666vw);
-        
+
         svg {
-            
+
             height: 100%;
-            font-size: 1.7rem;            
+            font-size: 1.7rem;
             align-self: center;
             margin-right: 0.8rem;
         }
-      
+
     }
-    
+
     & ul {
         display: flex;
         flex-direction: column;
-        padding: 1.3rem 1.5rem;
+        padding: 2rem 1.5rem calc(5rem + 2vh);
         font-size: calc(0.5rem + 0.666vw);
         font-weight: 600;
+
     }
 
     button {
         position: absolute;
-        bottom: 2rem;
+        bottom: 0;
+        margin-bottom: 1rem;
+        display: flex;
+        flex-shrink: 0;
+        width: max-content;
+        
+
 
     }
 
-    
+
 
 
 

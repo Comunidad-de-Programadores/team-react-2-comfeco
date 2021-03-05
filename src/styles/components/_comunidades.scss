@@ -1,5 +1,17 @@
+.comunidades-talleres {
+
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-evenly;
+   align-content: center;
+   
+
+  
+}
+
+
+
 .comunidades {
-   margin-right: 2rem;
 
    &__item {
 
@@ -9,7 +21,8 @@
       padding: 1.1rem 0;
 
    }
-   &__item:last-child{
+
+   &__item:last-child {
       border-bottom: 0;
    }
 
@@ -18,13 +31,13 @@
       // background: #1c53d5;
       align-self: center;
 
-      svg{
+      svg {
          color: #1c53d5;
       }
    }
 
    &__content {
-      // border: 2px solid red;
+
       width: 100%;
       display: flex;
       justify-content: space-between;
@@ -32,7 +45,7 @@
 
       h3 {}
 
-      
+
 
       a {
          text-decoration: none;
@@ -40,9 +53,8 @@
       }
    }
 
-
-
 }
+
 
 .talleres {
 
@@ -80,7 +92,4 @@
          padding: 0.5rem 0;
       }
    }
-
-
-
 }
