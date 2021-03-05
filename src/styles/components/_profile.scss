@@ -2,4 +2,9 @@
     display: flex;
     justify-content: space-around;
     font-family: 'Lato', sans-serif;
+
+    a{
+        cursor: pointer;
+        color: red;
+    }
 }

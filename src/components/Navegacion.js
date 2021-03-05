@@ -46,7 +46,7 @@ const Navegacion = () => {
       }));
 
       setActive(!active);
-      history.push('/home/profile')
+     
    }
 
    const handleInicio = (e) => {

@@ -9,6 +9,7 @@ import Comunidades from './Comunidades/Comunidades';
 import Content from '../Content';
 import { Profile } from '../Profile/Profile';
 
+
 const HomePage = () => {
 
    const { user, setUser } = useContext(AuthContext);
