@@ -1,11 +1,11 @@
 export const lideres = [
 
-    {
-        'id': 'team-angular-bezael',
-        'team': 'angular',
-        'name': 'Bezael',
-        'img': 'https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F744f9499-dbb7-4a55-92b2-1f0781448bb9%2F1_prCweEqN9wGLx19kngaW2A.jpeg?table=block&id=31a42319-8352-4cba-935e-f323bf41c7a5&width=2720&userId=&cache=v2'
-    },
+    // {
+    //     'id': 'team-angular-bezael',
+    //     'team': 'angular',
+    //     'name': 'Bezael',
+    //     'img': 'https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F744f9499-dbb7-4a55-92b2-1f0781448bb9%2F1_prCweEqN9wGLx19kngaW2A.jpeg?table=block&id=31a42319-8352-4cba-935e-f323bf41c7a5&width=2720&userId=&cache=v2'
+    // },
     {
         'id': 'team-angular-anartz',
         'team': 'angular',

@@ -4,19 +4,17 @@
 
    display: flex;
    justify-content: space-around;
+   align-content: center;
    flex-wrap: wrap;
 
    font-size: calc(1rem + 0.2vw);
    font-family: 'Lato', sans-serif;
-   border: 2px solid $color-blue;
-
+   // padding: 0 0 0 0.5rem ;
 
    &__img {
-      margin-left: 2rem;
-
+      padding: 1rem 0 1rem 1rem;
       align-self: center;
-      width: 100%;
-      flex: 0 1 calc(5rem + 2.5vw);
+      flex: 0 1 calc(8rem + 9vw);
 
       img {
          width: 100%;
@@ -27,12 +25,15 @@
    &__logged {
 
       display: flex;
+      flex-wrap: wrap;
 
       justify-content: space-around;
       color: white;
       flex: 1;
 
    }
+
+   //+ Contenedor items  
 
    &__items {
 
@@ -53,15 +54,18 @@
       }
    }
 
+   //+ Contenedor profle
+
    &__profile {
       display: flex;
 
       align-self: center;
 
       position: relative;
-      & svg:first-child{
+
+      & svg:first-child {
          font-size: 1.4rem;
-         
+
          opacity: 1;
       }
 
@@ -177,7 +181,7 @@
 
          &:hover i {
             color: #ff5d94;
-            
+
             cursor: pointer;
          }
 

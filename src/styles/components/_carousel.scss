@@ -17,29 +17,25 @@
 
         justify-content: space-around;
         align-content: center;
-        height: 42vh;
-        padding: 0 2.5rem;
+        padding: 0 2.5rem;;
 
     }
 
     &__block {
 
-        position: relative;
-
-
-        width: calc(8.5rem + 10vw);
-
-        height: 100%;
-        margin: 0 1rem;
         overflow: hidden;
+        position: relative;
+        max-height: calc(30vh - 5rem);
+        min-height: calc(310px - 5vh);
+        margin: 0.5rem 1rem;
         border-radius: 1rem;
-
         text-align: center;
+        width: calc(8rem + 10vw);
 
     }
 
     &__img {
-
+        height: 100%;
         transition: width 900ms cubic-bezier(0, 0, .15, 1);
 
         img {
@@ -121,9 +117,7 @@
     &--transition {
 
         & .carousel-lideres__img {
-
             width: 100%;
-            height: 100%;
 
             img {
 
@@ -149,7 +143,7 @@
         & .carousel-lideres__img {
 
             width: 0%;
-            height: 100%;
+            // height: 100%;
 
             img {
                 opacity: 0;
@@ -181,12 +175,9 @@
             transition: 0.5s;
             font-size: 2.6rem;
             border-radius: 10px;
-
-            // background-color: #ddd7d7;
             background-color: #222f3e;
             color: #ddd7d7;
-
-            // transform: perspective(600px) rotate(-30deg) skew(20deg) translate(0, 0);
+            
             cursor: pointer;
             opacity: 0.5;
 
@@ -197,7 +188,6 @@
             &:hover {
                 color: white;
                 background-color: #0652DD;
-                // transform: perspective(600px) rotate(-30deg) skew(20deg) translate(5px, -5px);
                 opacity: 1;
 
                 &::before {
@@ -227,24 +217,29 @@
 
 
 .carousel-sponsor {
+    padding: 2% ;
+    display: flex;
+    justify-content: center;
+    align-content: center;
     position: relative;
-    padding: 0 30%;
-
+    
     &__container {
         
+        position: relative;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        position: relative;
-        height: 4.6rem;
-
-        //   height: 30px;
+        width: 80%;
+        max-width: 850px;
+        
+        
         .sponsor-image {
             margin: 0 0.5em;
             width: 100%;
             height: 100%;
             border-radius: 50%;
             box-shadow: 0px 3px 6px #00000029;
+
             img {
                 width: 100%;
                 height: 100%;
@@ -253,42 +248,28 @@
         }
 
 
-        span{
+        span {
             position: absolute;
-            
-            top: 30%;
-            &:first-child{
+            top: 32%;
+            &:first-child {
                 left: -5%;
+                
             }
-
-            &:last-child{
+            
+            &:last-child {
                 right: -5%;
+                
             }
             
         }
+        
         span svg {
             background-size: cover;
             font-size: 2rem;
+            font-size: calc(1.2rem + 1vw);
 
             &:hover {
                 cursor: pointer;
-            }
-        }
-    }
-}
-
-@media only screen and (max-width: 600px) {
-    .carousel-sponsor {
-        padding: 0;
-
-        &__container {
-            .sponsor-image {
-                margin: 0 2px;
-                padding-top: 0.6em;
-            }
-
-            span svg {
-                margin: 0 1em;
             }
         }
     }
