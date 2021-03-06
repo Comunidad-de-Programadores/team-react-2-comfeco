@@ -41,7 +41,7 @@ const HomePage = () => {
                      </button>
 
                      <div className="home-page__title">
-                        <h3>Comunidades y Talleres</h3>
+                        <h3>Comunidades y Talleres de comfeco</h3>
                      </div>
 
                      <div className="home-page__comunidades-talleres">
