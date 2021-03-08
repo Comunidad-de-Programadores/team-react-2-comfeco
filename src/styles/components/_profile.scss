@@ -10,16 +10,25 @@
       height: 400px;
       width: 280px;
       opacity: 1;
-      .profile-name {
-         font-size: 20px;
-         font-style: bold;
-         color: #222f3e;
-         text-align: left
-      }
-      .profile-edit {
-         //position: absolute;
-         right: 0;
-         color: $color-blue;
+      padding: 2em 10%;
+      .profile-name-box{
+         display: flex;
+         flex-direction: row;
+         .profile-name {
+            width: 85%;
+            font-size: 20px;
+            font-style: bold;
+            color: #222f3e;
+            text-align: left;
+         }
+         .profile-edit {
+            position: relative;
+            width: 15%;
+            margin: auto;
+            justify-content: center;
+            right: 0;
+            color: $color-blue;
+         }
       }
       .profile-edit:hover{
          color: rgba($color-blue, .6);

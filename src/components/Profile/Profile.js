@@ -21,7 +21,8 @@ export const Profile = () => {
                <div className='profile-image'>
                   <img></img>
                </div>
-               <div className='profile-name'>Usuario
+               <div className='profile-name-box'>
+                  <div className='profile-name'>Usuario</div>
                   <div className='profile-edit' onClick={handleEditProfile}>
                      <FontAwesomeIcon icon={faExternalLinkAlt} />
                   </div>
