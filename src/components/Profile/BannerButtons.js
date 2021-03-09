@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faAward } from '@fortawesome/free-solid-svg-icons';
@@ -20,7 +21,9 @@ const BannerButtons = () => {
                </button>
             </li>
             <li className="bannerbutton-item">
-               <button className="btn btn-white">Grupos</button>
+               <Link to="home/groups" className="btn btn-white">
+                  Grupos
+               </Link>
             </li>
             <li className="bannerbutton-item">
                <button className="btn btn-white">Eventos</button>
