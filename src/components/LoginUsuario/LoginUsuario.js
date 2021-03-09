@@ -18,7 +18,7 @@ const LoginUsuario = (props) => {
       //? Iniciar un usuario " FICTICIO "
       apiUser.getUser().then((data) => {
 
-         login(data[0].id.value, data[0].email, data[0].name.first, data[0].picture.thumbnail, setUser);
+         login(data[0].id.value, data[0].email, data[0].name.first, data[0].picture.thumbnail, data[0].picture.large, setUser);
 
       });
       clearErrors();

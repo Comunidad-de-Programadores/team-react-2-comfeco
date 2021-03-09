@@ -2,23 +2,37 @@
    display: flex;
    justify-content: space-around;
    font-family: 'Lato', sans-serif;
-   margin-top: 2rem;
+   color: #222f3e;
    .profile-container{
-      margin-top: 2rem;
+      margin-top: 4em;
       border-radius: 10px;
       background-color: #f8f8f8;
       height: 400px;
       width: 280px;
       opacity: 1;
-      padding: 2em 10%;
+      padding: 4em 10%;
+      .profile-image{
+         //background-color: black;
+         img{
+            position: relative;
+            display: block;
+            margin-top: -108px;
+            margin-right: auto;
+            margin-left: auto;
+            border-radius: 50%;
+            border: solid .4em white;
+            height: 108px;
+            width: auto;
+         }
+      }
       .profile-name-box{
+         margin-top: 2em;
          display: flex;
          flex-direction: row;
          .profile-name {
             width: 85%;
             font-size: 20px;
-            font-style: bold;
-            color: #222f3e;
+            font-weight: bold;
             text-align: left;
          }
          .profile-edit {
@@ -32,12 +46,17 @@
       }
       .profile-edit:hover{
          color: rgba($color-blue, .6);
+         cursor: pointer;
       }
       .profile-title {
-
+         font-size: 16px;
+         font-weight: 400;
+         line-height: 18px;        
       }
       .profile-content {
-
+         margin-top: 2em;
+         line-height: 24px;
+         font-weight: 400;
       }
    }
 

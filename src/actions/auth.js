@@ -12,12 +12,12 @@ export const startGoogleLogin = (setData) => {
       });
 };
 
-export const login = (uid, email, displayName, photo, setData) => {
+export const login = (uid, email, displayName, photo1, photo2, setData) => {
    const data = {
          uid: uid,
          email: email,
          name: displayName,
-         picture: { thumbnail: photo },
+         picture: { thumbnail: photo1, large: photo2},
          logged: true, 
          perfil: false
    
