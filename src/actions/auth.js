@@ -1,4 +1,4 @@
-import { firebase, googleAuthProvider } from '../firebase/firebase-config';
+import { db, firebase, googleAuthProvider } from '../firebase/firebase-config';
 import Swal from 'sweetalert2';
 import { saveLocalStorage, deleteLocalStorage } from '../shared/login';
 
@@ -66,3 +66,73 @@ export const registro = (data) => {
       });
 }
 
+
+export const saveDataFirebase = async ( uid, data, startDate, value, setDataUser  ) => {
+
+   const { 
+         Biography,
+         confirmPassword,
+         email,
+         facebook,
+         genero,
+         gitHub,
+         linkedin,
+         nick,
+         password,
+         twitter 
+   } = data;
+
+   const information = {
+
+      Biography,
+      confirmPassword,
+      email,
+      facebook,
+      genero,
+      gitHub,
+      linkedin,
+      nick,
+      password,
+      twitter,
+      startDate,
+      value
+
+   };
+    
+   await db.collection(`${ uid }`).doc('information').set( information ).then(()=>{
+      setDataUser(  information )
+   }).catch((()=>{
+      console.log("Algo salio mal")
+   }));
+
+}
+
+export const loadUser = async ( uid, setCompleto ) => {
+   
+   const user = await db.collection(`${ uid }`).doc('information').get();
+
+   const { 
+      Biography,
+      confirmPassword,
+      email,
+      facebook,
+      genero,
+      gitHub,
+      linkedin,
+      nick,
+      password,
+      twitter,
+      startDate,
+      value 
+   } = user.data();
+
+   if ( Biography !== '' && confirmPassword!== '' && value!== ''
+      && email!== '' && facebook!== '' && genero!== '' 
+      && gitHub!== '' && linkedin!== '' && nick!== '' 
+      && password!== '' && twitter!== '' && startDate!== '' 
+   ) {
+      setCompleto( true );
+   }else{
+      setCompleto( false )
+   }
+}
