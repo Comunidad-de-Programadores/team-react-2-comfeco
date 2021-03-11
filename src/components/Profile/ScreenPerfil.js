@@ -83,7 +83,6 @@ export const ScreenPerfil = () => {
                                 <label className="label" >Fecha Nacimiento</label>
                                 <DatePicker 
                                     selected={ startDate }
-                                    value={ dataUser.startDate } 
                                     onChange={ date => setStartDate( date )} 
                                 />
                             </div>
