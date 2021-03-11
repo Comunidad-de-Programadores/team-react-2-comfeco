@@ -21,9 +21,9 @@ export const ScreenPerfil = () => {
 
     const { register, handleSubmit, watch, errors } = useForm();    
 
-    const { user, setDataUser } = useContext( AuthContext );
+    const { user, setDataUser, dataUser } = useContext( AuthContext );
 
-    const [ value, setValue ] = useState('fr');
+    const [ value, setValue ] = useState(( dataUser.value !== '' ) ? `${ dataUser.value }`: 'fr');
 
     const onSubmit = ( data ) => {
 
@@ -34,7 +34,7 @@ export const ScreenPerfil = () => {
         <div className="contain">
             <div className="wrapper">
                 <div className="form">
-                    <form onSubmit={ handleSubmit( onSubmit)} >
+                    <form >
                         <div className="grid-container" >
                             <div className="grid-item-center" >
                                 <div className="container-center" >
@@ -82,17 +82,17 @@ export const ScreenPerfil = () => {
                             <div className="grid-item" >
                                 <label className="label" >Fecha Nacimiento</label>
                                 <DatePicker 
-                                    selected={ startDate } 
+                                    selected={ startDate }
+                                    value={ dataUser.startDate } 
                                     onChange={ date => setStartDate( date )} 
                                 />
                             </div>
                             <div className="grid-item" >
                                 <label className="label" >Pais</label>
-                                    <CountrySelect
-                                        value={ value }
-                                        onChange={ setValue }
-                                        valueAs='id'
-                                        flush={true}
+                                <CountrySelect
+                                    value={value}
+                                    onChange={setValue}
+                                    valueAs='id'
                                 />
                             </div>
                         </div>
@@ -155,11 +155,11 @@ export const ScreenPerfil = () => {
                                 ></textarea>
                             </div>
                         </div>
-                        <div className="grid-container" >
-                            <div className="recuperar__enlace">
-                                <button className="btn btn-blue" type="submit">
-                                    Enviar Enlace
-                                </button>
+                        <div className="grid-container" onClick={ handleSubmit( onSubmit ) }>
+                            <div className="profile-btn">
+                                <p className="profile-btn-text" onClick={ handleSubmit( onSubmit ) } >
+                                    <b>Guardar Cambios</b>
+                                </p>
                             </div>
                         </div>
                     </form>

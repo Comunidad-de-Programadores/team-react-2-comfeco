@@ -107,32 +107,63 @@ export const saveDataFirebase = async ( uid, data, startDate, value, setDataUser
 
 }
 
-export const loadUser = async ( uid, setCompleto ) => {
+export const loadUser = async ( uid, setCompleto, setDataUser ) => {
    
-   const user = await db.collection(`${ uid }`).doc('information').get();
+   await db.collection(`${ uid }`).doc('information').get().then( ( user )=>{
 
-   const { 
-      Biography,
-      confirmPassword,
-      email,
-      facebook,
-      genero,
-      gitHub,
-      linkedin,
-      nick,
-      password,
-      twitter,
-      startDate,
-      value 
-   } = user.data();
+      const { 
+         Biography,
+         confirmPassword,
+         email,
+         facebook,
+         genero,
+         gitHub,
+         linkedin,
+         nick,
+         password,
+         twitter,
+         startDate,
+         value 
+      } = user.data();
+   
+      if ( Biography !== '' && confirmPassword!== '' && value!== ''
+         && email!== '' && facebook!== '' && genero!== '' 
+         && gitHub!== '' && linkedin!== '' && nick!== '' 
+         && password!== '' && twitter!== '' && startDate!== '' 
+      ) {
+         setCompleto( true );
+         setDataUser( user.data() );
+      }else{
+         setCompleto( false );
+         setDataUser( user.data() );
+      }
 
-   if ( Biography !== '' && confirmPassword!== '' && value!== ''
-      && email!== '' && facebook!== '' && genero!== '' 
-      && gitHub!== '' && linkedin!== '' && nick!== '' 
-      && password!== '' && twitter!== '' && startDate!== '' 
-   ) {
-      setCompleto( true );
-   }else{
-      setCompleto( false )
-   }
+
+   }).catch( async ()=>{
+
+      const information = {
+
+         Biography:'',
+         confirmPassword :'',
+         email :'',
+         facebook :'',
+         genero :'',
+         gitHub :'',
+         linkedin :'',
+         nick :'',
+         password :'',
+         twitter :'',
+         startDate :'',
+         value:''
+   
+      };
+       
+      await db.collection(`${ uid }`).doc('information').set( information ).then(()=>{
+         console.log("se cargo los datos")
+      }).catch((()=>{
+         console.log("Algo salio mal")
+      }));
+
+   });
+
 }
