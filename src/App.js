@@ -17,16 +17,18 @@ const App = () => {
    // TODO VERIFICAR CON ESTO DESDE EL CONTEXT TRUE O FALSES
    //    const { completo } = useContext( AuthContext );
 
-
    
    const [ completo, setCompleto ] = useState( false );
 
    useEffect(() => {
 
-      loadUser( user.uid, setCompleto );
-      
-   }, [ dataUser, completo ]);
+      if ( user ) {
+         
+         loadUser( user.uid, setCompleto, setDataUser );
+      }
 
+      
+   }, [ user ]);
 
    return (
       <AuthContext.Provider
