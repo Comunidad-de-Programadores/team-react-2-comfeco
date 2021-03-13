@@ -1,5 +1,4 @@
-import React, { useContext, useState } from 'react';
-
+import React, { useContext, useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faLinkedin, faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
@@ -17,18 +16,35 @@ import { useForm } from 'react-hook-form';
 
 export const ScreenPerfil = () => {
 
-    const [ startDate, setStartDate ] = useState( new Date() );
-
-    const { register, handleSubmit, watch, errors } = useForm();    
-
+    
+    const { register, handleSubmit, setValue } = useForm();    
+    
     const { user, setDataUser, dataUser } = useContext( AuthContext );
-
-    const [ value, setValue ] = useState(( dataUser.value !== '' ) ? `${ dataUser.value }`: 'fr');
+    
+    const [ country, setCountry ] = useState(( dataUser.value !== '' ) ? `${ dataUser.value }`: 'fr');
+    
+    const [ startDate, setStartDate ] = useState( new Date() );
 
     const onSubmit = ( data ) => {
 
-        saveDataFirebase( user.uid, data, startDate, value, setDataUser );
+        saveDataFirebase( user.uid, data, startDate, country, setDataUser );
     };
+
+    useEffect(() => {
+        if ( dataUser ) {
+            setValue( "nick", dataUser.nick );
+            setValue( "email", dataUser.email );
+            setValue( "genero", dataUser.genero );
+            setValue( "facebook", dataUser.facebook );
+            setValue( "Biography", dataUser.Biography );
+            setValue( "Biography", dataUser.Biography );
+            setValue( "linkedin", dataUser.linkedin );
+            setValue( "twitter", dataUser.twitter );
+            setValue( "gitHub", dataUser.gitHub );
+            setValue( "confirmPassword", dataUser.confirmPassword );
+            setValue( "password", dataUser.password );
+        }
+    }, [ dataUser ]);
      
     return (
         <div className="contain">
@@ -64,6 +80,7 @@ export const ScreenPerfil = () => {
                                 <input className="gg-bound-control-input"
                                     type="email" 
                                     name="email"
+                                    autoComplete="off"
                                     placeholder="example@gmail.com"  
                                     ref={ register }
                                 />
@@ -81,7 +98,7 @@ export const ScreenPerfil = () => {
                             </div>
                             <div className="grid-item" >
                                 <label className="label" >Fecha Nacimiento</label>
-                                <DatePicker 
+                                <DatePicker
                                     selected={ startDate }
                                     onChange={ date => setStartDate( date )} 
                                 />
@@ -89,8 +106,8 @@ export const ScreenPerfil = () => {
                             <div className="grid-item" >
                                 <label className="label" >Pais</label>
                                 <CountrySelect
-                                    value={value}
-                                    onChange={setValue}
+                                    value={ country }
+                                    onChange={setCountry}
                                     valueAs='id'
                                 />
                             </div>
