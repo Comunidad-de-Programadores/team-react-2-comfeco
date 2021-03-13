@@ -13,33 +13,38 @@ export const Profile = () => {
    const handleEditProfile = () => {
       history.push('/home/profile');
    };
-   const { user, setUser } = useContext(AuthContext);
+   const { user } = useContext(AuthContext);
+
    console.log(user);
    return (
-      <div className="profile">
-         <BannerButtons />
-         <div>
-            <div className='profile-container'>
-               <div className='profile-image'>
-                  <img src={user.picture.large} />
+      <>
+         {(user?.logged) && (
+            <div className="profile">
+               <BannerButtons />
+               <div>
+                  <div className='profile-container'>
+                     <div className='profile-image'>
+                        <img src={user.picture.thumbnail} />
+                     </div>
+                     <div className='profile-name-box'>
+                        <div className='profile-name'>{user.name}</div>
+                        <div className='profile-edit' onClick={handleEditProfile}>
+                           <FontAwesomeIcon icon={faExternalLinkAlt} />
+                        </div>
+                     </div>
+                     <div className='profile-title'>Frontend Developer</div>
+                     <div className='profile-content'>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente facilis iure veniam dolor, ipsam cupiditate at quae ex, non molestias quas eveniet dignissimos! Dolorem eum totam possimus praesentium vitae aliquam!
                </div>
-               <div className='profile-name-box'>
-                  <div className='profile-name'>{ user.name }</div>
-                  <div className='profile-edit' onClick={handleEditProfile}>
-                     <FontAwesomeIcon icon={faExternalLinkAlt} />
                   </div>
+                  <a onClick={handleEditProfile}> Editar perfil </a>
+                  <BannerInsignias />
                </div>
-               <div className='profile-title'>Frontend Developer</div>
-               <div className='profile-content'>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente facilis iure veniam dolor, ipsam cupiditate at quae ex, non molestias quas eveniet dignissimos! Dolorem eum totam possimus praesentium vitae aliquam!
-               </div>
-            </div>
-            <a onClick={handleEditProfile}> Editar perfil </a>
-            <BannerInsignias />
-         </div>
-         <Actividades />
+               <Actividades />
 
-         <div>Componente Eventos Derecha</div>
-      </div>
+               <div>Componente Eventos Derecha</div>
+            </div>
+         )}
+      </>
    );
 };

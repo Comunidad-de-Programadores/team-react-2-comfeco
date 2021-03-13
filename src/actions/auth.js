@@ -12,15 +12,14 @@ export const startGoogleLogin = (setData) => {
       });
 };
 
-export const login = (uid, email, displayName, photo1, photo2, setData) => {
+export const login = (uid, email, displayName, photo, setData) => {
    const data = {
-         uid: uid,
-         email: email,
-         name: displayName,
-         picture: { thumbnail: photo1, large: photo2},
-         logged: true, 
-         perfil: false
-   
+      uid: uid,
+      email: email,
+      name: displayName,
+      picture: { thumbnail: photo },
+      logged: true,
+      perfil: false
    };
 
    saveLocalStorage(data);
@@ -53,7 +52,8 @@ export const registro = (data) => {
          user.updateProfile({
             displayName: data.username
          }).then(function () {
-            console.log('done');
+            alert('Registro completado');
+            //console.log('done');
          }, function (error) {
             Swal(error);
          });
