@@ -1,5 +1,5 @@
 import React from 'react';
-import validator from 'validator';
+// import validator from 'validator';
 import { useForm } from 'react-hook-form';
 import Navegacion from '../Navegacion';
 import Content from '../Content';
@@ -16,16 +16,16 @@ export const Recuperar = () => {
    const onSubmit = (data) => {
       console.log(register.length);
       console.log(data);
-      console.log(validator.isEmail(data.email));
-      if (!validator.isEmail(data.email)) {
-         console.log('alerta activada');
-         setAlerta({
-            alert: true,
-            msg: 'Ingresar un correo valido',
-         });
-      }else{
-         recoverPass( data.email );
-      }
+      // console.log(validator.isEmail(data.email));
+      // if (!validator.isEmail(data.email)) {
+      //    console.log('alerta activada');
+      //    setAlerta({
+      //       alert: true,
+      //       msg: 'Ingresar un correo valido',
+      //    });
+      // } else {
+      //    recoverPass(data.email);
+      // }
    };
 
    const handleCorreo = (e) => {
