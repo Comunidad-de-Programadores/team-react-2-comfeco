@@ -1,5 +1,4 @@
 import React from 'react';
-// import validator from 'validator';
 import { useForm } from 'react-hook-form';
 import Navegacion from '../Navegacion';
 import Content from '../Content';
@@ -16,16 +15,7 @@ export const Recuperar = () => {
    const onSubmit = (data) => {
       console.log(register.length);
       console.log(data);
-      // console.log(validator.isEmail(data.email));
-      // if (!validator.isEmail(data.email)) {
-      //    console.log('alerta activada');
-      //    setAlerta({
-      //       alert: true,
-      //       msg: 'Ingresar un correo valido',
-      //    });
-      // } else {
-      //    recoverPass(data.email);
-      // }
+      recoverPass(data.email);
    };
 
    const handleCorreo = (e) => {
@@ -55,12 +45,22 @@ export const Recuperar = () => {
                            name="email"
                            autoComplete="off"
                            onChange={handleCorreo}
-                           ref={register({ required: true })}
+                           autoComplete="off"
+                           ref={register({
+                              required: true,
+                              pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                           })}
                         />
                         <span className={alerta.alert ? '--active' : ''}>
                            Correo Electronico
                         </span>
                      </label>
+                     {errors.email?.type === 'required' && (
+                        <span className="errors-msg"> Email es requerido </span>
+                     )}
+                     {errors.email?.type === 'pattern' && (
+                        <span className="errors-msg"> Email no es válido </span>
+                     )}
 
                      <div
                         className={`recuperar__alerta${
