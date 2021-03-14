@@ -1,0 +1,21 @@
+//componente eventos de acuerdo al diseno en adobe xd
+.eventos{
+	&__content{
+		li{
+			padding: .4em 2em;
+			a{
+				position: absolute;
+				//border: 1px solid red;
+				text-decoration: none;
+				right: 0;
+				padding-right: 2em;
+			}
+		}
+		.btn{
+			position: relative;
+			margin-top: 1em;
+			margin-left: 2em;
+			font-family: 'Lato', sans-serif;
+		}
+	}
+}

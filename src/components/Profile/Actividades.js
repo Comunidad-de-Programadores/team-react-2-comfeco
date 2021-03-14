@@ -1,4 +1,4 @@
-import { faCalendarCheck } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarCheck, faBookmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react'
 
@@ -14,7 +14,10 @@ export const Actividades = () => {
     return (
         <div className="actividades">
             <div className="actividades__content card-comunidad">
-                <h2>Actividad reciente </h2>
+                <div>
+                    <FontAwesomeIcon icon={faBookmark}/>
+                    <h2>Actividad reciente </h2>
+                </div>
                 {
                     (actividades.length > 0) && (
                         actividades.map(actividad => (
