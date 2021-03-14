@@ -15,6 +15,7 @@ export const Profile = () => {
    const handleEditProfile = () => {
       history.push('/home/profile');
    };
+
    const { user } = useContext(AuthContext);
 
    console.log(user);
@@ -27,10 +28,10 @@ export const Profile = () => {
                      <BannerButtons />
                      <div className='profile-container'>
                         <div className='profile-image'>
-                           <img src={(user.picture.thumbnail?user.picture.thumbnail:defaultPicture)} />
+                           <img src={(user.picture.thumbnail ? user.picture.thumbnail : defaultPicture)} />
                         </div>
                         <div className='profile-name-box'>
-                           <div className='profile-name'>{ user.name }</div>
+                           <div className='profile-name'>{user.name}</div>
                            <div className='profile-edit' onClick={handleEditProfile}>
                               <FontAwesomeIcon icon={faExternalLinkAlt} />
                            </div>
@@ -50,13 +51,13 @@ export const Profile = () => {
                      </div>
                      <a onClick={handleEditProfile}> Editar perfil </a>
                   </div>
-                  </div>
-                  <div className='profile-grid-right'>   
-                     <BannerInsignias />
-                     <Actividades />
-                     <Eventos />
-                  </div>
                </div>
+               <div className='profile-grid-right'>
+                  <BannerInsignias />
+                  <Actividades />
+                  <Eventos />
+               </div>
+            </div>
          )}
       </>
    );

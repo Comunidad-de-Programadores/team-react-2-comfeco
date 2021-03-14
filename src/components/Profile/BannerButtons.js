@@ -1,9 +1,15 @@
 import React from 'react';
+import { useHistory } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 //import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faUsers, faUser, faMedal, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 
 const BannerButtons = () => {
+   const history = useHistory();
+
+   const handleEvents = () => {
+      history.push('/home/eventos');
+   };
    return (
       <>
          <ul className="bannerbutton">
@@ -14,22 +20,22 @@ const BannerButtons = () => {
                </a>
             </li>
             <li className="bannerbutton-item">
-               <button className="btn btn-white">
+               <a onClick={handleEvents}>
                   <FontAwesomeIcon icon={faMedal} />
                   Insignias
-               </button>
+               </a>
             </li>
             <li className="bannerbutton-item">
-               <button className="btn btn-white">
+               <a onClick={handleEvents}>
                   <FontAwesomeIcon icon={faUsers} />
                   Grupos
-               </button>
+               </a>
             </li>
             <li className="bannerbutton-item">
-               <button className="btn btn-white">
+               <a onClick={handleEvents}>
                   <FontAwesomeIcon icon={faCalendarAlt} />
                   Eventos
-               </button>
+               </a>
             </li>
          </ul>
       </>
