@@ -1,4 +1,4 @@
-import { firebase, googleAuthProvider } from '../firebase/firebase-config';
+import { db, firebase, googleAuthProvider } from '../firebase/firebase-config';
 import Swal from 'sweetalert2';
 import { saveLocalStorage, deleteLocalStorage } from '../shared/login';
 
@@ -65,5 +65,104 @@ export const registro = (data) => {
          console.log(errorMessage);
       });
 }
+export const saveDataFirebase = async ( uid, data, startDate, setDataUser  ) => {
+
+   const { 
+         Biography,
+         confirmPassword,
+         email,
+         facebook,
+         genero,
+         country,
+         gitHub,
+         linkedin,
+         nick,
+         password,
+         twitter 
+   } = data;
+
+   const information = {
+
+      Biography,
+      confirmPassword,
+      email,
+      facebook,
+      country,
+      genero,
+      gitHub,
+      linkedin,
+      nick,
+      password,
+      twitter,
+      startDate,
+   };
+    
+   await db.collection(`${ uid }`).doc('information').set( information ).then(()=>{
+      setDataUser(  information )
+   }).catch((()=>{
+      console.log("Algo salio mal")
+   }));
+
+}
+
+export const loadUser = async ( uid, setCompleto, setDataUser ) => {
+   
+   await db.collection(`${ uid }`).doc('information').get().then( ( user )=>{
+
+      const { 
+         Biography,
+         confirmPassword,
+         email,
+         facebook,
+         country,
+         genero,
+         gitHub,
+         linkedin,
+         nick,
+         password,
+         twitter,
+         startDate, 
+      } = user.data();
+   
+      if ( Biography !== '' && confirmPassword!== '' && country!== ''
+         && email!== '' && facebook!== '' && genero!== '' 
+         && gitHub!== '' && linkedin!== '' && nick!== '' 
+         && password!== '' && twitter!== '' && startDate!== '' 
+      ) {
+         setCompleto( true );
+         setDataUser( user.data() );
+      }else{
+         setCompleto( false );
+         setDataUser( user.data() );
+      }
 
 
+   }).catch( async ()=>{
+
+      const information = {
+
+         Biography:'',
+         confirmPassword :'',
+         email :'',
+         facebook :'',
+         country:'',
+         genero :'',
+         gitHub :'',
+         linkedin :'',
+         nick :'',
+         password :'',
+         twitter :'',
+         startDate :'',
+         value:''
+   
+      };
+       
+      await db.collection(`${ uid }`).doc('information').set( information ).then(()=>{
+         console.log("se cargo los datos")
+      }).catch((()=>{
+         console.log("Algo salio mal")
+      }));
+
+   });
+
+}
