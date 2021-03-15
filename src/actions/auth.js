@@ -67,7 +67,7 @@ export const registro = (data) => {
 }
 
 
-export const saveDataFirebase = async ( uid, data, startDate, value, setDataUser  ) => {
+export const saveDataFirebase = async ( uid, data, startDate, setDataUser  ) => {
 
    const { 
          Biography,
@@ -75,6 +75,7 @@ export const saveDataFirebase = async ( uid, data, startDate, value, setDataUser
          email,
          facebook,
          genero,
+         country,
          gitHub,
          linkedin,
          nick,
@@ -88,6 +89,7 @@ export const saveDataFirebase = async ( uid, data, startDate, value, setDataUser
       confirmPassword,
       email,
       facebook,
+      country,
       genero,
       gitHub,
       linkedin,
@@ -95,8 +97,6 @@ export const saveDataFirebase = async ( uid, data, startDate, value, setDataUser
       password,
       twitter,
       startDate,
-      value
-
    };
     
    await db.collection(`${ uid }`).doc('information').set( information ).then(()=>{
@@ -116,17 +116,17 @@ export const loadUser = async ( uid, setCompleto, setDataUser ) => {
          confirmPassword,
          email,
          facebook,
+         country,
          genero,
          gitHub,
          linkedin,
          nick,
          password,
          twitter,
-         startDate,
-         value 
+         startDate, 
       } = user.data();
    
-      if ( Biography !== '' && confirmPassword!== '' && value!== ''
+      if ( Biography !== '' && confirmPassword!== '' && country!== ''
          && email!== '' && facebook!== '' && genero!== '' 
          && gitHub!== '' && linkedin!== '' && nick!== '' 
          && password!== '' && twitter!== '' && startDate!== '' 
@@ -147,6 +147,7 @@ export const loadUser = async ( uid, setCompleto, setDataUser ) => {
          confirmPassword :'',
          email :'',
          facebook :'',
+         country:'',
          genero :'',
          gitHub :'',
          linkedin :'',

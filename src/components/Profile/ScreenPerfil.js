@@ -3,10 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faLinkedin, faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 import DatePicker from "react-datepicker";
-import CountrySelect from 'react-bootstrap-country-select';
-
-import 'bootstrap/dist/css/bootstrap.css'; 
-import 'react-bootstrap-country-select/dist/react-bootstrap-country-select.css';
 
 import "react-datepicker/dist/react-datepicker.css";
 import { saveDataFirebase } from '../../actions/auth';
@@ -21,13 +17,11 @@ export const ScreenPerfil = () => {
     
     const { user, setDataUser, dataUser } = useContext( AuthContext );
     
-    const [ country, setCountry ] = useState(( dataUser.value !== '' ) ? `${ dataUser.value }`: 'fr');
-    
     const [ startDate, setStartDate ] = useState( new Date() );
 
     const onSubmit = ( data ) => {
 
-        saveDataFirebase( user.uid, data, startDate, country, setDataUser );
+        saveDataFirebase( user.uid, data, startDate, setDataUser );
     };
 
     useEffect(() => {
@@ -43,6 +37,7 @@ export const ScreenPerfil = () => {
             setValue( "gitHub", dataUser.gitHub );
             setValue( "confirmPassword", dataUser.confirmPassword );
             setValue( "password", dataUser.password );
+            setValue( "country", dataUser.country );
         }
     }, [ dataUser ]);
      
@@ -105,17 +100,17 @@ export const ScreenPerfil = () => {
                             </div>
                             <div className="grid-item" >
                                 <label className="label" >Pais</label>
-                                <CountrySelect
-                                    value={ country }
-                                    onChange={setCountry}
-                                    valueAs='id'
-                                />
+                                <input
+                                    className="gg-bound-control-input" type="text" name="country" placeholder="Estados unidos" 
+                                    ref={ register }
+                                >
+                                </input>
                             </div>
                         </div>
                         <div className="grid-container-colum-2" >
                             <div className="grid-item" >
                                 <label className="label">Contraseña</label>
-                                <input className="gg-bound-control-input" type="password" name="password" placeholder="Contraseña"
+                                <input ref={ register } name="password" placeholder="Contraseña"
                                     ref={ register }
                                 />
                             </div>
