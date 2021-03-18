@@ -103,8 +103,7 @@ export const ScreenPerfil = () => {
                                 <input
                                     className="gg-bound-control-input" type="text" name="country" placeholder="Estados unidos" 
                                     ref={ register }
-                                >
-                                </input>
+                                />
                             </div>
                         </div>
                         <div className="grid-container-colum-2" >
@@ -161,7 +160,7 @@ export const ScreenPerfil = () => {
                         <div className="grid-container" >
                             <div className="grid-item" >
                                 <label className="label">Biografia</label>
-                                <textarea className="gg-bound-control-input" name="Biography" type="text" rows="4" 
+                                <textarea className="gg-bound-control-input" name="Biography" type="text" rows="6" 
                                     ref={ register }
                                 ></textarea>
                             </div>
