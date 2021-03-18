@@ -65,7 +65,7 @@ export const registro = (data) => {
          console.log(errorMessage);
       });
 }
-export const saveDataFirebase = async ( uid, data, startDate, setDataUser  ) => {
+export const saveDataFirebase = async ( uid, data, startDate, setDataUser, file, setpictureFirebase ) => {
 
    const { 
          Biography,
@@ -96,16 +96,59 @@ export const saveDataFirebase = async ( uid, data, startDate, setDataUser  ) => 
       twitter,
       startDate,
    };
-    
-   await db.collection(`${ uid }`).doc('information').set( information ).then(()=>{
-      setDataUser(  information )
-   }).catch((()=>{
-      console.log("Algo salio mal")
-   }));
+
+   if ( file.length !== 0 ) {
+
+         const storageRef = firebase.storage().ref(`pictures/${ uid }`)
+         const task = storageRef.put(file[0]);
+
+         task.on('state_changed', async (snapshot) => {
+            
+            const storage = firebase.storage();
+   
+            await storage.ref(`pictures/${ uid }`).getDownloadURL().then(( url )=>{
+               setpictureFirebase( `${ url }` );
+            }).catch(()=>{
+               console.log("no se encontro la imagen")
+               setpictureFirebase( null );
+            });
+            console.log( "se cargo los datos" );
+            console.log( snapshot );
+            
+
+         }, (error) => {
+            
+            console.log( error )   
+
+         });
+         await db.collection(`${ uid }`).doc('information').set( information ).then(()=>{
+            setDataUser(  information );
+         }).catch((()=>{
+            console.log("Algo salio mal")
+         }));
+
+
+
+   }else {
+      await db.collection(`${ uid }`).doc('information').set( information ).then(()=>{
+         setDataUser(  information );
+      }).catch((()=>{
+         console.log("Algo salio mal")
+      }));
+   }
 
 }
 
-export const loadUser = async ( uid, setCompleto, setDataUser ) => {
+export const loadUser = async ( uid, setCompleto, setDataUser, setpictureFirebase ) => {
+
+   const storage = firebase.storage();
+   
+   await storage.ref(`pictures/${ uid }`).getDownloadURL().then(( url )=>{
+      setpictureFirebase( `${ url }` );
+   }).catch(()=>{
+      console.log("no se encontro la imagen")
+      setpictureFirebase( null );
+   });
    
    await db.collection(`${ uid }`).doc('information').get().then( ( user )=>{
 
@@ -131,6 +174,7 @@ export const loadUser = async ( uid, setCompleto, setDataUser ) => {
       ) {
          setCompleto( true );
          setDataUser( user.data() );
+
       }else{
          setCompleto( false );
          setDataUser( user.data() );

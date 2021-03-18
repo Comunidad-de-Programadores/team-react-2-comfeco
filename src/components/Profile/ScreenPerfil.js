@@ -12,16 +12,20 @@ import { useForm } from 'react-hook-form';
 
 export const ScreenPerfil = () => {
 
+    const PICTUREDEFAULT = "https://www.pphfoundation.ca/wp-content/uploads/2018/05/default-avatar.png"
     
     const { register, handleSubmit, setValue } = useForm();    
     
-    const { user, setDataUser, dataUser } = useContext( AuthContext );
+    const { user, setDataUser, dataUser, pictureFirebase, setpictureFirebase } = useContext( AuthContext );
     
     const [ startDate, setStartDate ] = useState( new Date() );
 
+    const [ picture, setPicture ] = useState('')
+
     const onSubmit = ( data ) => {
 
-        saveDataFirebase( user.uid, data, startDate, setDataUser );
+        saveDataFirebase( user.uid, data, startDate, setDataUser, data.file, setpictureFirebase );
+        
     };
 
     useEffect(() => {
@@ -40,6 +44,29 @@ export const ScreenPerfil = () => {
             setValue( "country", dataUser.country );
         }
     }, [ dataUser ]);
+
+    useEffect(() => {
+
+        if ( user ) {
+
+            console.log( pictureFirebase )
+            if ( pictureFirebase !== null ) {
+                
+                return setPicture( `${ pictureFirebase }` );
+
+            }
+
+            const { picture } = user;
+
+            const { thumbnail } = picture;
+            
+            setPicture( `${ thumbnail }` );
+
+        }else{
+            setPicture( `${ PICTUREDEFAULT }` );
+        }
+        
+    }, [ user, dataUser, pictureFirebase ]);
      
     return (
         <div className="contain">
@@ -52,13 +79,18 @@ export const ScreenPerfil = () => {
                                     <div className="content-block dx-card responsive-paddings">
                                         <div className="form-avatar">
                                             <label className="label-title">Editar Perfil</label>
-                                            <img src="https://midu.dev/images/tags/github.png"/>
-                                            <label className="label-subtitle">cambiar</label>
+                                            <img 
+                                            
+                                                src={ `${ picture }` }
+                                            />
+                                            <input type="file" className="file" name="file" ref={ register } />
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <br/>
                         <br/>
                         <div className="grid-container-colum-2" >
                             <div className="grid-item" >
