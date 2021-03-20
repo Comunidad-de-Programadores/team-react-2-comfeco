@@ -1,10 +1,13 @@
-import { faCalendarCheck } from '@fortawesome/free-solid-svg-icons';
 import {faCalendarAlt} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react'
+import {useHistory} from 'react-router';
 
 export const Eventos = () => {
-
+    const history = useHistory();
+    const handleEvents = () => {
+       history.push('/home/eventos');
+    };
 
     const eventos = [
         'Te has Unido al evento Community Fest and Code', 
@@ -14,8 +17,8 @@ export const Eventos = () => {
     ];
     return (
         <div className="eventos">
-            <div className="eventos__content card-comunidad">
-                <div> 
+            <div className="eventos__content">
+                <div className='eventos__content-title'> 
                     <FontAwesomeIcon icon={faCalendarAlt}/> 
                     <h2>Eventos de tu inter&eacute;s</h2>
                 </div>
@@ -29,7 +32,7 @@ export const Eventos = () => {
                         ))
                     )
                 }
-                <button className='btn btn-blue'>Ver m&aacute;s eventos</button>
+                <button onClick={handleEvents} className='btn btn-blue'>Ver m&aacute;s eventos</button>
             </div>
         </div>
     )
