@@ -1,29 +1,29 @@
-
-
-
-
 .btn {
-
-    color: white;
-    border-radius: 20px;
-    opacity: 1;
-    padding: 12px 30px;
-    border: none;
-    cursor: pointer;
-    font-size: calc(0.5rem + 0.666vw);
- 
-    
+   color: white;
+   border-radius: 20px;
+   opacity: 1;
+   padding: 12px 30px;
+   border: none;
+   cursor: pointer;
+   font-size: calc(0.5rem + 0.666vw);
 }
 
-.btn-blue{
-    background-color: $color-blue;
-    box-shadow: 0px 10px 20px #10245D48;
+.btn-blue {
+   background-color: $color-blue;
+   box-shadow: 0px 10px 20px #10245d48;
 }
 
-.btn-white{
-    color: $color-blue;
-    padding: 12px 40px;
-    background-color: white;
-    align-self: center;
-    
+.btn-white {
+   color: $color-blue;
+   padding: 12px 40px;
+   background-color: white;
+   align-self: center;
+}
+
+.btn-white-2 {
+   color: $color-blue;
+   padding: 12px 40px;
+   background-color: white;
+   align-self: center;
+   border: 1px solid black;
 }

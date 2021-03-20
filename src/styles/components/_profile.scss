@@ -1,22 +1,191 @@
-.profile {
-   display: flex;
-   justify-content: space-around;
+.profile-grid {
    font-family: 'Lato', sans-serif;
-
-   a {
-      cursor: pointer;
-      color: red;
+   display: grid;
+   margin: 0 5em;
+   grid-template-columns: 1fr 2fr;
+   grid-gap: 2em;
+   &-left{
+      margin: 1em 4vw;
+   }
+   .profile {
+      display: grid;
+      justify-content: space-around;
+      font-family: 'Lato', sans-serif;
+      color: #222f3e;
+      .profile-container {
+         margin-top: 4em;
+         border-radius: 10px;
+         background-color: #f8f8f8;
+         height: 400px;
+         width: 280px;
+         opacity: 1;
+         padding: 4em 10%;
+         .profile-image {
+            //background-color: black;
+            img {
+               position: relative;
+               display: block;
+               margin-top: -108px;
+               margin-right: auto;
+               margin-left: auto;
+               border-radius: 50%;
+               border: solid 0.4em white;
+               height: 108px;
+               width: auto;
+               background-color: white;
+            }
+         }
+         .profile-name-box {
+            margin-top: 2em;
+            display: flex;
+            flex-direction: row;
+            .profile-name {
+               width: 90%;
+               font-size: 20px;
+               font-weight: bold;
+               text-align: left;
+            }
+            .profile-edit {
+               position: relative;
+               //width: 10%;
+               margin: auto;
+               justify-content: center;
+               right: 0;
+               color: $color-blue;
+            }
+         }
+         .profile-edit:hover {
+            color: rgba($color-blue, 0.6);
+            cursor: pointer;
+         }
+         .profile-title {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 18px;
+         }
+         .profile-content {
+            margin-top: 2em;
+            line-height: 24px;
+            font-weight: 400;
+            padding-bottom: 1em;
+            border-bottom: solid #c4c4c4 1.5px;
+         }
+         .profile-media {
+            &-list {
+               margin-top: 1em;
+               //background-color: rgba(blue, .5);
+               padding: 1em 0;
+               list-style: none;
+               display: flex;
+               flex-direction: row;
+               svg {
+                  border-radius: 50%;
+                  width: auto;
+                  height: 2em;
+                  //background-color: #242f3d;
+                  margin: 0 .9em;
+               }
+            }
+         }
+      }
    }
 }
 
+@media screen and (max-width: 719px){
+   .profile-grid{
+      margin-left: 0;
+      width: 100%;
+      grid-template-columns: 1fr;
+   }
+}
+
+/* banner encima 
 .bannerbutton {
    width: 100%;
    height: 10rem;
    justify-content: center;
    background-color: $color-blue;
-   margin-top: 10px;
+   margin: 10px auto;
+   padding: 1em;
+   grid-column: 1/3;
    &-item {
       display: inline-block;
-      padding: 50px 5px;
+      padding: 2rem 5px;
+   }
+}
+*/
+//Banner en primera columna
+.bannerbutton {
+   background-color: #f8f8f8;
+   border-radius: 10px;
+   margin-top: 2em;
+   //padding: 2em 10%;
+   &-item {
+      text-align: left;
+      display: grid;
+      grid-template-rows: 1fr;
+      border-bottom: 1.4px solid #c4c4c4;
+      margin: 0 1.5em;
+      &__nav {
+         text-decoration: none;
+         font-size: 16px;
+         line-height: 18px;
+         letter-spacing: 0;
+         color: #222f3e;
+         padding: 1em;
+         svg {
+            margin-right: 0.5em;
+            color: $color-blue;
+         }
+         p {
+            display: inline-block;
+         }
+      }
+      a:hover {
+         background-color: rgba(#222f3e, 0.6);
+         cursor: pointer;
+      }
+   }
+   .active-nav {
+      color: $color-blue;
+      p {
+         display: inline-block;
+         color: $color-blue;
+      }
+   }
+}
+@media screen and (max-width: 719px){
+   .bannerbutton{
+      margin: 0 5vw;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      &-item{
+         margin: 0;
+         justify-content: center;
+         
+         &__nav{
+            p{
+               display: none;
+            }
+         }
+      }
+      .active-nav {
+         margin-top: 2em;
+         background-color: $color-blue;
+         color: white;
+         grid-column-start: 1;
+         grid-column-end: 4;
+         grid-row-start: 1;
+         text-align: center;
+         justify-content: center;
+         border-radius: 10px 10px 0 0;
+         svg{
+            color: white;
+         }
+         p {
+            display: inline-block;
+            color: white
+         }
+      }
    }
 }

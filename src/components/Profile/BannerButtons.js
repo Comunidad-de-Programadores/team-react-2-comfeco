@@ -1,31 +1,54 @@
 import React from 'react';
+
+import { useHistory } from 'react-router';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-regular-svg-icons';
-import { faAward } from '@fortawesome/free-solid-svg-icons';
+//import { faUser } from '@fortawesome/free-regular-svg-icons';
+import {
+   faUsers,
+   faUser,
+   faMedal,
+   faCalendarAlt,
+} from '@fortawesome/free-solid-svg-icons';
+import { NavLink } from 'react-router-dom';
 
 const BannerButtons = () => {
+   const history = useHistory();
+   const handleEvents = () => {
+      history.push('/home/eventos');
+   };
+   const handleGrupos = () => {
+      history.push('/home/grupos');
+   };
    return (
       <>
-         <ul className="bannerbutton">
-            <li className="bannerbutton-item">
-               <button className="btn btn-white">
+
+         <div className="bannerbutton">
+            <NavLink exact to='/home' className="bannerbutton-item" activeClassName='active-nav'>
+               <a className='bannerbutton-item__nav' >
                   <FontAwesomeIcon icon={faUser} />
-                  Mi Perfil
-               </button>
-            </li>
-            <li className="bannerbutton-item">
-               <button className="btn btn-white">
-                  <FontAwesomeIcon icon={faAward} />
-                  Insignias
-               </button>
-            </li>
-            <li className="bannerbutton-item">
-               <button className="btn btn-white">Grupos</button>
-            </li>
-            <li className="bannerbutton-item">
-               <button className="btn btn-white">Eventos</button>
-            </li>
-         </ul>
+                  <p>Mi Perfil</p>
+               </a>
+            </NavLink>
+            <NavLink exact to='/' className="bannerbutton-item" activeClassName='active-nav'>
+               <a onClick='' to='/' className='bannerbutton-item__nav'>
+                  <FontAwesomeIcon icon={faMedal} />
+                  <p>Insignias</p>
+               </a>
+            </NavLink>
+            <NavLink exact to='/home/grupos' className="bannerbutton-item" activeClassName='active-nav'>
+               <a onClick={handleGrupos}  className='bannerbutton-item__nav'>
+                  <FontAwesomeIcon icon={faUsers} />
+                  <p>Grupos</p>
+               </a>
+            </NavLink>
+            <NavLink exact to='/home/eventos' className="bannerbutton-item" activeClassName='active-nav'>
+               <a onClick={handleEvents} className='bannerbutton-item__nav'>
+                  <FontAwesomeIcon icon={faCalendarAlt} />
+                  <p>Eventos</p>
+               </a>
+            </NavLink>
+         </div>
       </>
    );
 };

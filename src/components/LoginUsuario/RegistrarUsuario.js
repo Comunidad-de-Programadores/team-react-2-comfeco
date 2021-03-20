@@ -28,49 +28,56 @@ const RegistrarUsuario = () => {
             onSubmit={handleSubmit(registroSubmit)}
             className="registro-form__content"
          >
+            <div className='input-container'>
+            <span>Usuario</span>
             <input
                name="username"
                type="text"
-               className="input-container"
+               className=""
                autoComplete="off"
-               placeholder="Nick"
                ref={register}
             />
+            </div>
             {errors.username?.message && (
                <span className="errors-msg"> Nick es requerido </span>
             )}
+            <div className='input-container'>
+            <span>Correo Electronico</span>
             <input
                name="email"
                type="text"
-               className="input-container"
-               autoComplete="off"
-               placeholder="Email"
+               className=""
+               autoComplete="off"               
                ref={register}
             />
+            </div>
             {errors.email?.message && (
                <span className="errors-msg"> Ingrese un email válido </span>
             )}
-
+            <div className='input-container'>
+            <span>Contrasena</span>
             <input
                name="password"
-               className="input-container"
+               className=""
                type="password"
-               placeholder="Password"
                ref={register}
             />
+            </div>
             {errors.password?.type === 'required' && (
                <span className="errors-msg"> Password es requerido </span>
             )}
             {errors.password?.type === 'min' && (
                <span className="errors-msg"> Password min 6 caracteres</span>
             )}
+            <div className='input-container'>
+            <span>Confirmar contrasena</span>
             <input
                name="confirmPassword"
                type="password"
-               className="input-container"
-               placeholder="Confirm Password"
+               className=""
                ref={register}
             />
+            </div>
             {errors.confirmPassword && (
                <span className="errors-msg"> Password no coincide</span>
             )}

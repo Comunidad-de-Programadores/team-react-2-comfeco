@@ -18,16 +18,16 @@ export const AppRouter = () => {
 
    // + CONTEXT 
    const { user, setUser } = useContext(AuthContext);
-   
+
    const [checking, setChecking] = useState(false);
-   
+
 
    useEffect(() => {
 
       if (user) {
 
          setChecking(user?.logged)
-         
+
       } else {
          setChecking(false);
       }

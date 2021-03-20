@@ -1,0 +1,105 @@
+//componente eventos de acuerdo al diseno en adobe xd
+.actividades,
+.eventos {
+   color: #222f3e;
+   margin: 0;
+   &__content {
+      li {
+         padding: 0.4em 1em;
+         a {
+            position: absolute;
+            //border: 1px solid red;
+            text-decoration: none;
+            right: 0;
+            padding-right: 6em;
+         }
+      }
+      .btn {
+         position: relative;
+         margin-top: 1em;
+         margin-left: 2em;
+         font-family: 'Lato', sans-serif;
+      }
+   }
+   &__content-title{
+      border-bottom: solid 1px darkgrey;
+      margin: 1em 0;
+      h2 {
+         font-size: calc(1rem + 0.666vw);
+         padding-bottom: 1em;
+         display: inline-block;  
+      }
+      svg {
+         color: $color-blue;
+         margin: 0 .5em;
+         font-size: calc(1.5rem + 0.666vw);
+      }
+   }
+   
+   &-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 1em;
+      &__evento {
+         border: 1px solid #c4c4c4;
+         border-radius: 15px;
+
+         img {
+            width: 100%;
+            height: auto;
+            background-color: #222f3e;
+            border-radius: 15px 15px 0 0;
+         }
+         .info-cont {
+            margin: 1.5em;
+            p {
+               padding-top: 1em;
+            }
+         }
+
+         .btn {
+            display: block;
+            margin: 1em auto;
+         }
+      }
+   }
+}
+
+@media screen and (max-width: 719px){
+   .eventos{
+      margin: 0 2em;
+      padding-bottom: 2em;
+      &__content-title{
+         text-align: center;
+         svg{
+            color: $color-blue;
+         }
+      }
+      .actividades__item{
+         margin-bottom: 1em;
+         border-bottom: 1px #c4c4c4 solid;
+         padding: 1.3em;
+         a {
+            display: block;
+            padding: .5em 0;
+            text-align: center;
+            position: relative;
+         }
+      }
+      .btn{
+         font-size: medium;
+         display: block;
+         margin: auto;
+      }
+      &-grid{
+         grid-template-columns: 1fr;
+         &__evento{
+            button{
+               font-size: medium;
+               margin-left: auto;
+               margin-right: auto;
+            }
+         }
+      }
+   }
+}

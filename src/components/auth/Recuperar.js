@@ -15,7 +15,7 @@ export const Recuperar = () => {
    const onSubmit = (data) => {
       console.log(register.length);
       console.log(data);
-         recoverPass( data.email );
+      recoverPass(data.email);
    };
 
    const handleCorreo = (e) => {
@@ -56,11 +56,11 @@ export const Recuperar = () => {
                         </span>
                      </label>
                      {errors.email?.type === 'required' && (
-                           <span className="errors-msg"> Email es requerido </span>
-                        )}
-                        {errors.email?.type === 'pattern' && (
-                           <span className="errors-msg"> Email no es válido </span>
-                        )}
+                        <span className="errors-msg"> Email es requerido </span>
+                     )}
+                     {errors.email?.type === 'pattern' && (
+                        <span className="errors-msg"> Email no es válido </span>
+                     )}
 
                      <div
                         className={`recuperar__alerta${

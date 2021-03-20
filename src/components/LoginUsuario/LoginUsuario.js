@@ -10,7 +10,7 @@ const LoginUsuario = (props) => {
    const { register, errors, clearErrors, handleSubmit } = useForm();
 
    const { user, setUser } = useContext(AuthContext);
-   
+
 
    // *EVENTOS : 
    const handleCorreoLogin = (data) => {
@@ -18,7 +18,7 @@ const LoginUsuario = (props) => {
       //? Iniciar un usuario " FICTICIO "
       apiUser.getUser().then((data) => {
 
-         login(data[0].id.value, data[0].email, data[0].name.first, data[0].picture.thumbnail, setUser);
+         login(data[0].id.value, data[0].email, data[0].name.first, data[0].picture.large, setUser);
 
       });
       clearErrors();
@@ -76,7 +76,7 @@ const LoginUsuario = (props) => {
             <br />
             <div className="google-btn">
                <div className="google-icon-wrapper">
-                  <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+                  <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
                </div>
                <p className="btn-text" onClick={handleGoogleLogin}>Login Google </p>
             </div>
