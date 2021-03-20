@@ -9,25 +9,25 @@ export const EventosActivos = () => {
       {
          nombre: 'Evento2',
          image:
-            'https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe1257ed3-39e0-4090-ad74-49ba240b41c2%2FSubmdulo_Insignias-2.jpg?table=block&id=415f61ea-5d8e-4524-abcd-9da6518dfc14&width=3840&userId=&cache=v2',
+            'https://blog.addthiscdn.com/wp-content/uploads/2014/11/addthis-react-flux-javascript-scaling.png',
          descripcion: 'lorem ipsum dolor 2222',
       },
       {
          nombre: 'Evento3',
          image:
-            'https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe1257ed3-39e0-4090-ad74-49ba240b41c2%2FSubmdulo_Insignias-2.jpg?table=block&id=415f61ea-5d8e-4524-abcd-9da6518dfc14&width=3840&userId=&cache=v2',
+            'https://blog.addthiscdn.com/wp-content/uploads/2014/11/addthis-react-flux-javascript-scaling.png',
          descripcion: 'lorem ipsum dolor 3333',
       },
       {
          nombre: 'Evento4',
          image:
-            'https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe1257ed3-39e0-4090-ad74-49ba240b41c2%2FSubmdulo_Insignias-2.jpg?table=block&id=415f61ea-5d8e-4524-abcd-9da6518dfc14&width=3840&userId=&cache=v2',
+            'https://blog.addthiscdn.com/wp-content/uploads/2014/11/addthis-react-flux-javascript-scaling.png',
          descripcion: 'lorem ipsum dolor 4444',
       },
       {
          nombre: 'Evento5',
          image:
-            'https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe1257ed3-39e0-4090-ad74-49ba240b41c2%2FSubmdulo_Insignias-2.jpg?table=block&id=415f61ea-5d8e-4524-abcd-9da6518dfc14&width=3840&userId=&cache=v2',
+            'https://blog.addthiscdn.com/wp-content/uploads/2014/11/addthis-react-flux-javascript-scaling.png',
          descripcion: 'lorem ipsum dolor 5555',
       },
    ];
@@ -40,10 +40,10 @@ export const EventosActivos = () => {
                <BannerButtons />
             </div>
             <div className="profile-grid-right eventos">
-               <h2>
+               <div className='eventos__content-title'>
                   <FontAwesomeIcon icon={faCalendarAlt} />
-                  Eventos Activos
-               </h2>
+                  <h2>Eventos Activos</h2>
+               </div>
                <div className="eventos-grid">
                   {evento.map((value) => {
                      return (
