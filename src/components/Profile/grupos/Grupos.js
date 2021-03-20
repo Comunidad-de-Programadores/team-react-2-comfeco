@@ -1,5 +1,7 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+
+import BannerButtons from '../BannerButtons';
 import GroupsApiFake from '../../../shared/api/groupsFake';
 import { AuthContext } from '../../../context/AuthContext';
 
@@ -33,10 +35,9 @@ const Grupos = () => {
 
    return (
       <>
-         <Link to="home/profile">Atras</Link>
-         <h1>Grupos</h1>
          <div className="grupos">
             <div className="grupos-migrupo">
+               <BannerButtons />
                <ul className="grupos-migrupo_card">
                   <li className="grupos-migrupo_card-title">
                      <h2>Mi Grupo</h2>
@@ -143,6 +144,7 @@ const Grupos = () => {
                </ul>
             </div>
             <div className="grupos-teams">
+               <h1>Grupos: </h1>
                <div className="grupos-input">
                   <div className="grupos-input--control">
                      <select
