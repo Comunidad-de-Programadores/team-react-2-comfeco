@@ -36,7 +36,7 @@ const BannerButtons = () => {
                   <p>Insignias</p>
                </a>
             </NavLink>
-            <NavLink exact to='/' className="bannerbutton-item" activeClassName='active-nav'>
+            <NavLink exact to='/home/grupos' className="bannerbutton-item" activeClassName='active-nav'>
                <a onClick={handleGrupos}  className='bannerbutton-item__nav'>
                   <FontAwesomeIcon icon={faUsers} />
                   <p>Grupos</p>
