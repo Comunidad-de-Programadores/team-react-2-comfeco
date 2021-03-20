@@ -14,13 +14,12 @@ export const startGoogleLogin = (setData) => {
 
 export const login = (uid, email, displayName, photo, setData) => {
    const data = {
-         uid: uid,
-         email: email,
-         name: displayName,
-         picture: { thumbnail: photo },
-         logged: true, 
-         perfil: false
-   
+      uid: uid,
+      email: email,
+      name: displayName,
+      picture: { thumbnail: photo },
+      logged: true,
+      perfil: false
    };
 
    saveLocalStorage(data);
@@ -53,7 +52,8 @@ export const registro = (data) => {
          user.updateProfile({
             displayName: data.username
          }).then(function () {
-            console.log('done');
+            alert('Registro completado');
+            //console.log('done');
          }, function (error) {
             Swal(error);
          });
@@ -65,9 +65,7 @@ export const registro = (data) => {
          console.log(errorMessage);
       });
 }
-
-
-export const saveDataFirebase = async ( uid, data, startDate, value, setDataUser  ) => {
+export const saveDataFirebase = async ( uid, data, startDate, setDataUser, file, setpictureFirebase ) => {
 
    const { 
          Biography,
@@ -75,6 +73,7 @@ export const saveDataFirebase = async ( uid, data, startDate, value, setDataUser
          email,
          facebook,
          genero,
+         country,
          gitHub,
          linkedin,
          nick,
@@ -88,6 +87,7 @@ export const saveDataFirebase = async ( uid, data, startDate, value, setDataUser
       confirmPassword,
       email,
       facebook,
+      country,
       genero,
       gitHub,
       linkedin,
@@ -95,19 +95,60 @@ export const saveDataFirebase = async ( uid, data, startDate, value, setDataUser
       password,
       twitter,
       startDate,
-      value
-
    };
-    
-   await db.collection(`${ uid }`).doc('information').set( information ).then(()=>{
-      setDataUser(  information )
-   }).catch((()=>{
-      console.log("Algo salio mal")
-   }));
+
+   if ( file.length !== 0 ) {
+
+         const storageRef = firebase.storage().ref(`pictures/${ uid }`)
+         const task = storageRef.put(file[0]);
+
+         task.on('state_changed', async (snapshot) => {
+            
+            const storage = firebase.storage();
+   
+            await storage.ref(`pictures/${ uid }`).getDownloadURL().then(( url )=>{
+               setpictureFirebase( `${ url }` );
+            }).catch(()=>{
+               console.log("no se encontro la imagen")
+               setpictureFirebase( null );
+            });
+            console.log( "se cargo los datos" );
+            console.log( snapshot );
+            
+
+         }, (error) => {
+            
+            console.log( error )   
+
+         });
+         await db.collection(`${ uid }`).doc('information').set( information ).then(()=>{
+            setDataUser(  information );
+         }).catch((()=>{
+            console.log("Algo salio mal")
+         }));
+
+
+
+   }else {
+      await db.collection(`${ uid }`).doc('information').set( information ).then(()=>{
+         setDataUser(  information );
+      }).catch((()=>{
+         console.log("Algo salio mal")
+      }));
+   }
 
 }
 
-export const loadUser = async ( uid, setCompleto, setDataUser ) => {
+export const loadUser = async ( uid, setCompleto, setDataUser, setpictureFirebase ) => {
+
+   const storage = firebase.storage();
+   
+   await storage.ref(`pictures/${ uid }`).getDownloadURL().then(( url )=>{
+      setpictureFirebase( `${ url }` );
+   }).catch(()=>{
+      console.log("no se encontro la imagen")
+      setpictureFirebase( null );
+   });
    
    await db.collection(`${ uid }`).doc('information').get().then( ( user )=>{
 
@@ -116,23 +157,24 @@ export const loadUser = async ( uid, setCompleto, setDataUser ) => {
          confirmPassword,
          email,
          facebook,
+         country,
          genero,
          gitHub,
          linkedin,
          nick,
          password,
          twitter,
-         startDate,
-         value 
+         startDate, 
       } = user.data();
    
-      if ( Biography !== '' && confirmPassword!== '' && value!== ''
+      if ( Biography !== '' && confirmPassword!== '' && country!== ''
          && email!== '' && facebook!== '' && genero!== '' 
          && gitHub!== '' && linkedin!== '' && nick!== '' 
          && password!== '' && twitter!== '' && startDate!== '' 
       ) {
          setCompleto( true );
          setDataUser( user.data() );
+
       }else{
          setCompleto( false );
          setDataUser( user.data() );
@@ -147,6 +189,7 @@ export const loadUser = async ( uid, setCompleto, setDataUser ) => {
          confirmPassword :'',
          email :'',
          facebook :'',
+         country:'',
          genero :'',
          gitHub :'',
          linkedin :'',

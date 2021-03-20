@@ -1,0 +1,58 @@
+//componente eventos de acuerdo al diseno en adobe xd
+.eventos {
+   color: #222f3e;
+   &__content {
+      li {
+         padding: 0.4em 2em;
+         a {
+            position: absolute;
+            //border: 1px solid red;
+            text-decoration: none;
+            right: 0;
+            padding-right: 2em;
+         }
+      }
+      .btn {
+         position: relative;
+         margin-top: 1em;
+         margin-left: 2em;
+         font-family: 'Lato', sans-serif;
+      }
+   }
+   h2 {
+      border-bottom: solid 1px darkgrey;
+      margin: 2em 0;
+      padding-bottom: 1em;
+      svg {
+         margin-right: 0.5em;
+         color: $color-blue;
+      }
+   }
+   &-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 1em;
+      &__evento {
+         border: 1px solid #c4c4c4;
+         border-radius: 15px;
+
+         img {
+            width: 100%;
+            height: auto;
+            background-color: #222f3e;
+            border-radius: 15px 15px 0 0;
+         }
+         .info-cont {
+            margin: 1.5em;
+            p {
+               padding-top: 1em;
+            }
+         }
+
+         .btn {
+            display: block;
+            margin: 1em auto;
+         }
+      }
+   }
+}

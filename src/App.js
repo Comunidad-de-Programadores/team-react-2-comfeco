@@ -12,11 +12,16 @@ const App = () => {
 
    const [ dataUser, setDataUser ] = useState([]);
 
+   const [ pictureFirebase, setpictureFirebase ] = useState(null);
+
+   const [ change, setChange ] = useState( 0 );
+
    // Aqui ya puedes verificar si esta completo los datos con completo 
 
    // TODO VERIFICAR CON ESTO DESDE EL CONTEXT TRUE O FALSES
    //    const { completo } = useContext( AuthContext );
 
+   console.log( pictureFirebase )
    
    const [ completo, setCompleto ] = useState( false );
 
@@ -24,7 +29,7 @@ const App = () => {
 
       if ( user ) {
          
-         loadUser( user.uid, setCompleto, setDataUser );
+         loadUser( user.uid, setCompleto, setDataUser, setpictureFirebase );
       }
 
       
@@ -36,7 +41,11 @@ const App = () => {
             user,
             setUser,
             dataUser,
-            setDataUser
+            setDataUser,
+            pictureFirebase,
+            setpictureFirebase,
+            change,
+            setChange
          }}
       >
          <AppRouter />

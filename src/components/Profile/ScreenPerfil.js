@@ -3,10 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faLinkedin, faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 import DatePicker from "react-datepicker";
-import CountrySelect from 'react-bootstrap-country-select';
-
-import 'bootstrap/dist/css/bootstrap.css'; 
-import 'react-bootstrap-country-select/dist/react-bootstrap-country-select.css';
 
 import "react-datepicker/dist/react-datepicker.css";
 import { saveDataFirebase } from '../../actions/auth';
@@ -16,18 +12,20 @@ import { useForm } from 'react-hook-form';
 
 export const ScreenPerfil = () => {
 
+    const PICTUREDEFAULT = "https://www.pphfoundation.ca/wp-content/uploads/2018/05/default-avatar.png"
     
     const { register, handleSubmit, setValue } = useForm();    
     
-    const { user, setDataUser, dataUser } = useContext( AuthContext );
-    
-    const [ country, setCountry ] = useState(( dataUser.value !== '' ) ? `${ dataUser.value }`: 'fr');
+    const { user, setDataUser, dataUser, pictureFirebase, setpictureFirebase } = useContext( AuthContext );
     
     const [ startDate, setStartDate ] = useState( new Date() );
 
+    const [ picture, setPicture ] = useState('')
+
     const onSubmit = ( data ) => {
 
-        saveDataFirebase( user.uid, data, startDate, country, setDataUser );
+        saveDataFirebase( user.uid, data, startDate, setDataUser, data.file, setpictureFirebase );
+        
     };
 
     useEffect(() => {
@@ -43,8 +41,32 @@ export const ScreenPerfil = () => {
             setValue( "gitHub", dataUser.gitHub );
             setValue( "confirmPassword", dataUser.confirmPassword );
             setValue( "password", dataUser.password );
+            setValue( "country", dataUser.country );
         }
     }, [ dataUser ]);
+
+    useEffect(() => {
+
+        if ( user ) {
+
+            console.log( pictureFirebase )
+            if ( pictureFirebase !== null ) {
+                
+                return setPicture( `${ pictureFirebase }` );
+
+            }
+
+            const { picture } = user;
+
+            const { thumbnail } = picture;
+            
+            setPicture( `${ thumbnail }` );
+
+        }else{
+            setPicture( `${ PICTUREDEFAULT }` );
+        }
+        
+    }, [ user, dataUser, pictureFirebase ]);
      
     return (
         <div className="contain">
@@ -57,13 +79,18 @@ export const ScreenPerfil = () => {
                                     <div className="content-block dx-card responsive-paddings">
                                         <div className="form-avatar">
                                             <label className="label-title">Editar Perfil</label>
-                                            <img src="https://midu.dev/images/tags/github.png"/>
-                                            <label className="label-subtitle">cambiar</label>
+                                            <img 
+                                            
+                                                src={ `${ picture }` }
+                                            />
+                                            <input type="file" className="file" name="file" ref={ register } />
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <br/>
                         <br/>
                         <div className="grid-container-colum-2" >
                             <div className="grid-item" >
@@ -105,17 +132,16 @@ export const ScreenPerfil = () => {
                             </div>
                             <div className="grid-item" >
                                 <label className="label" >Pais</label>
-                                <CountrySelect
-                                    value={ country }
-                                    onChange={setCountry}
-                                    valueAs='id'
+                                <input
+                                    className="gg-bound-control-input" type="text" name="country" placeholder="Estados unidos" 
+                                    ref={ register }
                                 />
                             </div>
                         </div>
                         <div className="grid-container-colum-2" >
                             <div className="grid-item" >
                                 <label className="label">Contraseña</label>
-                                <input className="gg-bound-control-input" type="password" name="password" placeholder="Contraseña"
+                                <input ref={ register } name="password" placeholder="Contraseña"
                                     ref={ register }
                                 />
                             </div>
@@ -166,7 +192,7 @@ export const ScreenPerfil = () => {
                         <div className="grid-container" >
                             <div className="grid-item" >
                                 <label className="label">Biografia</label>
-                                <textarea className="gg-bound-control-input" name="Biography" type="text" rows="4" 
+                                <textarea className="gg-bound-control-input" name="Biography" type="text" rows="6" 
                                     ref={ register }
                                 ></textarea>
                             </div>

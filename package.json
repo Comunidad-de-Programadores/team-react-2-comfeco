@@ -17,8 +17,11 @@
     "firebase": "^8.2.9",
     "p5": "^1.2.0",
     "react": "^17.0.1",
+<<<<<<< HEAD
     "react-bootstrap": "^1.5.2",
     "react-bootstrap-country-select": "^0.7.12",
+=======
+>>>>>>> 82fb33743413a21c13664711cac4d4e0614ba158
     "react-datepicker": "^3.6.0",
     "react-dom": "^17.0.1",
     "react-hook-form": "^6.15.1",
