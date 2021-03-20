@@ -1,9 +1,10 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router';
 import { Actividades } from './Actividades';
 import { Eventos } from './Eventos';
 import { BannerInsignias } from './BannerInsignias';
 import BannerButtons from './BannerButtons';
+import { faTwitterSquare, faFacebookSquare, faLinkedin, faGithubSquare } from '@fortawesome/free-brands-svg-icons';
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AuthContext } from '../../context/AuthContext';
@@ -15,10 +16,16 @@ export const Profile = () => {
    const handleEditProfile = () => {
       history.push('/home/profile');
    };
-
+   const { dataUser } = useContext( AuthContext );
+    
    const { user } = useContext(AuthContext);
 
-   console.log(user);
+   //console.log(user);
+   console.log(dataUser);
+   const openInNewTab = (url) => {
+      const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
+      if (newWindow) newWindow.opener = null
+    }
    return (
       <>
          {(user?.logged) && (
@@ -38,18 +45,26 @@ export const Profile = () => {
                         </div>
                         <div className='profile-title'>Frontend Developer</div>
                         <div className='profile-content'>
-                           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente facilis iure veniam dolor, ipsam cupiditate at quae ex
+                           {!dataUser.Biography?'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. ':
+                           dataUser.Biography}
                         </div>
                         <div className='profile-media'>
                            <ul className='profile-media-list'>
-                              <li></li>
-                              <li></li>
-                              <li></li>
-                              <li></li>
+                              <li onClick={() => openInNewTab(dataUser.facebook)}>
+                                 <FontAwesomeIcon icon={faFacebookSquare}/>
+                              </li>
+                              <li>
+                                 <FontAwesomeIcon icon={faTwitterSquare}/>
+                              </li>
+                              <li>
+                                 <FontAwesomeIcon icon={faLinkedin}/>
+                              </li>
+                              <li>
+                                 <FontAwesomeIcon icon={faGithubSquare}/>
+                              </li>
                            </ul>
                         </div>
                      </div>
-                     <a onClick={handleEditProfile}> Editar perfil </a>
                   </div>
                </div>
                <div className='profile-grid-right'>

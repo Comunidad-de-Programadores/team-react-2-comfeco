@@ -10,10 +10,10 @@ import {
    faMedal,
    faCalendarAlt,
 } from '@fortawesome/free-solid-svg-icons';
+import { NavLink } from 'react-router-dom';
 
 const BannerButtons = () => {
    const history = useHistory();
-
    const handleEvents = () => {
       history.push('/home/eventos');
    };
@@ -22,32 +22,33 @@ const BannerButtons = () => {
    };
    return (
       <>
-         <ul className="bannerbutton">
-            <li className="bannerbutton-item">
-               <a href="#">
+
+         <div className="bannerbutton">
+            <NavLink exact to='/home' className="bannerbutton-item" activeClassName='active-nav'>
+               <a className='bannerbutton-item__nav' >
                   <FontAwesomeIcon icon={faUser} />
-                  Mi Perfil
+                  <p>Mi Perfil</p>
                </a>
-            </li>
-            <li className="bannerbutton-item">
-               <a onClick={handleEvents}>
+            </NavLink>
+            <NavLink exact to='/' className="bannerbutton-item" activeClassName='active-nav'>
+               <a onClick='' to='/' className='bannerbutton-item__nav'>
                   <FontAwesomeIcon icon={faMedal} />
-                  Insignias
+                  <p>Insignias</p>
                </a>
-            </li>
-            <li className="bannerbutton-item">
-               <a onClick={handleGrupos}>
+            </NavLink>
+            <NavLink exact to='/home/grupos' className="bannerbutton-item" activeClassName='active-nav'>
+               <a onClick={handleGrupos}  className='bannerbutton-item__nav'>
                   <FontAwesomeIcon icon={faUsers} />
-                  Grupos
+                  <p>Grupos</p>
                </a>
-            </li>
-            <li className="bannerbutton-item">
-               <a onClick={handleEvents}>
+            </NavLink>
+            <NavLink exact to='/home/eventos' className="bannerbutton-item" activeClassName='active-nav'>
+               <a onClick={handleEvents} className='bannerbutton-item__nav'>
                   <FontAwesomeIcon icon={faCalendarAlt} />
-                  Eventos
+                  <p>Eventos</p>
                </a>
-            </li>
-         </ul>
+            </NavLink>
+         </div>
       </>
    );
 };

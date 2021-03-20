@@ -4,6 +4,9 @@
    margin: 0 5em;
    grid-template-columns: 1fr 2fr;
    grid-gap: 2em;
+   &-left{
+      margin: 1em 4vw;
+   }
    .profile {
       display: grid;
       justify-content: space-around;
@@ -75,18 +78,27 @@
                list-style: none;
                display: flex;
                flex-direction: row;
-               li {
+               svg {
                   border-radius: 50%;
-                  width: 25%;
-                  height: 2.8em;
-                  background-color: #242f3d;
-                  margin: 0 0.3em;
+                  width: auto;
+                  height: 2em;
+                  //background-color: #242f3d;
+                  margin: 0 .9em;
                }
             }
          }
       }
    }
 }
+
+@media screen and (max-width: 719px){
+   .profile-grid{
+      margin-left: 0;
+      width: 100%;
+      grid-template-columns: 1fr;
+   }
+}
+
 /* banner encima 
 .bannerbutton {
    width: 100%;
@@ -106,15 +118,15 @@
 .bannerbutton {
    background-color: #f8f8f8;
    border-radius: 10px;
-   margin: 2em 0em;
-   padding: 2em 10%;
+   margin-top: 2em;
+   //padding: 2em 10%;
    &-item {
       text-align: left;
       display: grid;
       grid-template-rows: 1fr;
       border-bottom: 1.4px solid #c4c4c4;
       margin: 0 1.5em;
-      a {
+      &__nav {
          text-decoration: none;
          font-size: 16px;
          line-height: 18px;
@@ -125,10 +137,55 @@
             margin-right: 0.5em;
             color: $color-blue;
          }
+         p {
+            display: inline-block;
+         }
       }
       a:hover {
          background-color: rgba(#222f3e, 0.6);
          cursor: pointer;
+      }
+   }
+   .active-nav {
+      color: $color-blue;
+      p {
+         display: inline-block;
+         color: $color-blue;
+      }
+   }
+}
+@media screen and (max-width: 719px){
+   .bannerbutton{
+      margin: 0 5vw;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      &-item{
+         margin: 0;
+         justify-content: center;
+         
+         &__nav{
+            p{
+               display: none;
+            }
+         }
+      }
+      .active-nav {
+         margin-top: 2em;
+         background-color: $color-blue;
+         color: white;
+         grid-column-start: 1;
+         grid-column-end: 4;
+         grid-row-start: 1;
+         text-align: center;
+         justify-content: center;
+         border-radius: 10px 10px 0 0;
+         svg{
+            color: white;
+         }
+         p {
+            display: inline-block;
+            color: white
+         }
       }
    }
 }
