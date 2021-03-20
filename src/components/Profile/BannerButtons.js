@@ -1,5 +1,7 @@
 import React from 'react';
+
 import { useHistory } from 'react-router';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 //import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faUsers, faUser, faMedal, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
@@ -26,10 +28,12 @@ const BannerButtons = () => {
                </a>
             </li>
             <li className="bannerbutton-item">
+
                <a onClick={handleEvents}>
                   <FontAwesomeIcon icon={faUsers} />
                   Grupos
                </a>
+
             </li>
             <li className="bannerbutton-item">
                <a onClick={handleEvents}>
