@@ -2,19 +2,24 @@ import React, { useContext, useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faLinkedin, faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
+import { faBackward } from '@fortawesome/free-solid-svg-icons'
+
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 import { saveDataFirebase } from '../../actions/auth';
 import { AuthContext } from '../../context/AuthContext';
 import { useForm } from 'react-hook-form';
+import { useHistory } from 'react-router';
 
 
 export const ScreenPerfil = () => {
 
     const PICTUREDEFAULT = "https://www.pphfoundation.ca/wp-content/uploads/2018/05/default-avatar.png"
     
-    const { register, handleSubmit, setValue } = useForm();    
+    const { register, handleSubmit, setValue } = useForm();   
+    
+    const history = useHistory();
     
     const { user, setDataUser, dataUser, pictureFirebase, setpictureFirebase } = useContext( AuthContext );
     
@@ -27,6 +32,12 @@ export const ScreenPerfil = () => {
         saveDataFirebase( user.uid, data, startDate, setDataUser, data.file, setpictureFirebase );
         
     };
+    const handleHistoryProfile = ( e ) => {
+        e.preventDefault();
+
+        history.push('/home');
+        
+    }
 
     useEffect(() => {
         if ( dataUser ) {
@@ -75,6 +86,11 @@ export const ScreenPerfil = () => {
                     <form >
                         <div className="grid-container" >
                             <div className="grid-item-center" >
+                                <label className="label-title" style={{ textAlign:'left' }} onClick={ handleHistoryProfile } >
+                                    <FontAwesomeIcon icon={ faBackward } size="lg" />  &nbsp; volver
+                                </label>
+                                <br/>
+                                <br/>
                                 <div className="container-center" >
                                     <div className="content-block dx-card responsive-paddings">
                                         <div className="form-avatar">
