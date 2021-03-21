@@ -8,6 +8,7 @@ import { EventosActivos } from '../../components/Profile/EventosActivos';
 import Grupos from '../../components/Profile/grupos/Grupos';
 
 import LoginApp from '../../components/LoginUsuario/LoginApp';
+import { Insignias } from '../../components/Profile/Insignias';
 
 export const HomeRouter = () => {
    //    return (
@@ -24,6 +25,7 @@ export const HomeRouter = () => {
             <Route exact path="/home/profile" component={ScreenPerfil} />
             <Route exact path="/home/eventos" component={EventosActivos} />
             <Route exact path="/home/grupos" component={Grupos} />
+            <Route exact path="/home/insignias" component={Insignias} />
             {/* <Route
                         exact
                         path="/home/..."

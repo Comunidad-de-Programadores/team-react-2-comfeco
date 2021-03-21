@@ -20,6 +20,9 @@ const BannerButtons = () => {
    const handleGrupos = () => {
       history.push('/home/grupos');
    };
+   const handleInsignias = () => {
+      history.push('/home/insignias');
+   };
    return (
       <>
 
@@ -30,8 +33,8 @@ const BannerButtons = () => {
                   <p>Mi Perfil</p>
                </a>
             </NavLink>
-            <NavLink exact to='/' className="bannerbutton-item" activeClassName='active-nav'>
-               <a onClick='' to='/' className='bannerbutton-item__nav'>
+            <NavLink exact to='/home/insignias' className="bannerbutton-item" activeClassName='active-nav'>
+               <a onClick={handleInsignias} to='/' className='bannerbutton-item__nav'>
                   <FontAwesomeIcon icon={faMedal} />
                   <p>Insignias</p>
                </a>

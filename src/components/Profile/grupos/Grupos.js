@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import BannerButtons from '../BannerButtons';
 import GroupsApiFake from '../../../shared/api/groupsFake';
 import { AuthContext } from '../../../context/AuthContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUsers } from '@fortawesome/free-solid-svg-icons';
+
 
 const Grupos = () => {
    const [grupos, setGrupos] = useState([]);
@@ -35,10 +38,12 @@ const Grupos = () => {
 
    return (
       <>
-         <div className="grupos">
+         <div className="profile-grid grupos">
             <div className="grupos-migrupo">
                <BannerButtons />
                <ul className="grupos-migrupo_card">
+
+               
                   <li className="grupos-migrupo_card-title">
                      <h2>Mi Grupo</h2>
                      <a href="#" className="grupos-link">
@@ -144,7 +149,10 @@ const Grupos = () => {
                </ul>
             </div>
             <div className="grupos-teams">
-               <h1>Grupos: </h1>
+               <div className='eventos__content-title'> 
+                  <FontAwesomeIcon icon={faUsers}/> 
+                  <h2>Mis Grupos</h2>
+               </div>
                <div className="grupos-input">
                   <div className="grupos-input--control">
                      <select
