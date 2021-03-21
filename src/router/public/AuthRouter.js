@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import { Recuperar } from '../../components/auth/Recuperar';
+import { Recuperar } from '../../components/LoginUsuario/Recuperar';
 import LoginApp from '../../components/LoginUsuario/LoginApp';
 
 export const AuthRouter = () => {

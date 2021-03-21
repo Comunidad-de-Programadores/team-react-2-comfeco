@@ -18,11 +18,6 @@ const LoginApp = () => {
       setRegistro('Registrarse');
    };
 
-   // function datafromLogin(datachild) {
-   //    console.log('Datos recibidos de LoginUsuario: ' + datachild.isLogin);
-   //    setDataLogin(datachild.isLogin);
-   //    console.log('Datos recibidos de LoginUsuario: ' + dataLogin);
-   // }
 
    return (
       <>
@@ -31,11 +26,10 @@ const LoginApp = () => {
                <div className="container-login">
                   <div className="container-login__opt">
                      <button className="btn-login" onClick={handleToggle}>
-                        <span>Click!</span>
                         <span>Ingresar</span>
                      </button>
                      <button className="btn-login" onClick={handleToggle2}>
-                        <span>Click!</span>
+                       
                         <span>Registrarse</span>
                      </button>
                   </div>

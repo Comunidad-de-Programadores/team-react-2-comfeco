@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import { Recuperar } from '../../components/auth/Recuperar';
+// import { Recuperar } from '../../components/auth/Recuperar';
 import HomePage from '../../components/HomePage/HomePage';
 import { ScreenPerfil } from '../../components/Profile/ScreenPerfil';
 

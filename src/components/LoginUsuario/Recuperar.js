@@ -51,7 +51,7 @@ export const Recuperar = () => {
                               pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                            })}
                         />
-                        <span className={alerta.alert ? '--active' : ''}>
+                        <span className={(alerta.alert || alerta.msg.length >= 0) ? '--active' : ''}>
                            Correo Electronico
                         </span>
                      </label>

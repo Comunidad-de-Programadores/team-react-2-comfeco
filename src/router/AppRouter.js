@@ -11,6 +11,7 @@ import { AuthRouter } from './public/AuthRouter';
 import { PublicRoute } from './PublicRouter';
 import { login } from '../actions/auth';
 import { isLocalStorage, sendLocalStorage } from '../shared/login';
+import { Footer } from '../components/Footer';
 
 export const AppRouter = () => {
 
@@ -61,6 +62,7 @@ export const AppRouter = () => {
                <Redirect to="/auth/login" />
             </Switch>
          </div>
+         <Footer/>
       </Router>
    );
 };

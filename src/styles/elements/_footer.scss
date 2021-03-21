@@ -1,0 +1,27 @@
+.footer{
+    padding: 0 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: center;
+    height: 2rem;
+    font-family: 'Lato', sans-serif;
+
+    &__txt{
+        align-self: center;
+        font-size: 0.8rem;
+    }
+
+    &__iconos{
+        display: flex;
+        flex-basis: 12rem;
+     
+        justify-content: space-around;
+        svg{
+            font-size: 1.3rem;
+            color: blue;
+        }
+    }
+
+
+}
