@@ -1,6 +1,11 @@
-# Equipo React-2 Fase 1  
+# Equipo React-2 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Integrantes : 
+### Jesus Camacho Reyes / https://github.com/Jesus-Reyes
+### Rudy Duran / https://github.com/dbruddy
+### Gonzalo Aguirre /  https://github.com/aguirregonzaloa
+### Bryan Manzano /  https://github.com/bryanmmr
+### Mauricio Cartagena / https://github.com/mauriciocartagena
 
 Demo: https://team-react-2.web.app/
 
